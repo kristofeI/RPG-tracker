@@ -11,7 +11,7 @@ using TrackerLibrary.Models;
 
 namespace TrackerUI
 {
-    public partial class GMTrackerUI : Form
+    public partial class GMTrackerUI : Form, ICharacterRequester
     {
 
         //TODO!! wire up current session, its team and npcs
@@ -38,6 +38,8 @@ namespace TrackerUI
             teamListBox.DataSource = currentTeam;
             teamListBox.DisplayMember = "Name";
 
+            NpcListBox.DataSource = null;
+
             NpcListBox.DataSource = currentsNpcs;
             NpcListBox.DisplayMember = "Name";
         }
@@ -48,6 +50,40 @@ namespace TrackerUI
             currentsNpcs.Add(new CharacterModel { Name = "Wiesława" });
 
         }
-        
+
+        private void makeNewCharacterButton_Click(object sender, EventArgs e)
+        {
+            if (teamRadioButton.Checked || npcRadioButton.Checked)
+            {
+                MakeNewCharacterForm frm = new MakeNewCharacterForm(this);
+                frm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Zaznacz do której listy dodać postać");
+            }
+
+            
+        }
+
+        public void CharacterComplete(CharacterModel model)
+        {
+            //get back from the form a new CharacterModel
+            //take the CharacterModel and put it into our list
+            
+
+            if (teamRadioButton.Checked)
+            {
+                currentTeam.Add(model);
+
+                WireUpLists();
+            }
+            if (npcRadioButton.Checked)
+            {
+                currentsNpcs.Add(model);
+
+                WireUpLists();
+            }
+        }
     }
 }

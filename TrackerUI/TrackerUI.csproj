@@ -94,6 +94,7 @@
     <Compile Include="HistoryForm.Designer.cs">
       <DependentUpon>HistoryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ICharacterRequester.cs" />
     <Compile Include="MakeNewCharacterForm.cs">
       <SubType>Form</SubType>
     </Compile>

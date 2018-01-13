@@ -116,18 +116,25 @@ namespace TrackerLibrary.DataAccess.TextHelpers
                 c.NeedForDrugs = float.Parse(cols[25]);
                 c.IsCharacterInTeam = bool.Parse(cols[26]);
 
-                string[] weaponIds = cols[27].Split('|');
-
-                foreach (string id in weaponIds)
+                if (weapons.Count > 0)
                 {
-                    c.CharacterWeapons.Add(weapons.Where(x => x.Id == int.Parse(id)).First());
+                    string[] weaponIds = cols[27].Split('|');
+
+                    foreach (string id in weaponIds)
+                    {
+                        c.CharacterWeapons.Add(weapons.Where(x => x.Id == int.Parse(id)).First());
+                    }
                 }
 
-                string[] skillIds = cols[28].Split('|');
 
-                foreach (string id in skillIds)
+                if (skills.Count > 0)
                 {
-                    c.CharacterSkills.Add(skills.Where(x => x.Id == int.Parse(id)).First());
+                    string[] skillIds = cols[28].Split('|');
+
+                    foreach (string id in skillIds)
+                    {
+                        c.CharacterSkills.Add(skills.Where(x => x.Id == int.Parse(id)).First());
+                    }
                 }
                 
 

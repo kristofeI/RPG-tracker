@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MakeNewCharacterForm));
             this.headerLabel = new System.Windows.Forms.Label();
-            this.makeCharacterOnlyButton = new System.Windows.Forms.Button();
+            this.makeCharacterAndBackButton = new System.Windows.Forms.Button();
             this.characterNameValue = new System.Windows.Forms.TextBox();
             this.characterNameLabel = new System.Windows.Forms.Label();
             this.playerLabel = new System.Windows.Forms.Label();
@@ -56,21 +56,21 @@
             this.headerLabel.TabIndex = 4;
             this.headerLabel.Text = "Stwórz nową postać lub NPC";
             // 
-            // makeCharacterOnlyButton
+            // makeCharacterAndBackButton
             // 
-            this.makeCharacterOnlyButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.makeCharacterOnlyButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.makeCharacterOnlyButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.makeCharacterOnlyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.makeCharacterOnlyButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.makeCharacterOnlyButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.makeCharacterOnlyButton.Location = new System.Drawing.Point(40, 441);
-            this.makeCharacterOnlyButton.Name = "makeCharacterOnlyButton";
-            this.makeCharacterOnlyButton.Size = new System.Drawing.Size(525, 63);
-            this.makeCharacterOnlyButton.TabIndex = 48;
-            this.makeCharacterOnlyButton.Text = "Stwórz postać i wróć do menu głównego";
-            this.makeCharacterOnlyButton.UseVisualStyleBackColor = true;
-            this.makeCharacterOnlyButton.Click += new System.EventHandler(this.makeCharacterOnlyButton_Click);
+            this.makeCharacterAndBackButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.makeCharacterAndBackButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.makeCharacterAndBackButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.makeCharacterAndBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.makeCharacterAndBackButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.makeCharacterAndBackButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.makeCharacterAndBackButton.Location = new System.Drawing.Point(40, 441);
+            this.makeCharacterAndBackButton.Name = "makeCharacterAndBackButton";
+            this.makeCharacterAndBackButton.Size = new System.Drawing.Size(525, 63);
+            this.makeCharacterAndBackButton.TabIndex = 48;
+            this.makeCharacterAndBackButton.Text = "Stwórz postać i wróć do menu głównego";
+            this.makeCharacterAndBackButton.UseVisualStyleBackColor = true;
+            this.makeCharacterAndBackButton.Click += new System.EventHandler(this.makeCharacterAndBackButton_Click);
             // 
             // characterNameValue
             // 
@@ -192,7 +192,7 @@
             this.Controls.Add(this.characterNameValue);
             this.Controls.Add(this.characterNameLabel);
             this.Controls.Add(this.playerLabel);
-            this.Controls.Add(this.makeCharacterOnlyButton);
+            this.Controls.Add(this.makeCharacterAndBackButton);
             this.Controls.Add(this.headerLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -209,7 +209,7 @@
         #endregion
 
         private System.Windows.Forms.Label headerLabel;
-        private System.Windows.Forms.Button makeCharacterOnlyButton;
+        private System.Windows.Forms.Button makeCharacterAndBackButton;
         private System.Windows.Forms.TextBox characterNameValue;
         private System.Windows.Forms.Label characterNameLabel;
         private System.Windows.Forms.Label playerLabel;

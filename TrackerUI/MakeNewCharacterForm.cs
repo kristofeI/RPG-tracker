@@ -14,10 +14,13 @@ namespace TrackerUI
 {
     public partial class MakeNewCharacterForm : Form
     {
+        ICharacterRequester callingForm;
 
-        public MakeNewCharacterForm()
+        public MakeNewCharacterForm(ICharacterRequester caller)
         {
             InitializeComponent();
+
+            callingForm = caller;
             
         }
 
@@ -83,7 +86,9 @@ namespace TrackerUI
             return output;
         }
 
-        private void makeCharacterOnlyButton_Click(object sender, EventArgs e)
+        
+
+        private void makeCharacterAndBackButton_Click(object sender, EventArgs e)
         {
             //TODO - make a character//Validate the form, make a model(only name, player and id), save the model, clear out the form
             if (ValidateForm())
@@ -97,8 +102,12 @@ namespace TrackerUI
 
                     GlobalConfig.Connection.AddNewCharacter(model);
 
-                    characterNameValue.Text = "";
-                    playerDropDown.Text = "";
+                    callingForm.CharacterComplete(model);
+
+                    this.Close();
+
+                    //characterNameValue.Text = "";
+                    //playerDropDown.Text = "";
                 }
                 else if (playerDropDown.Text.Length == 0 && playerNameValue.Text.Length > 0)
                 {
@@ -110,8 +119,12 @@ namespace TrackerUI
 
                     GlobalConfig.Connection.AddNewCharacter(characterModel);
 
-                    characterNameValue.Text = "";
-                    playerNameValue.Text = "";
+                    callingForm.CharacterComplete(characterModel);
+
+                    
+
+                    //characterNameValue.Text = "";
+                    //playerNameValue.Text = "";
 
 
                     PlayerModel playerModel = new PlayerModel(
@@ -121,24 +134,27 @@ namespace TrackerUI
 
                     GlobalConfig.Connection.AddNewPlayer(playerModel);
 
-                    playerNameValue.Text = "";
-                    playerEmailValue.Text = "";
+                    this.Close();
+
+                    //playerNameValue.Text = "";
+                    //playerEmailValue.Text = "";
 
                     //TODO - change static player id depending on player drop donw or newly made player
 
-                    
+
                 }
                 
             }
 
             //TODO - pop up the messagebox and return to the menu
-
         }
+
 
         private void makeCharacterAndEditButton_Click(object sender, EventArgs e)
         {
             //TODO - make a character//Validate the form, make a model(only name, player and id), save the model, clear out the form
             //TODO - proceed to the form 'edit character'
         }
+
     }
 }

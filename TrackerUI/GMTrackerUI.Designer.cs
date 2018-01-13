@@ -50,15 +50,15 @@
             this.addCharacterToFightButton = new System.Windows.Forms.Button();
             this.removeSelectedFightUnitsButton = new System.Windows.Forms.Button();
             this.charactersGroupBox = new System.Windows.Forms.GroupBox();
-            this.addOldCharacterGroupBox = new System.Windows.Forms.GroupBox();
-            this.characterListDropDown = new System.Windows.Forms.ComboBox();
-            this.addExistingCharacterToListButton = new System.Windows.Forms.Button();
+            this.choosingTableLabel = new System.Windows.Forms.Label();
+            this.npcRadioButton = new System.Windows.Forms.RadioButton();
+            this.teamRadioButton = new System.Windows.Forms.RadioButton();
             this.makeNewCharacterButton = new System.Windows.Forms.Button();
             this.removeCharacterButton = new System.Windows.Forms.Button();
-            this.teamRadioButton = new System.Windows.Forms.RadioButton();
-            this.npcRadioButton = new System.Windows.Forms.RadioButton();
-            this.choosingTableLabel = new System.Windows.Forms.Label();
+            this.addOldCharacterGroupBox = new System.Windows.Forms.GroupBox();
             this.playerListDropDown = new System.Windows.Forms.ComboBox();
+            this.characterListDropDown = new System.Windows.Forms.ComboBox();
+            this.addExistingCharacterToListButton = new System.Windows.Forms.Button();
             this.charactersGroupBox.SuspendLayout();
             this.addOldCharacterGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -332,6 +332,70 @@
             this.charactersGroupBox.TabStop = false;
             this.charactersGroupBox.Text = "Listy Postaci";
             // 
+            // choosingTableLabel
+            // 
+            this.choosingTableLabel.AutoSize = true;
+            this.choosingTableLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.choosingTableLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.choosingTableLabel.Location = new System.Drawing.Point(199, 310);
+            this.choosingTableLabel.Name = "choosingTableLabel";
+            this.choosingTableLabel.Size = new System.Drawing.Size(297, 30);
+            this.choosingTableLabel.TabIndex = 31;
+            this.choosingTableLabel.Text = "Wybierz listę postaci do edycji:";
+            // 
+            // npcRadioButton
+            // 
+            this.npcRadioButton.AutoSize = true;
+            this.npcRadioButton.Location = new System.Drawing.Point(417, 343);
+            this.npcRadioButton.Name = "npcRadioButton";
+            this.npcRadioButton.Size = new System.Drawing.Size(72, 34);
+            this.npcRadioButton.TabIndex = 30;
+            this.npcRadioButton.TabStop = true;
+            this.npcRadioButton.Text = "NPC";
+            this.npcRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // teamRadioButton
+            // 
+            this.teamRadioButton.AutoSize = true;
+            this.teamRadioButton.Location = new System.Drawing.Point(204, 343);
+            this.teamRadioButton.Name = "teamRadioButton";
+            this.teamRadioButton.Size = new System.Drawing.Size(108, 34);
+            this.teamRadioButton.TabIndex = 29;
+            this.teamRadioButton.TabStop = true;
+            this.teamRadioButton.Text = "Drużyna";
+            this.teamRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // makeNewCharacterButton
+            // 
+            this.makeNewCharacterButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.makeNewCharacterButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.makeNewCharacterButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.makeNewCharacterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.makeNewCharacterButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.makeNewCharacterButton.ForeColor = System.Drawing.Color.OliveDrab;
+            this.makeNewCharacterButton.Location = new System.Drawing.Point(24, 624);
+            this.makeNewCharacterButton.Name = "makeNewCharacterButton";
+            this.makeNewCharacterButton.Size = new System.Drawing.Size(671, 55);
+            this.makeNewCharacterButton.TabIndex = 28;
+            this.makeNewCharacterButton.Text = "Stwórz nową postać i dodaj ją do listy";
+            this.makeNewCharacterButton.UseVisualStyleBackColor = true;
+            this.makeNewCharacterButton.Click += new System.EventHandler(this.makeNewCharacterButton_Click);
+            // 
+            // removeCharacterButton
+            // 
+            this.removeCharacterButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.removeCharacterButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.removeCharacterButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.removeCharacterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeCharacterButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.removeCharacterButton.ForeColor = System.Drawing.Color.Red;
+            this.removeCharacterButton.Location = new System.Drawing.Point(24, 685);
+            this.removeCharacterButton.Name = "removeCharacterButton";
+            this.removeCharacterButton.Size = new System.Drawing.Size(671, 55);
+            this.removeCharacterButton.TabIndex = 27;
+            this.removeCharacterButton.Text = "Usuń wybraną postać z listy";
+            this.removeCharacterButton.UseVisualStyleBackColor = true;
+            // 
             // addOldCharacterGroupBox
             // 
             this.addOldCharacterGroupBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
@@ -347,6 +411,16 @@
             this.addOldCharacterGroupBox.TabIndex = 26;
             this.addOldCharacterGroupBox.TabStop = false;
             this.addOldCharacterGroupBox.Text = "Dodaj do listy istniejącą postać";
+            // 
+            // playerListDropDown
+            // 
+            this.playerListDropDown.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.playerListDropDown.FormattingEnabled = true;
+            this.playerListDropDown.Location = new System.Drawing.Point(20, 49);
+            this.playerListDropDown.Name = "playerListDropDown";
+            this.playerListDropDown.Size = new System.Drawing.Size(202, 33);
+            this.playerListDropDown.TabIndex = 25;
+            this.playerListDropDown.Text = "Wybierz gracza";
             // 
             // characterListDropDown
             // 
@@ -372,79 +446,6 @@
             this.addExistingCharacterToListButton.TabIndex = 23;
             this.addExistingCharacterToListButton.Text = "Dodaj do listy";
             this.addExistingCharacterToListButton.UseVisualStyleBackColor = true;
-            // 
-            // makeNewCharacterButton
-            // 
-            this.makeNewCharacterButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.makeNewCharacterButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.makeNewCharacterButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.makeNewCharacterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.makeNewCharacterButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.makeNewCharacterButton.ForeColor = System.Drawing.Color.OliveDrab;
-            this.makeNewCharacterButton.Location = new System.Drawing.Point(24, 624);
-            this.makeNewCharacterButton.Name = "makeNewCharacterButton";
-            this.makeNewCharacterButton.Size = new System.Drawing.Size(671, 55);
-            this.makeNewCharacterButton.TabIndex = 28;
-            this.makeNewCharacterButton.Text = "Stwórz nową postać i dodaj ją do listy";
-            this.makeNewCharacterButton.UseVisualStyleBackColor = true;
-            // 
-            // removeCharacterButton
-            // 
-            this.removeCharacterButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.removeCharacterButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.removeCharacterButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.removeCharacterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.removeCharacterButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.removeCharacterButton.ForeColor = System.Drawing.Color.Red;
-            this.removeCharacterButton.Location = new System.Drawing.Point(24, 685);
-            this.removeCharacterButton.Name = "removeCharacterButton";
-            this.removeCharacterButton.Size = new System.Drawing.Size(671, 55);
-            this.removeCharacterButton.TabIndex = 27;
-            this.removeCharacterButton.Text = "Usuń wybraną postać z listy";
-            this.removeCharacterButton.UseVisualStyleBackColor = true;
-            // 
-            // teamRadioButton
-            // 
-            this.teamRadioButton.AutoSize = true;
-            this.teamRadioButton.Location = new System.Drawing.Point(204, 343);
-            this.teamRadioButton.Name = "teamRadioButton";
-            this.teamRadioButton.Size = new System.Drawing.Size(108, 34);
-            this.teamRadioButton.TabIndex = 29;
-            this.teamRadioButton.TabStop = true;
-            this.teamRadioButton.Text = "Drużyna";
-            this.teamRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // npcRadioButton
-            // 
-            this.npcRadioButton.AutoSize = true;
-            this.npcRadioButton.Location = new System.Drawing.Point(417, 343);
-            this.npcRadioButton.Name = "npcRadioButton";
-            this.npcRadioButton.Size = new System.Drawing.Size(72, 34);
-            this.npcRadioButton.TabIndex = 30;
-            this.npcRadioButton.TabStop = true;
-            this.npcRadioButton.Text = "NPC";
-            this.npcRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // choosingTableLabel
-            // 
-            this.choosingTableLabel.AutoSize = true;
-            this.choosingTableLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.choosingTableLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.choosingTableLabel.Location = new System.Drawing.Point(199, 310);
-            this.choosingTableLabel.Name = "choosingTableLabel";
-            this.choosingTableLabel.Size = new System.Drawing.Size(297, 30);
-            this.choosingTableLabel.TabIndex = 31;
-            this.choosingTableLabel.Text = "Wybierz listę postaci do edycji:";
-            // 
-            // playerListDropDown
-            // 
-            this.playerListDropDown.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.playerListDropDown.FormattingEnabled = true;
-            this.playerListDropDown.Location = new System.Drawing.Point(20, 49);
-            this.playerListDropDown.Name = "playerListDropDown";
-            this.playerListDropDown.Size = new System.Drawing.Size(202, 33);
-            this.playerListDropDown.TabIndex = 25;
-            this.playerListDropDown.Text = "Wybierz gracza";
             // 
             // GMTrackerUI
             // 
