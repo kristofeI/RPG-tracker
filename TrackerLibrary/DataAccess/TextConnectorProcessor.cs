@@ -63,11 +63,16 @@ namespace TrackerLibrary.DataAccess.TextHelpers
                 p.Name = cols[1];
                 p.EmailAddress = cols[2];
 
-                string[] characterIds = cols[3].Split('|');
-
-                foreach (string id in characterIds)
+                if (characters.Count > 0)
                 {
-                    p.PlayerCharacters.Add(characters.Where(x => x.Id == int.Parse(id)).First());
+
+                    string[] characterIds = cols[3].Split('|');
+
+                    foreach (string id in characterIds)
+                    {
+                        p.PlayerCharacters.Add(characters.Where(x => x.Id == int.Parse(id)).First());
+                    }
+
                 }
 
                 output.Add(p);
@@ -200,22 +205,31 @@ namespace TrackerLibrary.DataAccess.TextHelpers
                 s.Id = int.Parse(cols[0]);
                 s.Name = cols[1];
 
-                string[] playerIds = cols[2].Split('|');
-                foreach (string id in playerIds)
+                if (players.Count > 0)
                 {
-                    s.PlayersInSession.Add(players.Where(x => x.Id == int.Parse(id)).First());
+                    string[] playerIds = cols[2].Split('|');
+                    foreach (string id in playerIds)
+                    {
+                        s.PlayersInSession.Add(players.Where(x => x.Id == int.Parse(id)).First());
+                    } 
                 }
 
-                string[] teamCharactersIds = cols[3].Split('|');
-                foreach (string id in teamCharactersIds)
+                if (teamCharacters.Count > 0)
                 {
-                    s.TeamCharacters.Add(teamCharacters.Where(x => x.Id == int.Parse(id)).First());
+                    string[] teamCharactersIds = cols[3].Split('|');
+                    foreach (string id in teamCharactersIds)
+                    {
+                        s.TeamCharacters.Add(teamCharacters.Where(x => x.Id == int.Parse(id)).First());
+                    } 
                 }
 
-                string[] npcCharactersIds = cols[4].Split('|');
-                foreach (string id in npcCharactersIds)
+                if (npcCharacters.Count > 0)
                 {
-                    s.NpcCharacters.Add(npcCharacters.Where(x => x.Id == int.Parse(id)).First());
+                    string[] npcCharactersIds = cols[4].Split('|');
+                    foreach (string id in npcCharactersIds)
+                    {
+                        s.NpcCharacters.Add(npcCharacters.Where(x => x.Id == int.Parse(id)).First());
+                    } 
                 }
 
                 output.Add(s);
