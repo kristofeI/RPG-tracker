@@ -15,51 +15,21 @@ namespace TrackerUI
     public partial class MakeNewCharacterForm : Form
     {
         ICharacterRequester callingForm;
+        List<PlayerModel> players = new List<PlayerModel>();
 
         public MakeNewCharacterForm(ICharacterRequester caller)
         {
             InitializeComponent();
 
             callingForm = caller;
+
+            WireUpLists();
             
         }
-
-        //TODO - Source data for combobox
+        
 
         
 
-        //private void addNewPlayerButton_Click(object sender, EventArgs e)
-        //{
-        //    if (ValidateAddNewPlayerButton())
-        //    {
-        //        PlayerModel model = new PlayerModel(
-        //            playerNameValue.Text,
-        //            playerEmailValue.Text);
-
-        //        GlobalConfig.Connection.AddNewPlayer(model);
-
-        //        playerNameValue.Text = "";
-        //        playerEmailValue.Text = "";
-        //    }
-           
-
-        //    else
-        //    {
-        //        MessageBox.Show("Fomularz zawiera nieprawidłowe informacje");
-        //    }
-        //}
-
-        //private bool ValidateAddNewPlayerButton()
-        //{
-        //    bool output = true;
-
-        //    if (playerNameValue.Text.Length == 0)
-        //    {
-        //        output = false;
-        //    }
-
-        //    return output;
-        //}
 
         private bool ValidateForm()
         {
@@ -86,7 +56,17 @@ namespace TrackerUI
             return output;
         }
 
-        
+        private void WireUpLists()
+        {
+            playerDropDown.DataSource = null;
+
+            playerDropDown.DataSource = GlobalConfig.Connection.GetAllPlayers();
+            playerDropDown.DisplayMember = "Name";
+
+        }
+
+
+
 
         private void makeCharacterAndBackButton_Click(object sender, EventArgs e)
         {
@@ -148,6 +128,9 @@ namespace TrackerUI
 
             //TODO - pop up the messagebox and return to the menu
         }
+
+
+
 
 
         private void makeCharacterAndEditButton_Click(object sender, EventArgs e)

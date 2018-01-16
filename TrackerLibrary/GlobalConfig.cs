@@ -11,12 +11,12 @@ namespace TrackerLibrary
     {
         public static IDataConnection Connection { get; private set; }
 
-        public static int SelectedRPGSystemId { get; set; }
-        public static int SelectedActiveSessionId { get; set; }
-        public static int SelectedPlayerId { get; set; }
-        public static int SelectedCharacterId { get; set; }
+        //public static int SelectedRPGSystemId { get; set; }
+        //public static int SelectedActiveSessionId { get; set; }
+        //public static int SelectedPlayerId { get; set; }
+        //public static int SelectedCharacterId { get; set; }
 
-        //Make a proper id's values
+        ////Make a proper id's values
 
         public static void InitializeConnections(DatabaseType db)
         {

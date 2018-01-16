@@ -127,6 +127,13 @@ namespace TrackerLibrary.DataAccess
             return skills;
         }
 
+        public List<PlayerModel> GetAllPlayers()
+        {
+            List<PlayerModel> players = PlayersFile.FullFilePath().LoadFile().ConvertToPlayerModels(CharactersFile, WeaponsFile, SkillsFile);
+
+            return players;
+        }
+
         
     }
 }

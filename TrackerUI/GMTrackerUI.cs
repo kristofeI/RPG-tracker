@@ -51,19 +51,43 @@ namespace TrackerUI
 
         }
 
+        private bool ValidateListOfCharactersButton()
+        {
+            bool output = true;
+
+            if (!teamRadioButton.Checked && !npcRadioButton.Checked)
+            {
+                output = false;
+            }
+            
+
+            return output;
+        }
+
+
+
+
+
+
+
+
+
+
         private void makeNewCharacterButton_Click(object sender, EventArgs e)
         {
-            if (teamRadioButton.Checked || npcRadioButton.Checked)
+
+            if (ValidateListOfCharactersButton())
             {
                 MakeNewCharacterForm frm = new MakeNewCharacterForm(this);
                 frm.Show();
             }
             else
             {
-                MessageBox.Show("Zaznacz do której listy dodać postać");
+                MessageBox.Show("Zaznacz do której listy dodać postać.");
             }
-
             
+
+
         }
 
         public void CharacterComplete(CharacterModel model)

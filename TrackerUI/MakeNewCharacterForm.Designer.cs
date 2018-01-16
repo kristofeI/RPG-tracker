@@ -104,6 +104,7 @@
             // 
             // playerDropDown
             // 
+            this.playerDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.playerDropDown.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.playerDropDown.FormattingEnabled = true;
             this.playerDropDown.Location = new System.Drawing.Point(316, 145);

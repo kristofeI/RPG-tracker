@@ -27,5 +27,7 @@ namespace TrackerLibrary.DataAccess
 
         List<SkillModel> GetAllSkillsOfOneCharacter(CharacterModel character);
 
+        List<PlayerModel> GetAllPlayers();
+
     }
 }

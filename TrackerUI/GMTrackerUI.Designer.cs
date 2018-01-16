@@ -241,7 +241,7 @@
             this.showEditCharacterButton.Name = "showEditCharacterButton";
             this.showEditCharacterButton.Size = new System.Drawing.Size(671, 55);
             this.showEditCharacterButton.TabIndex = 20;
-            this.showEditCharacterButton.Text = "Wyświetl szczegóły wybranej postaci z listy";
+            this.showEditCharacterButton.Text = "Wyświetl/edytuj szczegóły wybranej postaci z listy";
             this.showEditCharacterButton.UseVisualStyleBackColor = true;
             // 
             // pickUnitsLabel
