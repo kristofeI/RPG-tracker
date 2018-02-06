@@ -13,7 +13,7 @@ using TrackerUI.FormRequesters;
 
 namespace TrackerUI
 {
-    public partial class GMTrackerUI : Form, ICharacterRequester
+    public partial class GMTrackerUI : Form, ICharacterRequester, IEventRequester
     {
 
         //TODO!! wire up current session, its team and npcs
@@ -297,7 +297,15 @@ namespace TrackerUI
 
         private void timeDescriptionButton_Click(object sender, EventArgs e)
         {
+            HistoryForm frm = new HistoryForm(this, currentCampaign);
+            frm.Show();
+        }
 
+        public void EventsEdited(CampaignModel model)
+        {
+            GlobalConfig.Connection.UpdateCampaign(model);
+
+            WireUpLists();
         }
     }
 }

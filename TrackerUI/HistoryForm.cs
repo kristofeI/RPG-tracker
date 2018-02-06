@@ -9,29 +9,57 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrackerLibrary;
 using TrackerLibrary.Models;
+using TrackerUI.FormRequesters;
 
 namespace TrackerUI
 {
     public partial class HistoryForm : Form
     {
         CampaignModel currentCampaign = new CampaignModel();
+        IEventRequester callingForm;
 
-        public HistoryForm()
+        public HistoryForm(IEventRequester caller, CampaignModel campaign)
         {
             InitializeComponent();
+
+            callingForm = caller;
+            currentCampaign = campaign;
+
+            WireUpLists();
         }
 
         private void WireUpLists()
         {
-            timeLabel.Text = currentCampaign.CurrentGameTime.ToString("yyyy-MM-dd HH:mm");
+            fullDateLabel.Text = currentCampaign.CurrentGameTime.ToString("yyyy-MM-dd HH:mm");
 
+            historyListBox.DataSource = null;
+            historyListBox.DataSource = currentCampaign.Events;
+            historyListBox.DisplayMember = "DisplayedEvent";
         }
 
         private void addNewEventButton_Click(object sender, EventArgs e)
         {
             EventModel newEvent = new EventModel(currentCampaign.CurrentGameTime, timeDescriptionTextBox.Text);
 
-            GlobalConfig.Connection.AddNewEvent(newEvent);
+            currentCampaign.Events.Add(GlobalConfig.Connection.AddNewEvent(newEvent));
+
+            callingForm.EventsEdited(currentCampaign);
+
+            WireUpLists();
+        }
+
+        private void removeSelectedEventButton_Click(object sender, EventArgs e)
+        {
+            if (historyListBox.Items.Count != 0)
+            {
+                EventModel ev = (EventModel)historyListBox.SelectedValue;
+
+                currentCampaign.Events.Remove(ev);
+
+                callingForm.EventsEdited(currentCampaign);
+
+                WireUpLists();
+            }
         }
     }
 }

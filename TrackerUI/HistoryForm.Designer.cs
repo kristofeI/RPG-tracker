@@ -144,6 +144,7 @@
             this.removeSelectedEventButton.TabIndex = 49;
             this.removeSelectedEventButton.Text = "Usuń zaznaczoną umiejętność";
             this.removeSelectedEventButton.UseVisualStyleBackColor = true;
+            this.removeSelectedEventButton.Click += new System.EventHandler(this.removeSelectedEventButton_Click);
             // 
             // HistoryForm
             // 
