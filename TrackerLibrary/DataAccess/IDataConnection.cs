@@ -15,13 +15,37 @@ namespace TrackerLibrary.DataAccess
 
         SkillModel AddNewSkill(SkillModel model);
 
+        ItemModel AddNewItem(ItemModel model);
+
+        EventModel AddNewEvent(EventModel model);
+
         PlayerModel AddNewPlayer(PlayerModel model);
 
         CharacterModel AddNewCharacter(CharacterModel model);
 
-        SessionModel AddNewSession(SessionModel model);
+        CampaignModel AddNewCampaign(CampaignModel model);
 
 
+
+        EventModel UpdateEvent(EventModel model);
+
+        PlayerModel UpdatePlayer(PlayerModel model);
+
+        CharacterModel UpdateCharacter(CharacterModel model);
+
+        CampaignModel UpdateCampaign(CampaignModel model);
+
+
+
+
+
+        void AddCharacterToPlayer(CharacterModel character, PlayerModel player);
+
+        void AddWeaponToCharacter(WeaponModel weapon, CharacterModel character);
+
+        void AddSkillToCharacter(SkillModel skill, CharacterModel character);
+
+        void AddItemToCharacter(ItemModel item, CharacterModel character);
 
 
 
@@ -29,5 +53,8 @@ namespace TrackerLibrary.DataAccess
 
         List<PlayerModel> GetAllPlayers();
 
+        List<CharacterModel> GetAllCharactersOfOnePlayer(PlayerModel character);
+
+        bool IsPlayerNameUnique(string playerName);
     }
 }

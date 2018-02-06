@@ -10,6 +10,6 @@ namespace TrackerLibrary.Models
     {
         public string SystemName { get; set; }
 
-        List<SessionModel> ActiVeSessionsInSystem { get; set; }
+        List<CampaignModel> Campaigns { get; set; }
     }
 }

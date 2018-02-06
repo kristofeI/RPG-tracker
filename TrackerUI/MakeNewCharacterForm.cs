@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrackerLibrary;
 using TrackerLibrary.Models;
+using TrackerUI.FormRequesters;
 
 namespace TrackerUI
 {
@@ -24,11 +25,11 @@ namespace TrackerUI
             callingForm = caller;
 
             WireUpLists();
-            
-        }
-        
 
-        
+        }
+
+
+
 
 
         private bool ValidateForm()
@@ -52,7 +53,13 @@ namespace TrackerUI
                 MessageBox.Show("Wybierz jedno: istniejącego gracza lub stwórz nowego.");
                 output = false;
             }
-            
+
+            if (playerNameValue.Text.Length > 0 && !GlobalConfig.Connection.IsPlayerNameUnique(playerNameValue.Text))
+            {
+                MessageBox.Show("Istnieje już gracz o takim imieniu.");
+                output = false;
+            }
+
             return output;
         }
 
@@ -62,6 +69,10 @@ namespace TrackerUI
 
             playerDropDown.DataSource = GlobalConfig.Connection.GetAllPlayers();
             playerDropDown.DisplayMember = "Name";
+            
+
+            playerDropDown.SelectedIndex = -1;
+
 
         }
 
@@ -70,24 +81,25 @@ namespace TrackerUI
 
         private void makeCharacterAndBackButton_Click(object sender, EventArgs e)
         {
-            //TODO - make a character//Validate the form, make a model(only name, player and id), save the model, clear out the form
+
             if (ValidateForm())
             {
                 if (playerDropDown.Text.Length > 0 && playerNameValue.Text.Length == 0)
                 {
-                    //TODO - change static player id depending on player drop donw or newly made player
-
-                    CharacterModel model = new CharacterModel(
+                    CharacterModel characterModel = new CharacterModel(
                     characterNameValue.Text);
 
-                    GlobalConfig.Connection.AddNewCharacter(model);
+                    GlobalConfig.Connection.AddNewCharacter(characterModel);
+                    callingForm.CharacterComplete(characterModel);
 
-                    callingForm.CharacterComplete(model);
+                    PlayerModel selectedPlayer = (PlayerModel)playerDropDown.SelectedValue;
+
+                    selectedPlayer.PlayerCharacters.Add(characterModel);
+
+                    GlobalConfig.Connection.UpdatePlayer(selectedPlayer);
+
 
                     this.Close();
-
-                    //characterNameValue.Text = "";
-                    //playerDropDown.Text = "";
                 }
                 else if (playerDropDown.Text.Length == 0 && playerNameValue.Text.Length > 0)
                 {
@@ -101,10 +113,6 @@ namespace TrackerUI
 
                     callingForm.CharacterComplete(characterModel);
 
-                    
-
-                    //characterNameValue.Text = "";
-                    //playerNameValue.Text = "";
 
 
                     PlayerModel playerModel = new PlayerModel(
@@ -116,17 +124,10 @@ namespace TrackerUI
 
                     this.Close();
 
-                    //playerNameValue.Text = "";
-                    //playerEmailValue.Text = "";
-
-                    //TODO - change static player id depending on player drop donw or newly made player
-
-
                 }
-                
+
             }
 
-            //TODO - pop up the messagebox and return to the menu
         }
 
 
@@ -135,9 +136,53 @@ namespace TrackerUI
 
         private void makeCharacterAndEditButton_Click(object sender, EventArgs e)
         {
-            //TODO - make a character//Validate the form, make a model(only name, player and id), save the model, clear out the form
-            //TODO - proceed to the form 'edit character'
+
+            if (ValidateForm())
+            {
+                if (playerDropDown.Text.Length > 0 && playerNameValue.Text.Length == 0)
+                {
+                    CharacterModel characterModel = new CharacterModel(
+                    characterNameValue.Text);
+                    GlobalConfig.Connection.AddNewCharacter(characterModel);
+                    callingForm.CharacterComplete(characterModel);
+
+                    PlayerModel selectedPlayer = (PlayerModel)playerDropDown.SelectedValue;
+                    selectedPlayer.PlayerCharacters.Add(characterModel);
+                    GlobalConfig.Connection.UpdatePlayer(selectedPlayer);
+
+                    callingForm.EditCharacter(characterModel);
+
+                    this.Close();
+                }
+                else if (playerDropDown.Text.Length == 0 && playerNameValue.Text.Length > 0)
+                {
+
+
+                    CharacterModel characterModel = new CharacterModel(
+                    characterNameValue.Text);
+
+
+                    GlobalConfig.Connection.AddNewCharacter(characterModel);
+
+                    callingForm.EditCharacter(characterModel);
+
+
+
+                    PlayerModel playerModel = new PlayerModel(
+                    playerNameValue.Text,
+                    playerEmailValue.Text,
+                    characterModel);
+                    GlobalConfig.Connection.AddNewPlayer(playerModel);
+
+                    callingForm.EditCharacter(characterModel);
+
+                    this.Close();
+
+                }
+
+            }
+            
         }
 
-    }
-}
+            }
+        }

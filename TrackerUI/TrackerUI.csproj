@@ -82,6 +82,7 @@
     <Compile Include="EditTeamForm.Designer.cs">
       <DependentUpon>EditTeamForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRequesters\IWeaponRequester.cs" />
     <Compile Include="GMTrackerUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,7 +95,7 @@
     <Compile Include="HistoryForm.Designer.cs">
       <DependentUpon>HistoryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ICharacterRequester.cs" />
+    <Compile Include="FormRequesters\ICharacterRequester.cs" />
     <Compile Include="MakeNewCharacterForm.cs">
       <SubType>Form</SubType>
     </Compile>

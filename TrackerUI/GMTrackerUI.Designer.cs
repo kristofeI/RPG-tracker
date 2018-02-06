@@ -30,16 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GMTrackerUI));
             this.headerLabel = new System.Windows.Forms.Label();
-            this.timeLabel = new System.Windows.Forms.Label();
+            this.dateLabel = new System.Windows.Forms.Label();
             this.bodyNeedsLabel = new System.Windows.Forms.Label();
             this.fightLabel = new System.Windows.Forms.Label();
             this.NPCLabel = new System.Windows.Forms.Label();
             this.teamLabel = new System.Windows.Forms.Label();
-            this.Datelabel = new System.Windows.Forms.Label();
-            this.timeDropDown = new System.Windows.Forms.ComboBox();
-            this.addTimeButton = new System.Windows.Forms.Button();
-            this.subtractTimeButton = new System.Windows.Forms.Button();
-            this.timeDescriptionButton = new System.Windows.Forms.Button();
+            this.timeLabel = new System.Windows.Forms.Label();
+            this.eventHistoryButton = new System.Windows.Forms.Button();
             this.checkBodyNeedsButton = new System.Windows.Forms.Button();
             this.teamListBox = new System.Windows.Forms.ListBox();
             this.NpcListBox = new System.Windows.Forms.ListBox();
@@ -56,9 +53,19 @@
             this.makeNewCharacterButton = new System.Windows.Forms.Button();
             this.removeCharacterButton = new System.Windows.Forms.Button();
             this.addOldCharacterGroupBox = new System.Windows.Forms.GroupBox();
+            this.pickPlayerLabel = new System.Windows.Forms.Label();
+            this.pickCharacterLabel = new System.Windows.Forms.Label();
             this.playerListDropDown = new System.Windows.Forms.ComboBox();
             this.characterListDropDown = new System.Windows.Forms.ComboBox();
             this.addExistingCharacterToListButton = new System.Windows.Forms.Button();
+            this.subtractTimeButton = new System.Windows.Forms.Button();
+            this.addTimeButton = new System.Windows.Forms.Button();
+            this.yearValue = new System.Windows.Forms.TextBox();
+            this.monthValue = new System.Windows.Forms.TextBox();
+            this.dayValue = new System.Windows.Forms.TextBox();
+            this.changeDateButton = new System.Windows.Forms.Button();
+            this.timeIntervalsLabel = new System.Windows.Forms.Label();
+            this.actualTimeOfDayLabel = new System.Windows.Forms.Label();
             this.charactersGroupBox.SuspendLayout();
             this.addOldCharacterGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -75,23 +82,23 @@
             this.headerLabel.TabIndex = 1;
             this.headerLabel.Text = "Panel Mistrza Gry";
             // 
-            // timeLabel
+            // dateLabel
             // 
-            this.timeLabel.AutoSize = true;
-            this.timeLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.timeLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.timeLabel.Location = new System.Drawing.Point(853, 234);
-            this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(186, 37);
-            this.timeLabel.TabIndex = 5;
-            this.timeLabel.Text = "Czas i historia:";
+            this.dateLabel.AutoSize = true;
+            this.dateLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.dateLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.dateLabel.Location = new System.Drawing.Point(810, 54);
+            this.dateLabel.Name = "dateLabel";
+            this.dateLabel.Size = new System.Drawing.Size(187, 37);
+            this.dateLabel.TabIndex = 5;
+            this.dateLabel.Text = "Aktualna data:";
             // 
             // bodyNeedsLabel
             // 
             this.bodyNeedsLabel.AutoSize = true;
             this.bodyNeedsLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.bodyNeedsLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.bodyNeedsLabel.Location = new System.Drawing.Point(812, 100);
+            this.bodyNeedsLabel.Location = new System.Drawing.Point(824, 339);
             this.bodyNeedsLabel.Name = "bodyNeedsLabel";
             this.bodyNeedsLabel.Size = new System.Drawing.Size(283, 37);
             this.bodyNeedsLabel.TabIndex = 6;
@@ -130,69 +137,32 @@
             this.teamLabel.TabIndex = 9;
             this.teamLabel.Text = "Drużyna:";
             // 
-            // Datelabel
+            // timeLabel
             // 
-            this.Datelabel.AutoSize = true;
-            this.Datelabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Datelabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Datelabel.Location = new System.Drawing.Point(829, 328);
-            this.Datelabel.Name = "Datelabel";
-            this.Datelabel.Size = new System.Drawing.Size(223, 37);
-            this.Datelabel.TabIndex = 10;
-            this.Datelabel.Text = "RRRR:MM:DD:HH";
+            this.timeLabel.AutoSize = true;
+            this.timeLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.timeLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.timeLabel.Location = new System.Drawing.Point(810, 222);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(107, 37);
+            this.timeLabel.TabIndex = 10;
+            this.timeLabel.Text = "HH:mm";
             // 
-            // timeDropDown
+            // eventHistoryButton
             // 
-            this.timeDropDown.FormattingEnabled = true;
-            this.timeDropDown.Location = new System.Drawing.Point(836, 379);
-            this.timeDropDown.Name = "timeDropDown";
-            this.timeDropDown.Size = new System.Drawing.Size(106, 38);
-            this.timeDropDown.TabIndex = 11;
-            // 
-            // addTimeButton
-            // 
-            this.addTimeButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.addTimeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.addTimeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.addTimeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addTimeButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.addTimeButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.addTimeButton.Location = new System.Drawing.Point(948, 379);
-            this.addTimeButton.Name = "addTimeButton";
-            this.addTimeButton.Size = new System.Drawing.Size(52, 38);
-            this.addTimeButton.TabIndex = 12;
-            this.addTimeButton.Text = "+1";
-            this.addTimeButton.UseVisualStyleBackColor = true;
-            // 
-            // subtractTimeButton
-            // 
-            this.subtractTimeButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.subtractTimeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.subtractTimeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.subtractTimeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.subtractTimeButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.subtractTimeButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.subtractTimeButton.Location = new System.Drawing.Point(1006, 379);
-            this.subtractTimeButton.Name = "subtractTimeButton";
-            this.subtractTimeButton.Size = new System.Drawing.Size(52, 38);
-            this.subtractTimeButton.TabIndex = 13;
-            this.subtractTimeButton.Text = "-1";
-            this.subtractTimeButton.UseVisualStyleBackColor = true;
-            // 
-            // timeDescriptionButton
-            // 
-            this.timeDescriptionButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.timeDescriptionButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.timeDescriptionButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.timeDescriptionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.timeDescriptionButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.timeDescriptionButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.timeDescriptionButton.Location = new System.Drawing.Point(836, 285);
-            this.timeDescriptionButton.Name = "timeDescriptionButton";
-            this.timeDescriptionButton.Size = new System.Drawing.Size(228, 40);
-            this.timeDescriptionButton.TabIndex = 14;
-            this.timeDescriptionButton.Text = "Dodaj opis";
-            this.timeDescriptionButton.UseVisualStyleBackColor = true;
+            this.eventHistoryButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.eventHistoryButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.eventHistoryButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.eventHistoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.eventHistoryButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.eventHistoryButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.eventHistoryButton.Location = new System.Drawing.Point(817, 265);
+            this.eventHistoryButton.Name = "eventHistoryButton";
+            this.eventHistoryButton.Size = new System.Drawing.Size(290, 40);
+            this.eventHistoryButton.TabIndex = 14;
+            this.eventHistoryButton.Text = "Historia wydarzeń";
+            this.eventHistoryButton.UseVisualStyleBackColor = true;
+            this.eventHistoryButton.Click += new System.EventHandler(this.timeDescriptionButton_Click);
             // 
             // checkBodyNeedsButton
             // 
@@ -202,7 +172,7 @@
             this.checkBodyNeedsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBodyNeedsButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.checkBodyNeedsButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.checkBodyNeedsButton.Location = new System.Drawing.Point(819, 144);
+            this.checkBodyNeedsButton.Location = new System.Drawing.Point(831, 380);
             this.checkBodyNeedsButton.Name = "checkBodyNeedsButton";
             this.checkBodyNeedsButton.Size = new System.Drawing.Size(276, 54);
             this.checkBodyNeedsButton.TabIndex = 15;
@@ -243,6 +213,7 @@
             this.showEditCharacterButton.TabIndex = 20;
             this.showEditCharacterButton.Text = "Wyświetl/edytuj szczegóły wybranej postaci z listy";
             this.showEditCharacterButton.UseVisualStyleBackColor = true;
+            this.showEditCharacterButton.Click += new System.EventHandler(this.showEditCharacterButton_Click);
             // 
             // pickUnitsLabel
             // 
@@ -294,6 +265,7 @@
             this.addCharacterToFightButton.TabIndex = 25;
             this.addCharacterToFightButton.Text = "Dodaj postać do walki";
             this.addCharacterToFightButton.UseVisualStyleBackColor = true;
+            this.addCharacterToFightButton.Click += new System.EventHandler(this.addCharacterToFightButton_Click);
             // 
             // removeSelectedFightUnitsButton
             // 
@@ -373,7 +345,7 @@
             this.makeNewCharacterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.makeNewCharacterButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.makeNewCharacterButton.ForeColor = System.Drawing.Color.OliveDrab;
-            this.makeNewCharacterButton.Location = new System.Drawing.Point(24, 624);
+            this.makeNewCharacterButton.Location = new System.Drawing.Point(24, 644);
             this.makeNewCharacterButton.Name = "makeNewCharacterButton";
             this.makeNewCharacterButton.Size = new System.Drawing.Size(671, 55);
             this.makeNewCharacterButton.TabIndex = 28;
@@ -389,16 +361,19 @@
             this.removeCharacterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removeCharacterButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.removeCharacterButton.ForeColor = System.Drawing.Color.Red;
-            this.removeCharacterButton.Location = new System.Drawing.Point(24, 685);
+            this.removeCharacterButton.Location = new System.Drawing.Point(24, 705);
             this.removeCharacterButton.Name = "removeCharacterButton";
             this.removeCharacterButton.Size = new System.Drawing.Size(671, 55);
             this.removeCharacterButton.TabIndex = 27;
             this.removeCharacterButton.Text = "Usuń wybraną postać z listy";
             this.removeCharacterButton.UseVisualStyleBackColor = true;
+            this.removeCharacterButton.Click += new System.EventHandler(this.removeCharacterButton_Click);
             // 
             // addOldCharacterGroupBox
             // 
             this.addOldCharacterGroupBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.addOldCharacterGroupBox.Controls.Add(this.pickPlayerLabel);
+            this.addOldCharacterGroupBox.Controls.Add(this.pickCharacterLabel);
             this.addOldCharacterGroupBox.Controls.Add(this.playerListDropDown);
             this.addOldCharacterGroupBox.Controls.Add(this.characterListDropDown);
             this.addOldCharacterGroupBox.Controls.Add(this.addExistingCharacterToListButton);
@@ -407,30 +382,53 @@
             this.addOldCharacterGroupBox.ForeColor = System.Drawing.Color.OliveDrab;
             this.addOldCharacterGroupBox.Location = new System.Drawing.Point(24, 516);
             this.addOldCharacterGroupBox.Name = "addOldCharacterGroupBox";
-            this.addOldCharacterGroupBox.Size = new System.Drawing.Size(671, 102);
+            this.addOldCharacterGroupBox.Size = new System.Drawing.Size(671, 122);
             this.addOldCharacterGroupBox.TabIndex = 26;
             this.addOldCharacterGroupBox.TabStop = false;
             this.addOldCharacterGroupBox.Text = "Dodaj do listy istniejącą postać";
             // 
+            // pickPlayerLabel
+            // 
+            this.pickPlayerLabel.AutoSize = true;
+            this.pickPlayerLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.pickPlayerLabel.ForeColor = System.Drawing.Color.OliveDrab;
+            this.pickPlayerLabel.Location = new System.Drawing.Point(44, 45);
+            this.pickPlayerLabel.Name = "pickPlayerLabel";
+            this.pickPlayerLabel.Size = new System.Drawing.Size(160, 30);
+            this.pickPlayerLabel.TabIndex = 27;
+            this.pickPlayerLabel.Text = "Wybierz gracza:";
+            // 
+            // pickCharacterLabel
+            // 
+            this.pickCharacterLabel.AutoSize = true;
+            this.pickCharacterLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.pickCharacterLabel.ForeColor = System.Drawing.Color.OliveDrab;
+            this.pickCharacterLabel.Location = new System.Drawing.Point(272, 45);
+            this.pickCharacterLabel.Name = "pickCharacterLabel";
+            this.pickCharacterLabel.Size = new System.Drawing.Size(160, 30);
+            this.pickCharacterLabel.TabIndex = 26;
+            this.pickCharacterLabel.Text = "Wybierz postać:";
+            // 
             // playerListDropDown
             // 
+            this.playerListDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.playerListDropDown.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.playerListDropDown.FormattingEnabled = true;
-            this.playerListDropDown.Location = new System.Drawing.Point(20, 49);
+            this.playerListDropDown.Location = new System.Drawing.Point(20, 78);
             this.playerListDropDown.Name = "playerListDropDown";
             this.playerListDropDown.Size = new System.Drawing.Size(202, 33);
             this.playerListDropDown.TabIndex = 25;
-            this.playerListDropDown.Text = "Wybierz gracza";
+            this.playerListDropDown.SelectedIndexChanged += new System.EventHandler(this.playerListDropDown_SelectedIndexChanged);
             // 
             // characterListDropDown
             // 
+            this.characterListDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.characterListDropDown.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.characterListDropDown.FormattingEnabled = true;
-            this.characterListDropDown.Location = new System.Drawing.Point(239, 49);
+            this.characterListDropDown.Location = new System.Drawing.Point(243, 78);
             this.characterListDropDown.Name = "characterListDropDown";
             this.characterListDropDown.Size = new System.Drawing.Size(202, 33);
             this.characterListDropDown.TabIndex = 24;
-            this.characterListDropDown.Text = "Wybierz postać";
             // 
             // addExistingCharacterToListButton
             // 
@@ -440,12 +438,104 @@
             this.addExistingCharacterToListButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addExistingCharacterToListButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.addExistingCharacterToListButton.ForeColor = System.Drawing.Color.OliveDrab;
-            this.addExistingCharacterToListButton.Location = new System.Drawing.Point(460, 41);
+            this.addExistingCharacterToListButton.Location = new System.Drawing.Point(460, 34);
             this.addExistingCharacterToListButton.Name = "addExistingCharacterToListButton";
-            this.addExistingCharacterToListButton.Size = new System.Drawing.Size(205, 45);
+            this.addExistingCharacterToListButton.Size = new System.Drawing.Size(205, 77);
             this.addExistingCharacterToListButton.TabIndex = 23;
             this.addExistingCharacterToListButton.Text = "Dodaj do listy";
             this.addExistingCharacterToListButton.UseVisualStyleBackColor = true;
+            this.addExistingCharacterToListButton.Click += new System.EventHandler(this.addExistingCharacterToListButton_Click);
+            // 
+            // subtractTimeButton
+            // 
+            this.subtractTimeButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.subtractTimeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.subtractTimeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.subtractTimeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.subtractTimeButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.subtractTimeButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.subtractTimeButton.Location = new System.Drawing.Point(1055, 221);
+            this.subtractTimeButton.Name = "subtractTimeButton";
+            this.subtractTimeButton.Size = new System.Drawing.Size(52, 38);
+            this.subtractTimeButton.TabIndex = 13;
+            this.subtractTimeButton.Text = "-1";
+            this.subtractTimeButton.UseVisualStyleBackColor = true;
+            this.subtractTimeButton.Click += new System.EventHandler(this.subtractTimeButton_Click);
+            // 
+            // addTimeButton
+            // 
+            this.addTimeButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.addTimeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.addTimeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.addTimeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addTimeButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.addTimeButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.addTimeButton.Location = new System.Drawing.Point(997, 221);
+            this.addTimeButton.Name = "addTimeButton";
+            this.addTimeButton.Size = new System.Drawing.Size(52, 38);
+            this.addTimeButton.TabIndex = 12;
+            this.addTimeButton.Text = "+1";
+            this.addTimeButton.UseVisualStyleBackColor = true;
+            this.addTimeButton.Click += new System.EventHandler(this.addTimeButton_Click);
+            // 
+            // yearValue
+            // 
+            this.yearValue.Location = new System.Drawing.Point(812, 94);
+            this.yearValue.Name = "yearValue";
+            this.yearValue.Size = new System.Drawing.Size(72, 35);
+            this.yearValue.TabIndex = 29;
+            // 
+            // monthValue
+            // 
+            this.monthValue.Location = new System.Drawing.Point(890, 94);
+            this.monthValue.Name = "monthValue";
+            this.monthValue.Size = new System.Drawing.Size(66, 35);
+            this.monthValue.TabIndex = 30;
+            // 
+            // dayValue
+            // 
+            this.dayValue.Location = new System.Drawing.Point(962, 94);
+            this.dayValue.Name = "dayValue";
+            this.dayValue.Size = new System.Drawing.Size(71, 35);
+            this.dayValue.TabIndex = 31;
+            // 
+            // changeDateButton
+            // 
+            this.changeDateButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.changeDateButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.changeDateButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.changeDateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.changeDateButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.changeDateButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.changeDateButton.Location = new System.Drawing.Point(1050, 89);
+            this.changeDateButton.Name = "changeDateButton";
+            this.changeDateButton.Size = new System.Drawing.Size(93, 40);
+            this.changeDateButton.TabIndex = 32;
+            this.changeDateButton.Text = "Zmień";
+            this.changeDateButton.UseVisualStyleBackColor = true;
+            this.changeDateButton.Click += new System.EventHandler(this.changeDateButton_Click);
+            // 
+            // timeIntervalsLabel
+            // 
+            this.timeIntervalsLabel.AutoSize = true;
+            this.timeIntervalsLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.timeIntervalsLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.timeIntervalsLabel.Location = new System.Drawing.Point(814, 132);
+            this.timeIntervalsLabel.Name = "timeIntervalsLabel";
+            this.timeIntervalsLabel.Size = new System.Drawing.Size(186, 17);
+            this.timeIntervalsLabel.TabIndex = 33;
+            this.timeIntervalsLabel.Text = "Rok             Miesiąc       Dzień";
+            // 
+            // actualTimeOfDayLabel
+            // 
+            this.actualTimeOfDayLabel.AutoSize = true;
+            this.actualTimeOfDayLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.actualTimeOfDayLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.actualTimeOfDayLabel.Location = new System.Drawing.Point(810, 172);
+            this.actualTimeOfDayLabel.Name = "actualTimeOfDayLabel";
+            this.actualTimeOfDayLabel.Size = new System.Drawing.Size(241, 37);
+            this.actualTimeOfDayLabel.TabIndex = 34;
+            this.actualTimeOfDayLabel.Text = "Aktualny czas dnia:";
             // 
             // GMTrackerUI
             // 
@@ -453,20 +543,25 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1184, 914);
+            this.Controls.Add(this.actualTimeOfDayLabel);
+            this.Controls.Add(this.timeIntervalsLabel);
+            this.Controls.Add(this.changeDateButton);
+            this.Controls.Add(this.dayValue);
+            this.Controls.Add(this.monthValue);
+            this.Controls.Add(this.yearValue);
             this.Controls.Add(this.charactersGroupBox);
             this.Controls.Add(this.removeSelectedFightUnitsButton);
             this.Controls.Add(this.startFightButton);
             this.Controls.Add(this.fightingUnitsListBox);
             this.Controls.Add(this.pickUnitsLabel);
             this.Controls.Add(this.checkBodyNeedsButton);
-            this.Controls.Add(this.timeDescriptionButton);
+            this.Controls.Add(this.eventHistoryButton);
             this.Controls.Add(this.subtractTimeButton);
             this.Controls.Add(this.addTimeButton);
-            this.Controls.Add(this.timeDropDown);
-            this.Controls.Add(this.Datelabel);
+            this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.fightLabel);
             this.Controls.Add(this.bodyNeedsLabel);
-            this.Controls.Add(this.timeLabel);
+            this.Controls.Add(this.dateLabel);
             this.Controls.Add(this.headerLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -476,6 +571,7 @@
             this.charactersGroupBox.ResumeLayout(false);
             this.charactersGroupBox.PerformLayout();
             this.addOldCharacterGroupBox.ResumeLayout(false);
+            this.addOldCharacterGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -484,16 +580,13 @@
         #endregion
 
         private System.Windows.Forms.Label headerLabel;
-        private System.Windows.Forms.Label timeLabel;
+        private System.Windows.Forms.Label dateLabel;
         private System.Windows.Forms.Label bodyNeedsLabel;
         private System.Windows.Forms.Label fightLabel;
         private System.Windows.Forms.Label NPCLabel;
         private System.Windows.Forms.Label teamLabel;
-        private System.Windows.Forms.Label Datelabel;
-        private System.Windows.Forms.ComboBox timeDropDown;
-        private System.Windows.Forms.Button addTimeButton;
-        private System.Windows.Forms.Button subtractTimeButton;
-        private System.Windows.Forms.Button timeDescriptionButton;
+        private System.Windows.Forms.Label timeLabel;
+        private System.Windows.Forms.Button eventHistoryButton;
         private System.Windows.Forms.Button checkBodyNeedsButton;
         private System.Windows.Forms.ListBox teamListBox;
         private System.Windows.Forms.ListBox NpcListBox;
@@ -513,5 +606,15 @@
         private System.Windows.Forms.Button makeNewCharacterButton;
         private System.Windows.Forms.Button removeCharacterButton;
         private System.Windows.Forms.ComboBox playerListDropDown;
+        private System.Windows.Forms.Label pickPlayerLabel;
+        private System.Windows.Forms.Label pickCharacterLabel;
+        private System.Windows.Forms.Button subtractTimeButton;
+        private System.Windows.Forms.Button addTimeButton;
+        private System.Windows.Forms.TextBox yearValue;
+        private System.Windows.Forms.TextBox monthValue;
+        private System.Windows.Forms.TextBox dayValue;
+        private System.Windows.Forms.Button changeDateButton;
+        private System.Windows.Forms.Label timeIntervalsLabel;
+        private System.Windows.Forms.Label actualTimeOfDayLabel;
     }
 }

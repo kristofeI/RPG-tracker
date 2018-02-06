@@ -43,14 +43,14 @@
   <ItemGroup>
     <Compile Include="DataAccess\TextConnectorProcessor.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="Models\SessionModel.cs" />
+    <Compile Include="Models\CampaignModel.cs" />
     <Compile Include="Models\BattleStatModel.cs" />
     <Compile Include="Models\BodyNeedModel.cs" />
     <Compile Include="Models\CharacterModel.cs" />
     <Compile Include="Models\ConsumableModel.cs" />
-    <Compile Include="Models\EquipmentModel.cs" />
+    <Compile Include="Models\ItemModel.cs" />
     <Compile Include="GlobalConfig.cs" />
-    <Compile Include="Models\HistoryModel.cs" />
+    <Compile Include="Models\EventModel.cs" />
     <Compile Include="DataAccess\IDataConnection.cs" />
     <Compile Include="Models\PlayerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

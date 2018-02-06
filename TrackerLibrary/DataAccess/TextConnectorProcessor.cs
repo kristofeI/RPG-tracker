@@ -27,6 +27,11 @@ namespace TrackerLibrary.DataAccess.TextHelpers
 
         public static string FullFilePath(this string FileName)
         {
+            if (!Directory.Exists($@"{ ConfigurationManager.AppSettings["filePath"] }"))
+            {
+                Directory.CreateDirectory($@"{ ConfigurationManager.AppSettings["filePath"] }");
+            }
+
             return $@"{ ConfigurationManager.AppSettings["filePath"] }\{ FileName }";
         }
 
@@ -49,10 +54,10 @@ namespace TrackerLibrary.DataAccess.TextHelpers
 
         #region ConvertToModels
 
-        public static List<PlayerModel> ConvertToPlayerModels(this List<string> lines, string charactersFileName, string weaponsFileName, string skillsFileName)
+        public static List<PlayerModel> ConvertToPlayerModels(this List<string> lines, string charactersFileName, string weaponsFileName, string skillsFileName, string itemsFileName)
         {
             List<PlayerModel> output = new List<PlayerModel>();
-            List<CharacterModel> characters = charactersFileName.FullFilePath().LoadFile().ConvertToCharacterModels(weaponsFileName, skillsFileName);
+            List<CharacterModel> characters = charactersFileName.FullFilePath().LoadFile().ConvertToCharacterModels(weaponsFileName, skillsFileName, itemsFileName);
 
             foreach (string line in lines)
             {
@@ -74,18 +79,20 @@ namespace TrackerLibrary.DataAccess.TextHelpers
                     }
 
                 }
-
+                
                 output.Add(p);
             }
+            
 
             return output;
         }
 
-        public static List<CharacterModel> ConvertToCharacterModels(this List<string> lines, string weaponsFileName, string skillsFileName)
+        public static List<CharacterModel> ConvertToCharacterModels(this List<string> lines, string weaponsFileName, string skillsFileName, string itemsFileName)
         {
             List<CharacterModel> output = new List<CharacterModel>();
             List<WeaponModel> weapons = weaponsFileName.FullFilePath().LoadFile().ConvertToWeaponModels();
             List<SkillModel> skills = skillsFileName.FullFilePath().LoadFile().ConvertToSkillModels();
+            List<ItemModel> items = itemsFileName.FullFilePath().LoadFile().ConvertToItemModels();
 
             foreach (string line in lines)
             {
@@ -116,19 +123,25 @@ namespace TrackerLibrary.DataAccess.TextHelpers
                 c.Shock = float.Parse(cols[20]);
                 c.Bleeding = float.Parse(cols[21]);
                 c.IllnessProgression = float.Parse(cols[22]);
-                c.Hunger = float.Parse(cols[23]);
-                c.Thirst = float.Parse(cols[24]);
-                c.NeedForDrugs = float.Parse(cols[25]);
+                c.HoursWithoutFood = float.Parse(cols[23]);
+                c.HoursWithoutWater = float.Parse(cols[24]);
+                c.HoursWithoutDrugs = float.Parse(cols[25]);
                 c.IsCharacterInTeam = bool.Parse(cols[26]);
 
                 if (weapons.Count > 0)
                 {
                     string[] weaponIds = cols[27].Split('|');
 
-                    foreach (string id in weaponIds)
-                    {
-                        c.CharacterWeapons.Add(weapons.Where(x => x.Id == int.Parse(id)).First());
-                    }
+                    
+                   
+                        foreach (string id in weaponIds)
+                        {
+                            if (!(id == ""))
+                            {
+                                c.CharacterWeapons.Add(weapons.Where(x => x.Id == int.Parse(id)).First());
+                            }
+                            
+                        } 
                 }
 
 
@@ -136,12 +149,32 @@ namespace TrackerLibrary.DataAccess.TextHelpers
                 {
                     string[] skillIds = cols[28].Split('|');
 
-                    foreach (string id in skillIds)
-                    {
-                        c.CharacterSkills.Add(skills.Where(x => x.Id == int.Parse(id)).First());
-                    }
+                        foreach (string id in skillIds)
+                        {
+                            if (!(id == ""))
+                            {
+                                c.CharacterSkills.Add(skills.Where(x => x.Id == int.Parse(id)).First()); 
+                            }
+                        } 
                 }
-                
+
+
+
+
+
+                if (items.Count > 0)
+                {
+                    string[] itemsIds = cols[29].Split('|');
+                    foreach (string id in itemsIds)
+                    {
+                        if (!(id == ""))
+                        {
+                            c.Items.Add(items.Where(x => x.Id == int.Parse(id)).First());
+                        }
+
+                    } 
+                }
+
 
                 output.Add(c);
 
@@ -188,50 +221,127 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             return output;
         }
 
-
-        public static List<SessionModel> ConvertToSessionModels(this List<string> lines, string playersFileName, string charactersFileName, string weaponsFileName, string skillsFileName)
+        public static List<ItemModel> ConvertToItemModels(this List<string> lines)
         {
-            List<SessionModel> output = new List<SessionModel>();
-            List<PlayerModel> players = playersFileName.FullFilePath().LoadFile().ConvertToPlayerModels(charactersFileName, weaponsFileName, skillsFileName);
-            List<CharacterModel> teamCharacters = charactersFileName.FullFilePath().LoadFile().ConvertToCharacterModels(weaponsFileName, skillsFileName);
-            List<CharacterModel> npcCharacters = charactersFileName.FullFilePath().LoadFile().ConvertToCharacterModels(weaponsFileName, skillsFileName);
+            List<ItemModel> output = new List<ItemModel>();
 
             foreach (string line in lines)
             {
                 string[] cols = line.Split('#');
 
-                SessionModel s = new SessionModel();
+                ItemModel i = new ItemModel();
+                i.Id = int.Parse(cols[0]);
+                i.Name = cols[1];
+                i.Quantity = int.Parse(cols[2]);
+                output.Add(i);
+            }
+
+            return output;
+        }
+
+        public static List<EventModel> ConvertToEventModels(this List<string> lines)
+        {
+            List<EventModel> output = new List<EventModel>();
+
+            foreach (string line in lines)
+            {
+                string[] cols = line.Split('#');
+
+                EventModel e = new EventModel();
+                e.Id = int.Parse(cols[0]);
+                e.EventTime = DateTime.Parse(cols[1]);
+                e.EventDescription = cols[2];
+                output.Add(e);
+            }
+
+            return output;
+        }
+
+
+        public static List<CampaignModel> ConvertToCampaignModels(this List<string> lines, string playersFileName, string charactersFileName, string weaponsFileName, string skillsFileName, string itemsFileName, string eventsFileName)
+        {
+            List<CampaignModel> output = new List<CampaignModel>();
+            List<PlayerModel> players = playersFileName.FullFilePath().LoadFile().ConvertToPlayerModels(charactersFileName, weaponsFileName, skillsFileName, itemsFileName);
+            List<CharacterModel> teamCharacters = charactersFileName.FullFilePath().LoadFile().ConvertToCharacterModels(weaponsFileName, skillsFileName, itemsFileName);
+            List<CharacterModel> npcCharacters = charactersFileName.FullFilePath().LoadFile().ConvertToCharacterModels(weaponsFileName, skillsFileName, itemsFileName);
+            List<CharacterModel> fightingCharacters = charactersFileName.FullFilePath().LoadFile().ConvertToCharacterModels(weaponsFileName, skillsFileName, itemsFileName);
+            List<EventModel> events = eventsFileName.FullFilePath().LoadFile().ConvertToEventModels();
+
+            foreach (string line in lines)
+            {
+                string[] cols = line.Split('#');
+
+                CampaignModel s = new CampaignModel();
 
                 s.Id = int.Parse(cols[0]);
-                s.Name = cols[1];
+                s.CampaignName = cols[1];
+                s.CurrentGameTime = DateTime.Parse(cols[2]);
 
                 if (players.Count > 0)
                 {
-                    string[] playerIds = cols[2].Split('|');
-                    foreach (string id in playerIds)
-                    {
-                        s.PlayersInSession.Add(players.Where(x => x.Id == int.Parse(id)).First());
-                    } 
+                    string[] playerIds = cols[3].Split('|');
+                    
+                        foreach (string id in playerIds)
+                        {
+                            if (!(id == ""))
+                            {
+                                s.PlayersInCampaign.Add(players.Where(x => x.Id == int.Parse(id)).First()); 
+                            }
+                        }  
                 }
 
                 if (teamCharacters.Count > 0)
                 {
-                    string[] teamCharactersIds = cols[3].Split('|');
-                    foreach (string id in teamCharactersIds)
-                    {
-                        s.TeamCharacters.Add(teamCharacters.Where(x => x.Id == int.Parse(id)).First());
-                    } 
+                    string[] teamCharactersIds = cols[4].Split('|');
+                    
+                        foreach (string id in teamCharactersIds)
+                        {
+                            if (!(id == ""))
+                            {
+                                s.TeamCharacters.Add(teamCharacters.Where(x => x.Id == int.Parse(id)).First()); 
+                            }
+                        }  
                 }
 
                 if (npcCharacters.Count > 0)
                 {
-                    string[] npcCharactersIds = cols[4].Split('|');
-                    foreach (string id in npcCharactersIds)
-                    {
-                        s.NpcCharacters.Add(npcCharacters.Where(x => x.Id == int.Parse(id)).First());
-                    } 
+                    string[] npcCharactersIds = cols[5].Split('|');
+                    
+                        foreach (string id in npcCharactersIds)
+                        {
+                            if (!(id == ""))
+                            {
+                                s.NpcCharacters.Add(npcCharacters.Where(x => x.Id == int.Parse(id)).First()); 
+                            }
+                        }  
                 }
 
+
+                if (fightingCharacters.Count > 0)
+                {
+                    string[] fightingCharactersIds = cols[6].Split('|');
+
+                    foreach (string id in fightingCharactersIds)
+                    {
+                        if (!(id == ""))
+                        {
+                            s.FightingUnits.Add(fightingCharacters.Where(x => x.Id == int.Parse(id)).First());
+                        }
+                    }
+                }
+
+                if (events.Count > 0)
+                {
+                    string[] eventsIds = cols[7].Split('|');
+
+                    foreach (string id in eventsIds)
+                    {
+                        if (!(id == ""))
+                        {
+                            s.Events.Add(events.Where(x => x.Id == int.Parse(id)).First());
+                        }
+                    }
+                }
                 output.Add(s);
             }
 
@@ -277,7 +387,7 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             foreach (CharacterModel c in models)
             {
                 lines.Add(
-                    $"{ c.Id }#{ c.Name }#{ c.Origin }#{ c.CurrentLocation }#{ c.Profession }#{ c.Illness }#{ c.Characteristics }#{ c.Trick }#{ c.Reputation }#{ c.Fame }#{ c.Luck }#{ c.Level }#{ c.Experience }#{ c.ExpReward }#{ c.Tempo }#{ c.Defence }#{ c.Endurance }#{ c.Charisma }#{ c.Wounds }#{ c.Exhaution }#{ c.Shock }#{ c.Bleeding }#{ c.IllnessProgression }#{ c.Hunger }#{ c.Thirst }#{ c.NeedForDrugs }#{ c.IsCharacterInTeam }#{ ConvertIdsFromWeaponListToString(c.CharacterWeapons) }#{ ConvertIdsFromSkillListToString(c.CharacterSkills) }");
+                    $"{ c.Id }#{ c.Name }#{ c.Origin }#{ c.CurrentLocation }#{ c.Profession }#{ c.Illness }#{ c.Characteristics }#{ c.Trick }#{ c.Reputation }#{ c.Fame }#{ c.Luck }#{ c.Level }#{ c.Experience }#{ c.ExpReward }#{ c.Tempo }#{ c.Defence }#{ c.Endurance }#{ c.Charisma }#{ c.Wounds }#{ c.Exhaution }#{ c.Shock }#{ c.Bleeding }#{ c.IllnessProgression }#{ c.HoursWithoutFood }#{ c.HoursWithoutWater }#{ c.HoursWithoutDrugs }#{ c.IsCharacterInTeam }#{ ConvertIdsFromWeaponListToString(c.CharacterWeapons) }#{ ConvertIdsFromSkillListToString(c.CharacterSkills) }#{ ConvertIdsFromItemListToString(c.Items) }");
             }
 
             File.WriteAllLines(fileName.FullFilePath(), lines);
@@ -307,13 +417,38 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             File.WriteAllLines(fileName.FullFilePath(), lines);
         }
 
-        public static void SaveToSessionsFile(this List<SessionModel> models, string fileName)
+
+        public static void SaveToItemsFile(this List<ItemModel> models, string fileName)
         {
             List<string> lines = new List<string>();
 
-            foreach (SessionModel s in models)
+            foreach (ItemModel i in models)
             {
-                lines.Add($"{ s.Id }#{ s.Name }#{ ConvertIdsFromPlayerListToString(s.PlayersInSession) }#{ ConvertIdsFromCharacterListToString(s.TeamCharacters) }#{ ConvertIdsFromCharacterListToString(s.NpcCharacters) }");
+                lines.Add($"{ i.Id }#{ i.Name }#{ i.Quantity }");
+            }
+
+            File.WriteAllLines(fileName.FullFilePath(), lines);
+        }
+
+        public static void SaveToEventsFile(this List<EventModel> models, string fileName)
+        {
+            List<string> lines = new List<string>();
+
+            foreach (EventModel e in models)
+            {
+                lines.Add($"{ e.Id }#{ e.EventTime }#{ e.EventDescription }");
+            }
+
+            File.WriteAllLines(fileName.FullFilePath(), lines);
+        }
+
+        public static void SaveToCampaignFile(this List<CampaignModel> models, string fileName)
+        {
+            List<string> lines = new List<string>();
+
+            foreach (CampaignModel c in models)
+            {
+                lines.Add($"{ c.Id }#{ c.CampaignName }#{ c.CurrentGameTime }#{ ConvertIdsFromPlayerListToString(c.PlayersInCampaign) }#{ ConvertIdsFromCharacterListToString(c.TeamCharacters) }#{ ConvertIdsFromCharacterListToString(c.NpcCharacters) }#{ ConvertIdsFromCharacterListToString(c.FightingUnits) }#{ ConvertIdsFromEventListToString(c.Events) }");
             }
 
             File.WriteAllLines(fileName.FullFilePath(), lines);
@@ -321,11 +456,7 @@ namespace TrackerLibrary.DataAccess.TextHelpers
         }
 
         #endregion
-
-
-
-
-
+        
 
 
 
@@ -412,16 +543,16 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             return output;
         }
 
-        private static string ConvertIdsFromSessionListToString(List<SessionModel> sessions)
+        private static string ConvertIdsFromCampaignListToString(List<CampaignModel> campaigns)
         {
             string output = "";
 
-            if (sessions.Count == 0)
+            if (campaigns.Count == 0)
             {
                 return "";
             }
 
-            foreach (SessionModel s in sessions)
+            foreach (CampaignModel s in campaigns)
             {
                 output += $"{ s.Id }|";
             }
@@ -430,6 +561,51 @@ namespace TrackerLibrary.DataAccess.TextHelpers
 
             return output;
         }
+
+
+
+
+        private static string ConvertIdsFromItemListToString(List<ItemModel> items)
+        {
+            string output = "";
+
+            if (items.Count == 0)
+            {
+                return "";
+            }
+
+            foreach (ItemModel i in items)
+            {
+                output += $"{ i.Id }|";
+            }
+
+            output = output.Substring(0, output.Length - 1);
+
+            return output;
+        }
+
+
+        private static string ConvertIdsFromEventListToString(List<EventModel> events)
+        {
+            string output = "";
+
+            if (events.Count == 0)
+            {
+                return "";
+            }
+
+            foreach (EventModel e in events)
+            {
+                output += $"{ e.Id }|";
+            }
+
+            output = output.Substring(0, output.Length - 1);
+
+            return output;
+        }
+
+
+
 
 
         #endregion

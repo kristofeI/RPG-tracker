@@ -29,28 +29,28 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HistoryForm));
-            this.historyLabel = new System.Windows.Forms.Label();
+            this.eventHistoryLabel = new System.Windows.Forms.Label();
             this.timeDescriptionTextBox = new System.Windows.Forms.TextBox();
             this.historyListBox = new System.Windows.Forms.ListBox();
-            this.dateLabel = new System.Windows.Forms.Label();
+            this.fullDateLabel = new System.Windows.Forms.Label();
             this.historyListLabel = new System.Windows.Forms.Label();
             this.NPCLabel = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
-            this.addNewTimeDescriptionButton = new System.Windows.Forms.Button();
-            this.removeTimeDescriptionButton = new System.Windows.Forms.Button();
+            this.addNewEventButton = new System.Windows.Forms.Button();
+            this.removeSelectedEventButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // historyLabel
+            // eventHistoryLabel
             // 
-            this.historyLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.historyLabel.AutoSize = true;
-            this.historyLabel.Font = new System.Drawing.Font("Segoe UI Light", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.historyLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.historyLabel.Location = new System.Drawing.Point(122, 9);
-            this.historyLabel.Name = "historyLabel";
-            this.historyLabel.Size = new System.Drawing.Size(139, 50);
-            this.historyLabel.TabIndex = 4;
-            this.historyLabel.Text = "Historia";
+            this.eventHistoryLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.eventHistoryLabel.AutoSize = true;
+            this.eventHistoryLabel.Font = new System.Drawing.Font("Segoe UI Light", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.eventHistoryLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.eventHistoryLabel.Location = new System.Drawing.Point(53, 20);
+            this.eventHistoryLabel.Name = "eventHistoryLabel";
+            this.eventHistoryLabel.Size = new System.Drawing.Size(299, 50);
+            this.eventHistoryLabel.TabIndex = 4;
+            this.eventHistoryLabel.Text = "Historia wydarzeń";
             // 
             // timeDescriptionTextBox
             // 
@@ -70,16 +70,16 @@
             this.historyListBox.Size = new System.Drawing.Size(359, 214);
             this.historyListBox.TabIndex = 35;
             // 
-            // dateLabel
+            // fullDateLabel
             // 
-            this.dateLabel.AutoSize = true;
-            this.dateLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.dateLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.dateLabel.Location = new System.Drawing.Point(153, 101);
-            this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(223, 37);
-            this.dateLabel.TabIndex = 34;
-            this.dateLabel.Text = "RRRR:MM:DD:HH";
+            this.fullDateLabel.AutoSize = true;
+            this.fullDateLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.fullDateLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.fullDateLabel.Location = new System.Drawing.Point(153, 102);
+            this.fullDateLabel.Name = "fullDateLabel";
+            this.fullDateLabel.Size = new System.Drawing.Size(223, 37);
+            this.fullDateLabel.TabIndex = 34;
+            this.fullDateLabel.Text = "RRRR:MM:DD:HH";
             // 
             // historyListLabel
             // 
@@ -99,9 +99,9 @@
             this.NPCLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.NPCLabel.Location = new System.Drawing.Point(12, 155);
             this.NPCLabel.Name = "NPCLabel";
-            this.NPCLabel.Size = new System.Drawing.Size(275, 30);
+            this.NPCLabel.Size = new System.Drawing.Size(227, 30);
             this.NPCLabel.TabIndex = 32;
-            this.NPCLabel.Text = "Dodaj opis podanego czasu:";
+            this.NPCLabel.Text = "Dodaj opis wydarzenia:";
             // 
             // timeLabel
             // 
@@ -114,35 +114,36 @@
             this.timeLabel.TabIndex = 31;
             this.timeLabel.Text = "Obecny czas:";
             // 
-            // addNewTimeDescriptionButton
+            // addNewEventButton
             // 
-            this.addNewTimeDescriptionButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.addNewTimeDescriptionButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.addNewTimeDescriptionButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.addNewTimeDescriptionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addNewTimeDescriptionButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.addNewTimeDescriptionButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.addNewTimeDescriptionButton.Location = new System.Drawing.Point(17, 227);
-            this.addNewTimeDescriptionButton.Name = "addNewTimeDescriptionButton";
-            this.addNewTimeDescriptionButton.Size = new System.Drawing.Size(359, 49);
-            this.addNewTimeDescriptionButton.TabIndex = 50;
-            this.addNewTimeDescriptionButton.Text = "Dodaj opis do historii";
-            this.addNewTimeDescriptionButton.UseVisualStyleBackColor = true;
+            this.addNewEventButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.addNewEventButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.addNewEventButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.addNewEventButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addNewEventButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.addNewEventButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.addNewEventButton.Location = new System.Drawing.Point(17, 227);
+            this.addNewEventButton.Name = "addNewEventButton";
+            this.addNewEventButton.Size = new System.Drawing.Size(359, 49);
+            this.addNewEventButton.TabIndex = 50;
+            this.addNewEventButton.Text = "Dodaj wydarzenie";
+            this.addNewEventButton.UseVisualStyleBackColor = true;
+            this.addNewEventButton.Click += new System.EventHandler(this.addNewEventButton_Click);
             // 
-            // removeTimeDescriptionButton
+            // removeSelectedEventButton
             // 
-            this.removeTimeDescriptionButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.removeTimeDescriptionButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.removeTimeDescriptionButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.removeTimeDescriptionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.removeTimeDescriptionButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.removeTimeDescriptionButton.ForeColor = System.Drawing.Color.Red;
-            this.removeTimeDescriptionButton.Location = new System.Drawing.Point(17, 565);
-            this.removeTimeDescriptionButton.Name = "removeTimeDescriptionButton";
-            this.removeTimeDescriptionButton.Size = new System.Drawing.Size(359, 73);
-            this.removeTimeDescriptionButton.TabIndex = 49;
-            this.removeTimeDescriptionButton.Text = "Usuń zaznaczoną umiejętność";
-            this.removeTimeDescriptionButton.UseVisualStyleBackColor = true;
+            this.removeSelectedEventButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.removeSelectedEventButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.removeSelectedEventButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.removeSelectedEventButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeSelectedEventButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.removeSelectedEventButton.ForeColor = System.Drawing.Color.Red;
+            this.removeSelectedEventButton.Location = new System.Drawing.Point(17, 565);
+            this.removeSelectedEventButton.Name = "removeSelectedEventButton";
+            this.removeSelectedEventButton.Size = new System.Drawing.Size(359, 73);
+            this.removeSelectedEventButton.TabIndex = 49;
+            this.removeSelectedEventButton.Text = "Usuń zaznaczoną umiejętność";
+            this.removeSelectedEventButton.UseVisualStyleBackColor = true;
             // 
             // HistoryForm
             // 
@@ -150,15 +151,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(398, 650);
-            this.Controls.Add(this.addNewTimeDescriptionButton);
-            this.Controls.Add(this.removeTimeDescriptionButton);
+            this.Controls.Add(this.addNewEventButton);
+            this.Controls.Add(this.removeSelectedEventButton);
             this.Controls.Add(this.timeDescriptionTextBox);
             this.Controls.Add(this.historyListBox);
-            this.Controls.Add(this.dateLabel);
+            this.Controls.Add(this.fullDateLabel);
             this.Controls.Add(this.historyListLabel);
             this.Controls.Add(this.NPCLabel);
             this.Controls.Add(this.timeLabel);
-            this.Controls.Add(this.historyLabel);
+            this.Controls.Add(this.eventHistoryLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
@@ -171,14 +172,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Label historyLabel;
+        private System.Windows.Forms.Label eventHistoryLabel;
         private System.Windows.Forms.TextBox timeDescriptionTextBox;
         private System.Windows.Forms.ListBox historyListBox;
-        private System.Windows.Forms.Label dateLabel;
+        private System.Windows.Forms.Label fullDateLabel;
         private System.Windows.Forms.Label historyListLabel;
         private System.Windows.Forms.Label NPCLabel;
         private System.Windows.Forms.Label timeLabel;
-        private System.Windows.Forms.Button addNewTimeDescriptionButton;
-        private System.Windows.Forms.Button removeTimeDescriptionButton;
+        private System.Windows.Forms.Button addNewEventButton;
+        private System.Windows.Forms.Button removeSelectedEventButton;
     }
 }

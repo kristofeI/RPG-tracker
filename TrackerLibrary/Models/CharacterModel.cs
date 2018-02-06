@@ -54,17 +54,19 @@ namespace TrackerLibrary.Models
 
         public float IllnessProgression { get; set; }
 
-        public float Hunger { get; set; }
+        public float HoursWithoutFood { get; set; }
 
-        public float Thirst { get; set; }
+        public float HoursWithoutWater { get; set; }
 
-        public float NeedForDrugs { get; set; }
+        public float HoursWithoutDrugs { get; set; }
 
         public bool IsCharacterInTeam { get; set; }
 
         public List<WeaponModel> CharacterWeapons { get; set; } = new List<WeaponModel>();
 
         public List<SkillModel> CharacterSkills { get; set; } = new List<SkillModel>();
+
+        public List<ItemModel> Items { get; set; } = new List<ItemModel>();
 
         public CharacterModel()
         {
@@ -77,35 +79,6 @@ namespace TrackerLibrary.Models
             IsCharacterInTeam = false;
         }
 
-//        public CharacterModel()
-//        {
-//            Name
-//Player
-//Origin
-//CurrentLocation
-//Profession
-//Illness
-//Characteristics
-//Trick
-//Reputation
-//Fame
-//Luck
-//Level
-//Experience
-//ExpReward
-//Tempo
-//Defence
-//Endurance
-//Charisma
-//Wounds
-//Exhaution
-//Shock
-//Bleeding
-//IllnessProgression
-//Hunger
-//Thirst
-//NeedForDrugs
-//        }
 
     }
 

@@ -27,5 +27,13 @@ namespace TrackerLibrary.Models
             int.TryParse(ammoSupply, out ammoSupplyValue);
             AmmoSupply = ammoSupplyValue;
         }
+
+        public string DisplayedWeaponName
+        {
+            get
+            {
+                return $"{ WeaponName } - { AmmoSupply }";
+            }
+        }
     }
 }

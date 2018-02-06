@@ -10,32 +10,36 @@ using System.Windows.Forms;
 using TrackerLibrary;
 using TrackerLibrary.DataAccess;
 using TrackerLibrary.Models;
+using TrackerUI.FormRequesters;
 
 namespace TrackerUI
 {
     public partial class AddNewWeaponForm : Form
     {
-        public AddNewWeaponForm()
+        IWeaponRequester callingForm;
+
+        public AddNewWeaponForm(IWeaponRequester caller)
         {
             InitializeComponent();
+
+            callingForm = caller;
         }
 
         
 
         private void addNewWeaponButton_Click(object sender, EventArgs e)
         {
-            //Validate the form, make a model , save the model, clear out the form
             if (ValidateForm())
             {
-                //TODO - Make a proper initialization of new weapon
                 WeaponModel model = new WeaponModel(
                     weaponNameValue.Text, 
                     ammoSupplyValue.Text);
 
                 GlobalConfig.Connection.AddNewWeapon(model);
 
-                weaponNameValue.Text = "";
-                ammoSupplyValue.Text = "";
+                callingForm.WeaponComplete(model);
+
+                this.Close();
 
             }
 

@@ -12,9 +12,11 @@ namespace TrackerLibrary.DataAccess
     {
         private const string WeaponsFile = "WeaponModels.csv";
         private const string SkillsFile = "SkillModels.csv";
+        private const string ItemsFile = "ItemModels.csv";
         private const string PlayersFile = "PlayerModels.csv";
         private const string CharactersFile = "CharacterModels.csv";
-        private const string SessionsFile = "SessionsModels.csv";
+        private const string CampaignsFile = "CampaignModels.csv";
+        private const string EventsFile = "EventModels.csv";
 
         public SkillModel AddNewSkill(SkillModel model)
         {
@@ -26,12 +28,34 @@ namespace TrackerLibrary.DataAccess
             {
                 currentId = skills.Max(x => x.Id) + 1;
             }
+            
 
             model.Id = currentId;
 
             skills.Add(model);
 
             skills.SaveToSkillsFile(SkillsFile);
+
+            return model;
+        }
+
+        public ItemModel AddNewItem(ItemModel model)
+        {
+            List<ItemModel> items = ItemsFile.FullFilePath().LoadFile().ConvertToItemModels();
+
+            int currentId = 1;
+
+            if (items.Count > 0)
+            {
+                currentId = items.Max(x => x.Id) + 1;
+            }
+
+
+            model.Id = currentId;
+
+            items.Add(model);
+
+            items.SaveToItemsFile(ItemsFile);
 
             return model;
         }
@@ -59,7 +83,7 @@ namespace TrackerLibrary.DataAccess
 
         public PlayerModel AddNewPlayer(PlayerModel model)
         {
-            List<PlayerModel> players = PlayersFile.FullFilePath().LoadFile().ConvertToPlayerModels(CharactersFile, WeaponsFile, SkillsFile);
+            List<PlayerModel> players = PlayersFile.FullFilePath().LoadFile().ConvertToPlayerModels(CharactersFile, WeaponsFile, SkillsFile, ItemsFile);
 
             int currentId = 1;
 
@@ -79,7 +103,7 @@ namespace TrackerLibrary.DataAccess
 
         public CharacterModel AddNewCharacter(CharacterModel model)
         {
-            List<CharacterModel> characters = CharactersFile.FullFilePath().LoadFile().ConvertToCharacterModels(WeaponsFile, SkillsFile);
+            List<CharacterModel> characters = CharactersFile.FullFilePath().LoadFile().ConvertToCharacterModels(WeaponsFile, SkillsFile, ItemsFile);
 
             int currentId = 1;
 
@@ -97,27 +121,153 @@ namespace TrackerLibrary.DataAccess
             return model;
         }
 
-        public SessionModel AddNewSession(SessionModel model)
+        public CampaignModel AddNewCampaign(CampaignModel model)
         {
-            List<SessionModel> sessions = SessionsFile.FullFilePath().LoadFile().ConvertToSessionModels(PlayersFile, CharactersFile, WeaponsFile, SkillsFile);
+            List<CampaignModel> campaigns = CampaignsFile.FullFilePath().LoadFile().ConvertToCampaignModels(PlayersFile, CharactersFile, WeaponsFile, SkillsFile, ItemsFile, EventsFile);
 
 
             int currentId = 1;
 
-            if (sessions.Count > 0)
+            if (campaigns.Count > 0)
             {
-                currentId = sessions.Max(x => x.Id) + 1;
+                currentId = campaigns.Max(x => x.Id) + 1;
             }
 
             model.Id = currentId;
 
-            sessions.Add(model);
+            campaigns.Add(model);
 
-            sessions.SaveToSessionsFile(SessionsFile);
+            campaigns.SaveToCampaignFile(CampaignsFile);
 
             return model;
 
         }
+
+        public EventModel AddNewEvent(EventModel model)
+        {
+            List<EventModel> events = EventsFile.FullFilePath().LoadFile().ConvertToEventModels();
+
+            int currentId = 1;
+
+            if (events.Count > 0)
+            {
+                currentId = events.Max(x => x.Id) + 1;
+            }
+
+
+            model.Id = currentId;
+
+            events.Add(model);
+
+            events.SaveToEventsFile(EventsFile);
+
+            return model;
+        }
+
+
+
+
+
+
+        public EventModel UpdateEvent(EventModel model)
+        {
+            List<EventModel> events = EventsFile.FullFilePath().LoadFile().ConvertToEventModels();
+
+            EventModel eventToReplace = events.First(x => x.Id == model.Id);
+            var index = events.IndexOf(eventToReplace);
+            if (index != -1)
+            {
+                events[index] = model;
+            }
+
+            return model;
+        }
+
+        public PlayerModel UpdatePlayer(PlayerModel model)
+        {
+            List<PlayerModel> players = PlayersFile.FullFilePath().LoadFile().ConvertToPlayerModels(CharactersFile, WeaponsFile, SkillsFile, ItemsFile);
+
+            PlayerModel playerToReplace = players.First(x => x.Id == model.Id);
+            var index = players.IndexOf(playerToReplace);
+            if (index != -1)
+            {
+                players[index] = model;
+            }
+
+            return model;
+        }
+
+        public CharacterModel UpdateCharacter(CharacterModel model)
+        {
+            List<CharacterModel> characters = CharactersFile.FullFilePath().LoadFile().ConvertToCharacterModels(WeaponsFile, SkillsFile, ItemsFile);
+
+            CharacterModel characterToReplace = characters.First(x => x.Id == model.Id);
+            var index = characters.IndexOf(characterToReplace);
+            if (index != -1)
+            {
+                characters[index] = model;
+            }
+
+            return model;
+        }
+
+        public CampaignModel UpdateCampaign(CampaignModel model)
+        {
+            List<CampaignModel> campaigns = CampaignsFile.FullFilePath().LoadFile().ConvertToCampaignModels(PlayersFile, CharactersFile, WeaponsFile, SkillsFile, ItemsFile, EventsFile);
+
+            CampaignModel campaignToReplace = campaigns.First(x => x.Id == model.Id);
+            var index = campaigns.IndexOf(campaignToReplace);
+            if (index != -1)
+            {
+                campaigns[index] = model;
+            }
+
+            return model;
+        }
+
+
+
+
+
+
+
+        public void AddCharacterToPlayer(CharacterModel character, PlayerModel player)
+        {
+            List<PlayerModel> players = PlayersFile.FullFilePath().LoadFile().ConvertToPlayerModels(CharactersFile, WeaponsFile, SkillsFile, ItemsFile);
+
+            players.Where(x => x.Id == player.Id).First().PlayerCharacters.Add(character);
+
+            players.SaveToPlayersFile(PlayersFile);
+        }
+
+        public void AddWeaponToCharacter(WeaponModel weapon, CharacterModel character)
+        {
+            List<CharacterModel> characters = CharactersFile.FullFilePath().LoadFile().ConvertToCharacterModels(WeaponsFile, SkillsFile, ItemsFile);
+
+            characters.Where(x => x.Id == character.Id).First().CharacterWeapons.Add(weapon);
+
+            characters.SaveToCharactersFile(CharactersFile);
+        }
+
+        public void AddSkillToCharacter(SkillModel skill, CharacterModel character)
+        {
+            List<CharacterModel> characters = CharactersFile.FullFilePath().LoadFile().ConvertToCharacterModels(WeaponsFile, SkillsFile, ItemsFile);
+
+            characters.Where(x => x.Id == character.Id).First().CharacterSkills.Add(skill);
+
+            characters.SaveToCharactersFile(CharactersFile);
+        }
+
+        public void AddItemToCharacter(ItemModel item, CharacterModel character)
+        {
+            List<CharacterModel> characters = CharactersFile.FullFilePath().LoadFile().ConvertToCharacterModels(WeaponsFile, SkillsFile, ItemsFile);
+
+            characters.Where(x => x.Id == character.Id).First().Items.Add(item);
+
+            characters.SaveToCharactersFile(CharactersFile);
+        }
+
+
 
 
         public List<SkillModel> GetAllSkillsOfOneCharacter(CharacterModel character)
@@ -129,9 +279,34 @@ namespace TrackerLibrary.DataAccess
 
         public List<PlayerModel> GetAllPlayers()
         {
-            List<PlayerModel> players = PlayersFile.FullFilePath().LoadFile().ConvertToPlayerModels(CharactersFile, WeaponsFile, SkillsFile);
+            List<PlayerModel> players = PlayersFile.FullFilePath().LoadFile().ConvertToPlayerModels(CharactersFile, WeaponsFile, SkillsFile, ItemsFile);
 
             return players;
+        }
+
+        public bool IsPlayerNameUnique(string playerName)
+        {
+            bool output = true;
+
+            List<PlayerModel> names = new List<PlayerModel>();
+            List<PlayerModel> players = PlayersFile.FullFilePath().LoadFile().ConvertToPlayerModels(CharactersFile, WeaponsFile, SkillsFile, ItemsFile);
+
+            names.AddRange(players.Where(x => x.Name == playerName));
+
+            if (names.Count > 0)
+            {
+                output = false;
+            }
+
+            return output;
+
+        }
+
+        public List<CharacterModel> GetAllCharactersOfOnePlayer(PlayerModel player)
+        {
+            List<CharacterModel> characters = player.PlayerCharacters;
+
+            return characters;
         }
 
         
