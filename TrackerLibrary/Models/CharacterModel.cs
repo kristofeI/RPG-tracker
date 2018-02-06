@@ -68,6 +68,17 @@ namespace TrackerLibrary.Models
 
         public List<ItemModel> Items { get; set; } = new List<ItemModel>();
 
+
+
+        public string DisplayedCharacter
+        {
+            get
+            {
+                return $"{ Name }";
+            }
+        }
+
+
         public CharacterModel()
         {
 

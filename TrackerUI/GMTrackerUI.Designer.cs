@@ -31,13 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GMTrackerUI));
             this.headerLabel = new System.Windows.Forms.Label();
             this.dateLabel = new System.Windows.Forms.Label();
-            this.bodyNeedsLabel = new System.Windows.Forms.Label();
             this.fightLabel = new System.Windows.Forms.Label();
             this.NPCLabel = new System.Windows.Forms.Label();
             this.teamLabel = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
             this.eventHistoryButton = new System.Windows.Forms.Button();
-            this.checkBodyNeedsButton = new System.Windows.Forms.Button();
+            this.bodyNeedsButton = new System.Windows.Forms.Button();
             this.teamListBox = new System.Windows.Forms.ListBox();
             this.NpcListBox = new System.Windows.Forms.ListBox();
             this.showEditCharacterButton = new System.Windows.Forms.Button();
@@ -93,23 +92,12 @@
             this.dateLabel.TabIndex = 5;
             this.dateLabel.Text = "Aktualna data:";
             // 
-            // bodyNeedsLabel
-            // 
-            this.bodyNeedsLabel.AutoSize = true;
-            this.bodyNeedsLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.bodyNeedsLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.bodyNeedsLabel.Location = new System.Drawing.Point(824, 339);
-            this.bodyNeedsLabel.Name = "bodyNeedsLabel";
-            this.bodyNeedsLabel.Size = new System.Drawing.Size(283, 37);
-            this.bodyNeedsLabel.TabIndex = 6;
-            this.bodyNeedsLabel.Text = "Potrzeby fizjologiczne:";
-            // 
             // fightLabel
             // 
             this.fightLabel.AutoSize = true;
             this.fightLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.fightLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.fightLabel.Location = new System.Drawing.Point(829, 440);
+            this.fightLabel.Location = new System.Drawing.Point(824, 455);
             this.fightLabel.Name = "fightLabel";
             this.fightLabel.Size = new System.Drawing.Size(96, 37);
             this.fightLabel.TabIndex = 7;
@@ -158,26 +146,27 @@
             this.eventHistoryButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.eventHistoryButton.Location = new System.Drawing.Point(817, 265);
             this.eventHistoryButton.Name = "eventHistoryButton";
-            this.eventHistoryButton.Size = new System.Drawing.Size(290, 40);
+            this.eventHistoryButton.Size = new System.Drawing.Size(290, 52);
             this.eventHistoryButton.TabIndex = 14;
             this.eventHistoryButton.Text = "Historia wydarzeń";
             this.eventHistoryButton.UseVisualStyleBackColor = true;
             this.eventHistoryButton.Click += new System.EventHandler(this.timeDescriptionButton_Click);
             // 
-            // checkBodyNeedsButton
+            // bodyNeedsButton
             // 
-            this.checkBodyNeedsButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.checkBodyNeedsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.checkBodyNeedsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.checkBodyNeedsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBodyNeedsButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBodyNeedsButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.checkBodyNeedsButton.Location = new System.Drawing.Point(831, 380);
-            this.checkBodyNeedsButton.Name = "checkBodyNeedsButton";
-            this.checkBodyNeedsButton.Size = new System.Drawing.Size(276, 54);
-            this.checkBodyNeedsButton.TabIndex = 15;
-            this.checkBodyNeedsButton.Text = "Sprawdź";
-            this.checkBodyNeedsButton.UseVisualStyleBackColor = true;
+            this.bodyNeedsButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.bodyNeedsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.bodyNeedsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.bodyNeedsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bodyNeedsButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.bodyNeedsButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.bodyNeedsButton.Location = new System.Drawing.Point(817, 323);
+            this.bodyNeedsButton.Name = "bodyNeedsButton";
+            this.bodyNeedsButton.Size = new System.Drawing.Size(290, 54);
+            this.bodyNeedsButton.TabIndex = 15;
+            this.bodyNeedsButton.Text = "Potrzeby fizjologiczne";
+            this.bodyNeedsButton.UseVisualStyleBackColor = true;
+            this.bodyNeedsButton.Click += new System.EventHandler(this.bodyNeedsButton_Click);
             // 
             // teamListBox
             // 
@@ -554,13 +543,12 @@
             this.Controls.Add(this.startFightButton);
             this.Controls.Add(this.fightingUnitsListBox);
             this.Controls.Add(this.pickUnitsLabel);
-            this.Controls.Add(this.checkBodyNeedsButton);
+            this.Controls.Add(this.bodyNeedsButton);
             this.Controls.Add(this.eventHistoryButton);
             this.Controls.Add(this.subtractTimeButton);
             this.Controls.Add(this.addTimeButton);
             this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.fightLabel);
-            this.Controls.Add(this.bodyNeedsLabel);
             this.Controls.Add(this.dateLabel);
             this.Controls.Add(this.headerLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -581,13 +569,12 @@
 
         private System.Windows.Forms.Label headerLabel;
         private System.Windows.Forms.Label dateLabel;
-        private System.Windows.Forms.Label bodyNeedsLabel;
         private System.Windows.Forms.Label fightLabel;
         private System.Windows.Forms.Label NPCLabel;
         private System.Windows.Forms.Label teamLabel;
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Button eventHistoryButton;
-        private System.Windows.Forms.Button checkBodyNeedsButton;
+        private System.Windows.Forms.Button bodyNeedsButton;
         private System.Windows.Forms.ListBox teamListBox;
         private System.Windows.Forms.ListBox NpcListBox;
         private System.Windows.Forms.Button showEditCharacterButton;

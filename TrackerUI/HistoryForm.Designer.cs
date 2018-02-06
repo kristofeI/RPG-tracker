@@ -38,6 +38,7 @@
             this.timeLabel = new System.Windows.Forms.Label();
             this.addNewEventButton = new System.Windows.Forms.Button();
             this.removeSelectedEventButton = new System.Windows.Forms.Button();
+            this.backToMenuButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // eventHistoryLabel
@@ -140,18 +141,35 @@
             this.removeSelectedEventButton.ForeColor = System.Drawing.Color.Red;
             this.removeSelectedEventButton.Location = new System.Drawing.Point(17, 565);
             this.removeSelectedEventButton.Name = "removeSelectedEventButton";
-            this.removeSelectedEventButton.Size = new System.Drawing.Size(359, 73);
+            this.removeSelectedEventButton.Size = new System.Drawing.Size(359, 52);
             this.removeSelectedEventButton.TabIndex = 49;
             this.removeSelectedEventButton.Text = "Usuń zaznaczoną umiejętność";
             this.removeSelectedEventButton.UseVisualStyleBackColor = true;
             this.removeSelectedEventButton.Click += new System.EventHandler(this.removeSelectedEventButton_Click);
+            // 
+            // backToMenuButton
+            // 
+            this.backToMenuButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.backToMenuButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.backToMenuButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.backToMenuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.backToMenuButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.backToMenuButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.backToMenuButton.Location = new System.Drawing.Point(17, 623);
+            this.backToMenuButton.Name = "backToMenuButton";
+            this.backToMenuButton.Size = new System.Drawing.Size(359, 49);
+            this.backToMenuButton.TabIndex = 51;
+            this.backToMenuButton.Text = "Wróć do panelu głównego";
+            this.backToMenuButton.UseVisualStyleBackColor = true;
+            this.backToMenuButton.Click += new System.EventHandler(this.backToMenuButton_Click);
             // 
             // HistoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(398, 650);
+            this.ClientSize = new System.Drawing.Size(398, 689);
+            this.Controls.Add(this.backToMenuButton);
             this.Controls.Add(this.addNewEventButton);
             this.Controls.Add(this.removeSelectedEventButton);
             this.Controls.Add(this.timeDescriptionTextBox);
@@ -182,5 +200,6 @@
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Button addNewEventButton;
         private System.Windows.Forms.Button removeSelectedEventButton;
+        private System.Windows.Forms.Button backToMenuButton;
     }
 }

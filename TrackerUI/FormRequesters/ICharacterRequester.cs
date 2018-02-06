@@ -12,6 +12,8 @@ namespace TrackerUI.FormRequesters
         void CharacterComplete(CharacterModel model);
 
         void EditCharacter(CharacterModel model);
+
+        void CharacterUpdate(CharacterModel model);
     }
 
 

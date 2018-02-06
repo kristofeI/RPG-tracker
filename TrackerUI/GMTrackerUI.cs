@@ -281,6 +281,15 @@ namespace TrackerUI
 
             GlobalConfig.Connection.UpdateCampaign(currentCampaign);
 
+            foreach (CharacterModel character in currentTeam)
+            {
+                character.HoursWithoutDrugs += 1;
+                character.HoursWithoutFood += 1;
+                character.HoursWithoutWater += 1;
+
+                GlobalConfig.Connection.UpdateCharacter(character);
+            }
+
             WireUpLists();
         }
 
@@ -291,6 +300,15 @@ namespace TrackerUI
             currentCampaign.CurrentGameTime = newTime;
 
             GlobalConfig.Connection.UpdateCampaign(currentCampaign);
+
+            foreach (CharacterModel character in currentTeam)
+            {
+                character.HoursWithoutDrugs -= 1;
+                character.HoursWithoutFood -= 1;
+                character.HoursWithoutWater -= 1;
+
+                GlobalConfig.Connection.UpdateCharacter(character);
+            }
 
             WireUpLists();
         }
@@ -304,6 +322,19 @@ namespace TrackerUI
         public void EventsEdited(CampaignModel model)
         {
             GlobalConfig.Connection.UpdateCampaign(model);
+
+            WireUpLists();
+        }
+
+        private void bodyNeedsButton_Click(object sender, EventArgs e)
+        {
+            BodyNeedsForm frm = new BodyNeedsForm(this, currentTeam);
+            frm.Show();
+        }
+
+        public void CharacterUpdate(CharacterModel model)
+        {
+            GlobalConfig.Connection.UpdateCharacter(model);
 
             WireUpLists();
         }

@@ -261,7 +261,7 @@ namespace TrackerUI
                 currentCharacter.HoursWithoutWater = int.Parse(hoursWithoutWaterTextBox.Text);
                 currentCharacter.HoursWithoutDrugs = int.Parse(hoursWithoutDrugsTextBox.Text);
 
-                GlobalConfig.Connection.UpdateCharacter(currentCharacter);
+                callingForm.CharacterUpdate(currentCharacter);
 
                 this.Close();
 
