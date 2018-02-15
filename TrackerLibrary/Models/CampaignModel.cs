@@ -23,5 +23,17 @@ namespace TrackerLibrary.Models
         public List<CharacterModel> FightingUnits { get; set; } = new List<CharacterModel>();
 
         public List<EventModel> Events { get; set; } = new List<EventModel>();
+
+        public CampaignModel()
+        {
+
+        }
+
+        public CampaignModel(string campaignName)
+        {
+            CampaignName = campaignName;
+        }
     }
+
+    
 }

@@ -82,7 +82,7 @@
     <Compile Include="EditTeamForm.Designer.cs">
       <DependentUpon>EditTeamForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormRequesters\IEventRequester.cs" />
+    <Compile Include="FormRequesters\ICampaignRequester.cs" />
     <Compile Include="FormRequesters\IWeaponRequester.cs" />
     <Compile Include="GMTrackerUI.cs">
       <SubType>Form</SubType>

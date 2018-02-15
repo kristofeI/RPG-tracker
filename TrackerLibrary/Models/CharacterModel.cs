@@ -48,9 +48,9 @@ namespace TrackerLibrary.Models
 
         public float Exhaution { get; set; }
 
-        public float Shock { get; set; }
+        public string Shock { get; set; }
 
-        public float Bleeding { get; set; }
+        public string Bleeding { get; set; }
 
         public float IllnessProgression { get; set; }
 
@@ -62,11 +62,19 @@ namespace TrackerLibrary.Models
 
         public bool IsCharacterInTeam { get; set; }
 
+        public WeaponModel CurrentWeapon { get; set; }
+
         public List<WeaponModel> CharacterWeapons { get; set; } = new List<WeaponModel>();
 
         public List<SkillModel> CharacterSkills { get; set; } = new List<SkillModel>();
 
         public List<ItemModel> Items { get; set; } = new List<ItemModel>();
+
+        public string Card { get; set; }
+
+        public string Color { get; set; }
+
+        public string Action { get; set; }
 
 
 
@@ -75,6 +83,15 @@ namespace TrackerLibrary.Models
             get
             {
                 return $"{ Name }";
+            }
+        }
+
+
+        public string DisplayedFightingCharacter
+        {
+            get
+            {
+                return $"{ Name }, { Card }, { Color }, { Action }";
             }
         }
 

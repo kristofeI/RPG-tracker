@@ -25,6 +25,8 @@ namespace TrackerLibrary.DataAccess
 
         CampaignModel AddNewCampaign(CampaignModel model);
 
+        RPGSystemModel AddNewRPGSystem(RPGSystemModel model);
+
 
 
         EventModel UpdateEvent(EventModel model);
@@ -34,6 +36,8 @@ namespace TrackerLibrary.DataAccess
         CharacterModel UpdateCharacter(CharacterModel model);
 
         CampaignModel UpdateCampaign(CampaignModel model);
+
+        RPGSystemModel UpdateRPGSystem(RPGSystemModel model);
 
 
 
@@ -54,6 +58,10 @@ namespace TrackerLibrary.DataAccess
         List<PlayerModel> GetAllPlayers();
 
         List<CharacterModel> GetAllCharactersOfOnePlayer(PlayerModel character);
+
+        List<CampaignModel> GetAllCampaigns();
+
+        RPGSystemModel GetRPGSystem(RPGSystemModel rpgSystem);
 
         bool IsPlayerNameUnique(string playerName);
     }

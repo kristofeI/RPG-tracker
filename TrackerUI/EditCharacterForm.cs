@@ -22,6 +22,10 @@ namespace TrackerUI
         List<ItemModel> currentCharacterItems = new List<ItemModel>();
         List<string> dices = new List<string>() { "k4", "k6", "k8", "k10", "k12" };
         List<string> traits = new List<string>() { "Duch", "Siła", "Spryt", "Wigor", "Zręczność"};
+        List<string> choice = new List<string>() { "Tak", "Nie" };
+        List<string> woundValues = new List<string>() { "0", "-1", "-2", "-3" };
+        List<string> exhaustionValues = new List<string>() { "0", "-1", "-2" };
+
 
         public EditCharacterForm(ICharacterRequester caller, CharacterModel character)
         {
@@ -67,10 +71,6 @@ namespace TrackerUI
             enduranceTextbox.Text = Convert.ToString(currentCharacter.Endurance);
             charismaTextbox.Text = Convert.ToString(currentCharacter.Charisma);
             luckTextbox.Text = Convert.ToString(currentCharacter.Luck);
-            woundsTextbox.Text = Convert.ToString(currentCharacter.Wounds);
-            exhaustionTextbox.Text = Convert.ToString(currentCharacter.Exhaution);
-            shockTextbox.Text = Convert.ToString(currentCharacter.Shock);
-            bleedingTextbox.Text = Convert.ToString(currentCharacter.Bleeding);
             illnessProgressionTextbox.Text = Convert.ToString(currentCharacter.IllnessProgression);
             hoursWithoutFoodTextBox.Text = Convert.ToString(currentCharacter.HoursWithoutFood);
             hoursWithoutWaterTextBox.Text = Convert.ToString(currentCharacter.HoursWithoutWater);
@@ -97,7 +97,21 @@ namespace TrackerUI
             skillTraitDropDown.DataSource = traits;
             skillDiceDropDown.DataSource = dices;
 
+            woundsDropDown.DataSource = null;
+            woundsDropDown.DataSource = woundValues;
+            woundsDropDown.SelectedText = Convert.ToString(currentCharacter.Wounds);
 
+            exhaustionDropDown.DataSource = null;
+            exhaustionDropDown.DataSource = exhaustionValues;
+            exhaustionDropDown.SelectedText = Convert.ToString(currentCharacter.Exhaution);
+
+            shockDropDown.DataSource = null;
+            shockDropDown.DataSource = choice;
+            shockDropDown.SelectedText = currentCharacter.Shock;
+
+            bleedingDropDown.DataSource = null;
+            bleedingDropDown.DataSource = choice;
+            bleedingDropDown.SelectedText = currentCharacter.Bleeding;
         }
         
 
@@ -252,10 +266,10 @@ namespace TrackerUI
                 currentCharacter.Endurance = int.Parse(enduranceTextbox.Text);
                 currentCharacter.Charisma = int.Parse(charismaTextbox.Text);
                 currentCharacter.Luck = int.Parse(luckTextbox.Text);
-                currentCharacter.Wounds = int.Parse(woundsTextbox.Text);
-                currentCharacter.Exhaution = int.Parse(exhaustionTextbox.Text);
-                currentCharacter.Shock = int.Parse(shockTextbox.Text);
-                currentCharacter.Bleeding = int.Parse(bleedingTextbox.Text);
+                currentCharacter.Wounds = int.Parse(woundsDropDown.SelectedText);
+                currentCharacter.Exhaution = int.Parse(exhaustionDropDown.SelectedText);
+                currentCharacter.Shock = shockDropDown.SelectedText;
+                currentCharacter.Bleeding = bleedingDropDown.SelectedText;
                 currentCharacter.IllnessProgression = int.Parse(illnessProgressionTextbox.Text);
                 currentCharacter.HoursWithoutFood = int.Parse(hoursWithoutFoodTextBox.Text);
                 currentCharacter.HoursWithoutWater = int.Parse(hoursWithoutWaterTextBox.Text);
@@ -284,10 +298,8 @@ namespace TrackerUI
                 enduranceTextbox.Text,
                 charismaTextbox.Text,
                 luckTextbox.Text, 
-                woundsTextbox.Text,
-                exhaustionTextbox.Text,
-                shockTextbox.Text,
-                bleedingTextbox.Text,
+                woundsDropDown.Text,
+                exhaustionDropDown.Text,
                 illnessProgressionTextbox.Text,
                 hoursWithoutFoodTextBox.Text,
                 hoursWithoutWaterTextBox.Text,
@@ -314,6 +326,13 @@ namespace TrackerUI
             }
 
             return output;
+        }
+
+        private void weaponListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            currentCharacter.CurrentWeapon = (WeaponModel)weaponListBox.SelectedItem;
+
+            WireUpLists();
         }
     }
 }

@@ -13,7 +13,7 @@ using TrackerUI.FormRequesters;
 
 namespace TrackerUI
 {
-    public partial class GMTrackerUI : Form, ICharacterRequester, IEventRequester
+    public partial class GMTrackerUI : Form, ICharacterRequester, ICampaignRequester
     {
 
         //TODO!! wire up current session, its team and npcs
@@ -22,14 +22,17 @@ namespace TrackerUI
         List<CharacterModel> currentTeam = new List<CharacterModel>();
         List<CharacterModel> currentsNpcs = new List<CharacterModel>();
         List<CharacterModel> fightingUnits = new List<CharacterModel>();
+        ICampaignRequester callingForm;
 
-
-
-        public GMTrackerUI()
+        public GMTrackerUI(ICampaignRequester caller, CampaignModel campaign)
         {
             InitializeComponent();
 
-            CreateSampleData();
+            callingForm = caller;
+            currentCampaign = campaign;
+            currentPlayers = currentCampaign.PlayersInCampaign;
+            currentTeam = currentCampaign.TeamCharacters;
+            currentsNpcs = currentCampaign.NpcCharacters;
 
             WireUpLists();
         }
@@ -53,7 +56,7 @@ namespace TrackerUI
             playerListDropDown.DataSource = currentPlayers;
             playerListDropDown.DisplayMember = "Name";
 
-            if (playerListDropDown.SelectedText != "")
+            if (playerListDropDown.Text != "")
             {
                 characterListDropDown.DataSource = null;
                 characterListDropDown.DataSource = GlobalConfig.Connection.GetAllCharactersOfOnePlayer((PlayerModel)playerListDropDown.SelectedItem);
@@ -115,10 +118,6 @@ namespace TrackerUI
 
         public void CharacterComplete(CharacterModel model)
         {
-            //get back from the form a new CharacterModel
-            //take the CharacterModel and put it into our list
-            
-
             if (teamRadioButton.Checked)
             {
                 currentTeam.Add(model);
@@ -171,10 +170,14 @@ namespace TrackerUI
                 if (teamRadioButton.Checked)
                 {
                     fightingUnits.Add((CharacterModel)teamListBox.SelectedValue);
+
+                    WireUpLists();
                 }
                 if (npcRadioButton.Checked)
                 {
                     fightingUnits.Add((CharacterModel)NpcListBox.SelectedValue);
+
+                    WireUpLists();
                 }
             }
             else
@@ -319,7 +322,7 @@ namespace TrackerUI
             frm.Show();
         }
 
-        public void EventsEdited(CampaignModel model)
+        public void CampaignEdited(CampaignModel model)
         {
             GlobalConfig.Connection.UpdateCampaign(model);
 
@@ -337,6 +340,29 @@ namespace TrackerUI
             GlobalConfig.Connection.UpdateCharacter(model);
 
             WireUpLists();
+        }
+
+
+
+
+
+
+
+
+
+        private void removeSelectedFightUnitsButton_Click(object sender, EventArgs e)
+        {
+            CharacterModel c = (CharacterModel)fightingUnitsListBox.SelectedValue;
+
+            fightingUnits.Remove(c);
+
+            WireUpLists();
+        }
+
+        private void startFightButton_Click(object sender, EventArgs e)
+        {
+            BattleForm frm = new BattleForm(this, fightingUnits);
+            frm.Show();
         }
     }
 }

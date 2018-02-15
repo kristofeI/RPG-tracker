@@ -14,6 +14,8 @@ namespace TrackerLibrary.Models
 
         public int AmmoSupply { get; set; }
 
+        public string Damage { get; set; }
+
         public WeaponModel()
         {
 
@@ -32,7 +34,7 @@ namespace TrackerLibrary.Models
         {
             get
             {
-                return $"{ WeaponName } - { AmmoSupply }";
+                return $"{ WeaponName } - obrażenia: { Damage } - amunicja: { AmmoSupply }";
             }
         }
     }

@@ -21,8 +21,7 @@ namespace TrackerUI
             // Make the database connection
             TrackerLibrary.GlobalConfig.InitializeConnections(DatabaseType.TextFile);
 
-            Application.Run(new GMTrackerUI()); 
-            //Application.Run(new SystemRPG());
+            Application.Run(new RPGSystem());
         }
     }
 }

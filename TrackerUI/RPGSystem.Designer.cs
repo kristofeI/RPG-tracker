@@ -1,6 +1,6 @@
 ﻿namespace TrackerUI
 {
-    partial class SystemRPG
+    partial class RPGSystem
     {
         /// <summary>
         /// Required designer variable.
@@ -28,17 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SystemRPG));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RPGSystem));
             this.headerLabel = new System.Windows.Forms.Label();
-            this.systemName = new System.Windows.Forms.Label();
             this.systemDropDown = new System.Windows.Forms.ComboBox();
-            this.systemButton = new System.Windows.Forms.Button();
-            this.addNewSessionButton = new System.Windows.Forms.Button();
-            this.newSessionTextBox = new System.Windows.Forms.TextBox();
-            this.newSessionLabel = new System.Windows.Forms.Label();
-            this.sessionEditButton = new System.Windows.Forms.Button();
-            this.sessionDropDown = new System.Windows.Forms.ComboBox();
-            this.activeSessionLabel = new System.Windows.Forms.Label();
+            this.campaignAddButton = new System.Windows.Forms.Button();
+            this.newCampaignTextBox = new System.Windows.Forms.TextBox();
+            this.newCampaignLabel = new System.Windows.Forms.Label();
+            this.campaignRemoveButton = new System.Windows.Forms.Button();
+            this.campaignDropDown = new System.Windows.Forms.ComboBox();
+            this.currentCampaignLabel = new System.Windows.Forms.Label();
+            this.loadCampaignButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // headerLabel
@@ -46,137 +45,130 @@
             this.headerLabel.AutoSize = true;
             this.headerLabel.Font = new System.Drawing.Font("Segoe UI Light", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.headerLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.headerLabel.Location = new System.Drawing.Point(25, 27);
+            this.headerLabel.Location = new System.Drawing.Point(96, 28);
             this.headerLabel.Name = "headerLabel";
             this.headerLabel.Size = new System.Drawing.Size(215, 50);
             this.headerLabel.TabIndex = 0;
             this.headerLabel.Text = "System RPG:";
             // 
-            // systemName
-            // 
-            this.systemName.AutoSize = true;
-            this.systemName.Font = new System.Drawing.Font("Segoe UI Light", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.systemName.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.systemName.Location = new System.Drawing.Point(246, 27);
-            this.systemName.Name = "systemName";
-            this.systemName.Size = new System.Drawing.Size(137, 50);
-            this.systemName.TabIndex = 1;
-            this.systemName.Text = "<brak>";
-            // 
             // systemDropDown
             // 
+            this.systemDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.systemDropDown.FormattingEnabled = true;
-            this.systemDropDown.Location = new System.Drawing.Point(34, 108);
+            this.systemDropDown.Location = new System.Drawing.Point(52, 104);
             this.systemDropDown.Name = "systemDropDown";
             this.systemDropDown.Size = new System.Drawing.Size(318, 38);
             this.systemDropDown.TabIndex = 2;
+            this.systemDropDown.SelectedIndexChanged += new System.EventHandler(this.systemDropDown_SelectedIndexChanged);
             // 
-            // systemButton
+            // campaignAddButton
             // 
-            this.systemButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.systemButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.systemButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.systemButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.systemButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.systemButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.systemButton.Location = new System.Drawing.Point(34, 168);
-            this.systemButton.Name = "systemButton";
-            this.systemButton.Size = new System.Drawing.Size(318, 54);
-            this.systemButton.TabIndex = 3;
-            this.systemButton.Text = "Wybierz system";
-            this.systemButton.UseVisualStyleBackColor = true;
+            this.campaignAddButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.campaignAddButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.campaignAddButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.campaignAddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.campaignAddButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.campaignAddButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.campaignAddButton.Location = new System.Drawing.Point(264, 325);
+            this.campaignAddButton.Name = "campaignAddButton";
+            this.campaignAddButton.Size = new System.Drawing.Size(106, 54);
+            this.campaignAddButton.TabIndex = 37;
+            this.campaignAddButton.Text = "Dodaj";
+            this.campaignAddButton.UseVisualStyleBackColor = true;
+            this.campaignAddButton.Click += new System.EventHandler(this.campaignAddButton_Click);
             // 
-            // addNewSessionButton
+            // newCampaignTextBox
             // 
-            this.addNewSessionButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.addNewSessionButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.addNewSessionButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.addNewSessionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addNewSessionButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.addNewSessionButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.addNewSessionButton.Location = new System.Drawing.Point(205, 422);
-            this.addNewSessionButton.Name = "addNewSessionButton";
-            this.addNewSessionButton.Size = new System.Drawing.Size(147, 54);
-            this.addNewSessionButton.TabIndex = 37;
-            this.addNewSessionButton.Text = "Dodaj";
-            this.addNewSessionButton.UseVisualStyleBackColor = true;
+            this.newCampaignTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.newCampaignTextBox.Location = new System.Drawing.Point(52, 353);
+            this.newCampaignTextBox.Name = "newCampaignTextBox";
+            this.newCampaignTextBox.Size = new System.Drawing.Size(206, 25);
+            this.newCampaignTextBox.TabIndex = 36;
+            this.newCampaignTextBox.Text = "Wpisz nazwę nowej kampanii";
             // 
-            // newSessionTextBox
+            // newCampaignLabel
             // 
-            this.newSessionTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.newSessionTextBox.Location = new System.Drawing.Point(34, 450);
-            this.newSessionTextBox.Name = "newSessionTextBox";
-            this.newSessionTextBox.Size = new System.Drawing.Size(165, 25);
-            this.newSessionTextBox.TabIndex = 36;
-            this.newSessionTextBox.Text = "Wpisz nazwę nowej sesji";
+            this.newCampaignLabel.AutoSize = true;
+            this.newCampaignLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.newCampaignLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.newCampaignLabel.Location = new System.Drawing.Point(47, 325);
+            this.newCampaignLabel.Name = "newCampaignLabel";
+            this.newCampaignLabel.Size = new System.Drawing.Size(211, 25);
+            this.newCampaignLabel.TabIndex = 35;
+            this.newCampaignLabel.Text = "Stwórz nową kampanię:";
             // 
-            // newSessionLabel
+            // campaignRemoveButton
             // 
-            this.newSessionLabel.AutoSize = true;
-            this.newSessionLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.newSessionLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.newSessionLabel.Location = new System.Drawing.Point(29, 422);
-            this.newSessionLabel.Name = "newSessionLabel";
-            this.newSessionLabel.Size = new System.Drawing.Size(170, 25);
-            this.newSessionLabel.TabIndex = 35;
-            this.newSessionLabel.Text = "Stwórz nową sesję:";
+            this.campaignRemoveButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.campaignRemoveButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.campaignRemoveButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.campaignRemoveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.campaignRemoveButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.campaignRemoveButton.ForeColor = System.Drawing.Color.Red;
+            this.campaignRemoveButton.Location = new System.Drawing.Point(52, 408);
+            this.campaignRemoveButton.Name = "campaignRemoveButton";
+            this.campaignRemoveButton.Size = new System.Drawing.Size(318, 40);
+            this.campaignRemoveButton.TabIndex = 34;
+            this.campaignRemoveButton.Text = "Usuń zaznaczoną kampanię";
+            this.campaignRemoveButton.UseVisualStyleBackColor = true;
+            this.campaignRemoveButton.Click += new System.EventHandler(this.campaignRemoveButton_Click);
             // 
-            // sessionEditButton
+            // campaignDropDown
             // 
-            this.sessionEditButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.sessionEditButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.sessionEditButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.sessionEditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sessionEditButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.sessionEditButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.sessionEditButton.Location = new System.Drawing.Point(32, 371);
-            this.sessionEditButton.Name = "sessionEditButton";
-            this.sessionEditButton.Size = new System.Drawing.Size(318, 37);
-            this.sessionEditButton.TabIndex = 34;
-            this.sessionEditButton.Text = "Edytuj sesję";
-            this.sessionEditButton.UseVisualStyleBackColor = true;
+            this.campaignDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.campaignDropDown.FormattingEnabled = true;
+            this.campaignDropDown.Location = new System.Drawing.Point(52, 254);
+            this.campaignDropDown.Name = "campaignDropDown";
+            this.campaignDropDown.Size = new System.Drawing.Size(318, 38);
+            this.campaignDropDown.TabIndex = 33;
             // 
-            // sessionDropDown
+            // currentCampaignLabel
             // 
-            this.sessionDropDown.FormattingEnabled = true;
-            this.sessionDropDown.Location = new System.Drawing.Point(34, 321);
-            this.sessionDropDown.Name = "sessionDropDown";
-            this.sessionDropDown.Size = new System.Drawing.Size(318, 38);
-            this.sessionDropDown.TabIndex = 33;
+            this.currentCampaignLabel.AutoSize = true;
+            this.currentCampaignLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.currentCampaignLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.currentCampaignLabel.Location = new System.Drawing.Point(45, 204);
+            this.currentCampaignLabel.Name = "currentCampaignLabel";
+            this.currentCampaignLabel.Size = new System.Drawing.Size(350, 37);
+            this.currentCampaignLabel.TabIndex = 32;
+            this.currentCampaignLabel.Text = "Wybierz aktualną kampanię:";
             // 
-            // activeSessionLabel
+            // loadCampaignButton
             // 
-            this.activeSessionLabel.AutoSize = true;
-            this.activeSessionLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.activeSessionLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.activeSessionLabel.Location = new System.Drawing.Point(27, 277);
-            this.activeSessionLabel.Name = "activeSessionLabel";
-            this.activeSessionLabel.Size = new System.Drawing.Size(188, 37);
-            this.activeSessionLabel.TabIndex = 32;
-            this.activeSessionLabel.Text = "Aktywna sesja:";
+            this.loadCampaignButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.loadCampaignButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.loadCampaignButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.loadCampaignButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loadCampaignButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.loadCampaignButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.loadCampaignButton.Location = new System.Drawing.Point(52, 482);
+            this.loadCampaignButton.Name = "loadCampaignButton";
+            this.loadCampaignButton.Size = new System.Drawing.Size(318, 73);
+            this.loadCampaignButton.TabIndex = 38;
+            this.loadCampaignButton.Text = "Załaduj zaznaczoną kampanię";
+            this.loadCampaignButton.UseVisualStyleBackColor = true;
+            this.loadCampaignButton.Click += new System.EventHandler(this.loadCampaignButton_Click);
             // 
             // SystemRPG
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(451, 596);
-            this.Controls.Add(this.addNewSessionButton);
-            this.Controls.Add(this.newSessionTextBox);
-            this.Controls.Add(this.newSessionLabel);
-            this.Controls.Add(this.sessionEditButton);
-            this.Controls.Add(this.sessionDropDown);
-            this.Controls.Add(this.activeSessionLabel);
-            this.Controls.Add(this.systemButton);
+            this.ClientSize = new System.Drawing.Size(429, 596);
+            this.Controls.Add(this.loadCampaignButton);
+            this.Controls.Add(this.campaignAddButton);
+            this.Controls.Add(this.newCampaignTextBox);
+            this.Controls.Add(this.newCampaignLabel);
+            this.Controls.Add(this.campaignRemoveButton);
+            this.Controls.Add(this.campaignDropDown);
+            this.Controls.Add(this.currentCampaignLabel);
             this.Controls.Add(this.systemDropDown);
-            this.Controls.Add(this.systemName);
             this.Controls.Add(this.headerLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.Name = "SystemRPG";
             this.Text = "System RPG";
-            this.Load += new System.EventHandler(this.RPGSystem_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,15 +177,14 @@
         #endregion
 
         private System.Windows.Forms.Label headerLabel;
-        private System.Windows.Forms.Label systemName;
         private System.Windows.Forms.ComboBox systemDropDown;
-        private System.Windows.Forms.Button systemButton;
-        private System.Windows.Forms.Button addNewSessionButton;
-        private System.Windows.Forms.TextBox newSessionTextBox;
-        private System.Windows.Forms.Label newSessionLabel;
-        private System.Windows.Forms.Button sessionEditButton;
-        private System.Windows.Forms.ComboBox sessionDropDown;
-        private System.Windows.Forms.Label activeSessionLabel;
+        private System.Windows.Forms.Button campaignAddButton;
+        private System.Windows.Forms.TextBox newCampaignTextBox;
+        private System.Windows.Forms.Label newCampaignLabel;
+        private System.Windows.Forms.Button campaignRemoveButton;
+        private System.Windows.Forms.ComboBox campaignDropDown;
+        private System.Windows.Forms.Label currentCampaignLabel;
+        private System.Windows.Forms.Button loadCampaignButton;
     }
 }
 

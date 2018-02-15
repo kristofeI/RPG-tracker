@@ -99,9 +99,9 @@
             this.fightLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.fightLabel.Location = new System.Drawing.Point(824, 455);
             this.fightLabel.Name = "fightLabel";
-            this.fightLabel.Size = new System.Drawing.Size(96, 37);
+            this.fightLabel.Size = new System.Drawing.Size(90, 37);
             this.fightLabel.TabIndex = 7;
-            this.fightLabel.Text = "Walka:";
+            this.fightLabel.Text = "Walka";
             // 
             // NPCLabel
             // 
@@ -144,7 +144,7 @@
             this.eventHistoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.eventHistoryButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.eventHistoryButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.eventHistoryButton.Location = new System.Drawing.Point(817, 265);
+            this.eventHistoryButton.Location = new System.Drawing.Point(817, 282);
             this.eventHistoryButton.Name = "eventHistoryButton";
             this.eventHistoryButton.Size = new System.Drawing.Size(290, 52);
             this.eventHistoryButton.TabIndex = 14;
@@ -160,7 +160,7 @@
             this.bodyNeedsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bodyNeedsButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.bodyNeedsButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.bodyNeedsButton.Location = new System.Drawing.Point(817, 323);
+            this.bodyNeedsButton.Location = new System.Drawing.Point(817, 340);
             this.bodyNeedsButton.Name = "bodyNeedsButton";
             this.bodyNeedsButton.Size = new System.Drawing.Size(290, 54);
             this.bodyNeedsButton.TabIndex = 15;
@@ -233,12 +233,13 @@
             this.startFightButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.startFightButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.startFightButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.startFightButton.Location = new System.Drawing.Point(827, 775);
+            this.startFightButton.Location = new System.Drawing.Point(827, 727);
             this.startFightButton.Name = "startFightButton";
             this.startFightButton.Size = new System.Drawing.Size(318, 54);
             this.startFightButton.TabIndex = 24;
             this.startFightButton.Text = "Rozpocznij walkę";
             this.startFightButton.UseVisualStyleBackColor = true;
+            this.startFightButton.Click += new System.EventHandler(this.startFightButton_Click);
             // 
             // addCharacterToFightButton
             // 
@@ -263,13 +264,14 @@
             this.removeSelectedFightUnitsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.removeSelectedFightUnitsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removeSelectedFightUnitsButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.removeSelectedFightUnitsButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.removeSelectedFightUnitsButton.Location = new System.Drawing.Point(827, 715);
+            this.removeSelectedFightUnitsButton.ForeColor = System.Drawing.Color.Red;
+            this.removeSelectedFightUnitsButton.Location = new System.Drawing.Point(825, 787);
             this.removeSelectedFightUnitsButton.Name = "removeSelectedFightUnitsButton";
             this.removeSelectedFightUnitsButton.Size = new System.Drawing.Size(318, 54);
             this.removeSelectedFightUnitsButton.TabIndex = 26;
             this.removeSelectedFightUnitsButton.Text = "Usuń zaznaczone";
             this.removeSelectedFightUnitsButton.UseVisualStyleBackColor = true;
+            this.removeSelectedFightUnitsButton.Click += new System.EventHandler(this.removeSelectedFightUnitsButton_Click);
             // 
             // charactersGroupBox
             // 

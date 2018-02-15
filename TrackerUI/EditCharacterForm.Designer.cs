@@ -32,12 +32,14 @@
             this.showEditCharacterHeader = new System.Windows.Forms.Label();
             this.saveAndExitCharacterButton = new System.Windows.Forms.Button();
             this.characterStatsGroupBox = new System.Windows.Forms.GroupBox();
+            this.hoursWithoutDrugsTextBox = new System.Windows.Forms.TextBox();
+            this.hoursWithoutWaterTextBox = new System.Windows.Forms.TextBox();
+            this.hoursWithoutFoodTextBox = new System.Windows.Forms.TextBox();
+            this.hoursWithoutDrugsLabel = new System.Windows.Forms.Label();
+            this.hoursWithoutWaterLabel = new System.Windows.Forms.Label();
+            this.hoursWithoutFoodLabel = new System.Windows.Forms.Label();
             this.illnessProgressionTextbox = new System.Windows.Forms.TextBox();
             this.illnessProgressionLabel = new System.Windows.Forms.Label();
-            this.bleedingTextbox = new System.Windows.Forms.TextBox();
-            this.shockTextbox = new System.Windows.Forms.TextBox();
-            this.woundsTextbox = new System.Windows.Forms.TextBox();
-            this.exhaustionTextbox = new System.Windows.Forms.TextBox();
             this.luckTextbox = new System.Windows.Forms.TextBox();
             this.charismaTextbox = new System.Windows.Forms.TextBox();
             this.enduranceTextbox = new System.Windows.Forms.TextBox();
@@ -110,12 +112,10 @@
             this.characterIllnessLabel = new System.Windows.Forms.Label();
             this.characterReputationLabel = new System.Windows.Forms.Label();
             this.characterCharacteristicsLabel = new System.Windows.Forms.Label();
-            this.hoursWithoutFoodLabel = new System.Windows.Forms.Label();
-            this.hoursWithoutWaterLabel = new System.Windows.Forms.Label();
-            this.hoursWithoutDrugsLabel = new System.Windows.Forms.Label();
-            this.hoursWithoutFoodTextBox = new System.Windows.Forms.TextBox();
-            this.hoursWithoutWaterTextBox = new System.Windows.Forms.TextBox();
-            this.hoursWithoutDrugsTextBox = new System.Windows.Forms.TextBox();
+            this.shockDropDown = new System.Windows.Forms.ComboBox();
+            this.bleedingDropDown = new System.Windows.Forms.ComboBox();
+            this.woundsDropDown = new System.Windows.Forms.ComboBox();
+            this.exhaustionDropDown = new System.Windows.Forms.ComboBox();
             this.characterStatsGroupBox.SuspendLayout();
             this.characterSkillsGroupBox.SuspendLayout();
             this.characterInformationGroupBox.SuspendLayout();
@@ -151,7 +151,11 @@
             // 
             // characterStatsGroupBox
             // 
+            this.characterStatsGroupBox.Controls.Add(this.bleedingDropDown);
+            this.characterStatsGroupBox.Controls.Add(this.exhaustionDropDown);
+            this.characterStatsGroupBox.Controls.Add(this.shockDropDown);
             this.characterStatsGroupBox.Controls.Add(this.hoursWithoutDrugsTextBox);
+            this.characterStatsGroupBox.Controls.Add(this.woundsDropDown);
             this.characterStatsGroupBox.Controls.Add(this.hoursWithoutWaterTextBox);
             this.characterStatsGroupBox.Controls.Add(this.hoursWithoutFoodTextBox);
             this.characterStatsGroupBox.Controls.Add(this.hoursWithoutDrugsLabel);
@@ -159,10 +163,6 @@
             this.characterStatsGroupBox.Controls.Add(this.hoursWithoutFoodLabel);
             this.characterStatsGroupBox.Controls.Add(this.illnessProgressionTextbox);
             this.characterStatsGroupBox.Controls.Add(this.illnessProgressionLabel);
-            this.characterStatsGroupBox.Controls.Add(this.bleedingTextbox);
-            this.characterStatsGroupBox.Controls.Add(this.shockTextbox);
-            this.characterStatsGroupBox.Controls.Add(this.woundsTextbox);
-            this.characterStatsGroupBox.Controls.Add(this.exhaustionTextbox);
             this.characterStatsGroupBox.Controls.Add(this.luckTextbox);
             this.characterStatsGroupBox.Controls.Add(this.charismaTextbox);
             this.characterStatsGroupBox.Controls.Add(this.enduranceTextbox);
@@ -189,6 +189,66 @@
             this.characterStatsGroupBox.TabStop = false;
             this.characterStatsGroupBox.Text = "Statystyki";
             // 
+            // hoursWithoutDrugsTextBox
+            // 
+            this.hoursWithoutDrugsTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.hoursWithoutDrugsTextBox.Location = new System.Drawing.Point(286, 646);
+            this.hoursWithoutDrugsTextBox.Name = "hoursWithoutDrugsTextBox";
+            this.hoursWithoutDrugsTextBox.Size = new System.Drawing.Size(110, 33);
+            this.hoursWithoutDrugsTextBox.TabIndex = 53;
+            this.hoursWithoutDrugsTextBox.Text = "0";
+            // 
+            // hoursWithoutWaterTextBox
+            // 
+            this.hoursWithoutWaterTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.hoursWithoutWaterTextBox.Location = new System.Drawing.Point(286, 613);
+            this.hoursWithoutWaterTextBox.Name = "hoursWithoutWaterTextBox";
+            this.hoursWithoutWaterTextBox.Size = new System.Drawing.Size(110, 33);
+            this.hoursWithoutWaterTextBox.TabIndex = 52;
+            this.hoursWithoutWaterTextBox.Text = "0";
+            // 
+            // hoursWithoutFoodTextBox
+            // 
+            this.hoursWithoutFoodTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.hoursWithoutFoodTextBox.Location = new System.Drawing.Point(286, 580);
+            this.hoursWithoutFoodTextBox.Name = "hoursWithoutFoodTextBox";
+            this.hoursWithoutFoodTextBox.Size = new System.Drawing.Size(110, 33);
+            this.hoursWithoutFoodTextBox.TabIndex = 51;
+            this.hoursWithoutFoodTextBox.Text = "0";
+            // 
+            // hoursWithoutDrugsLabel
+            // 
+            this.hoursWithoutDrugsLabel.AutoSize = true;
+            this.hoursWithoutDrugsLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.hoursWithoutDrugsLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.hoursWithoutDrugsLabel.Location = new System.Drawing.Point(10, 647);
+            this.hoursWithoutDrugsLabel.Name = "hoursWithoutDrugsLabel";
+            this.hoursWithoutDrugsLabel.Size = new System.Drawing.Size(265, 25);
+            this.hoursWithoutDrugsLabel.TabIndex = 50;
+            this.hoursWithoutDrugsLabel.Text = "Ilość godzin bez brania leków:";
+            // 
+            // hoursWithoutWaterLabel
+            // 
+            this.hoursWithoutWaterLabel.AutoSize = true;
+            this.hoursWithoutWaterLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.hoursWithoutWaterLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.hoursWithoutWaterLabel.Location = new System.Drawing.Point(10, 618);
+            this.hoursWithoutWaterLabel.Name = "hoursWithoutWaterLabel";
+            this.hoursWithoutWaterLabel.Size = new System.Drawing.Size(197, 25);
+            this.hoursWithoutWaterLabel.TabIndex = 49;
+            this.hoursWithoutWaterLabel.Text = "Ilość godzin bez picia:";
+            // 
+            // hoursWithoutFoodLabel
+            // 
+            this.hoursWithoutFoodLabel.AutoSize = true;
+            this.hoursWithoutFoodLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.hoursWithoutFoodLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.hoursWithoutFoodLabel.Location = new System.Drawing.Point(10, 588);
+            this.hoursWithoutFoodLabel.Name = "hoursWithoutFoodLabel";
+            this.hoursWithoutFoodLabel.Size = new System.Drawing.Size(228, 25);
+            this.hoursWithoutFoodLabel.TabIndex = 48;
+            this.hoursWithoutFoodLabel.Text = "Ilość godzin bez jedzenia:";
+            // 
             // illnessProgressionTextbox
             // 
             this.illnessProgressionTextbox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -207,38 +267,6 @@
             this.illnessProgressionLabel.Size = new System.Drawing.Size(147, 25);
             this.illnessProgressionLabel.TabIndex = 46;
             this.illnessProgressionLabel.Text = "Postęp choroby:";
-            // 
-            // bleedingTextbox
-            // 
-            this.bleedingTextbox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.bleedingTextbox.Location = new System.Drawing.Point(175, 492);
-            this.bleedingTextbox.Name = "bleedingTextbox";
-            this.bleedingTextbox.Size = new System.Drawing.Size(205, 33);
-            this.bleedingTextbox.TabIndex = 45;
-            // 
-            // shockTextbox
-            // 
-            this.shockTextbox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.shockTextbox.Location = new System.Drawing.Point(175, 453);
-            this.shockTextbox.Name = "shockTextbox";
-            this.shockTextbox.Size = new System.Drawing.Size(205, 33);
-            this.shockTextbox.TabIndex = 44;
-            // 
-            // woundsTextbox
-            // 
-            this.woundsTextbox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.woundsTextbox.Location = new System.Drawing.Point(175, 414);
-            this.woundsTextbox.Name = "woundsTextbox";
-            this.woundsTextbox.Size = new System.Drawing.Size(205, 33);
-            this.woundsTextbox.TabIndex = 43;
-            // 
-            // exhaustionTextbox
-            // 
-            this.exhaustionTextbox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.exhaustionTextbox.Location = new System.Drawing.Point(175, 375);
-            this.exhaustionTextbox.Name = "exhaustionTextbox";
-            this.exhaustionTextbox.Size = new System.Drawing.Size(205, 33);
-            this.exhaustionTextbox.TabIndex = 42;
             // 
             // luckTextbox
             // 
@@ -614,6 +642,7 @@
             this.weaponListBox.Name = "weaponListBox";
             this.weaponListBox.Size = new System.Drawing.Size(205, 130);
             this.weaponListBox.TabIndex = 84;
+            this.weaponListBox.SelectedIndexChanged += new System.EventHandler(this.weaponListBox_SelectedIndexChanged);
             // 
             // addNewItemButton
             // 
@@ -737,13 +766,13 @@
             // weaponListLabel
             // 
             this.weaponListLabel.AutoSize = true;
-            this.weaponListLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.weaponListLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.weaponListLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.weaponListLabel.Location = new System.Drawing.Point(242, 438);
             this.weaponListLabel.Name = "weaponListLabel";
-            this.weaponListLabel.Size = new System.Drawing.Size(104, 25);
+            this.weaponListLabel.Size = new System.Drawing.Size(217, 21);
             this.weaponListLabel.TabIndex = 50;
-            this.weaponListLabel.Text = "Lista broni:";
+            this.weaponListLabel.Text = "Lista broni (wybierz aktualną):";
             // 
             // weaponLabel
             // 
@@ -1043,65 +1072,45 @@
             this.characterCharacteristicsLabel.TabIndex = 11;
             this.characterCharacteristicsLabel.Text = "Cechy charakterystyczne:";
             // 
-            // hoursWithoutFoodLabel
+            // shockDropDown
             // 
-            this.hoursWithoutFoodLabel.AutoSize = true;
-            this.hoursWithoutFoodLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.hoursWithoutFoodLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.hoursWithoutFoodLabel.Location = new System.Drawing.Point(10, 588);
-            this.hoursWithoutFoodLabel.Name = "hoursWithoutFoodLabel";
-            this.hoursWithoutFoodLabel.Size = new System.Drawing.Size(228, 25);
-            this.hoursWithoutFoodLabel.TabIndex = 48;
-            this.hoursWithoutFoodLabel.Text = "Ilość godzin bez jedzenia:";
+            this.shockDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.shockDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.shockDropDown.FormattingEnabled = true;
+            this.shockDropDown.Location = new System.Drawing.Point(175, 456);
+            this.shockDropDown.Name = "shockDropDown";
+            this.shockDropDown.Size = new System.Drawing.Size(205, 29);
+            this.shockDropDown.TabIndex = 63;
             // 
-            // hoursWithoutWaterLabel
+            // bleedingDropDown
             // 
-            this.hoursWithoutWaterLabel.AutoSize = true;
-            this.hoursWithoutWaterLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.hoursWithoutWaterLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.hoursWithoutWaterLabel.Location = new System.Drawing.Point(10, 618);
-            this.hoursWithoutWaterLabel.Name = "hoursWithoutWaterLabel";
-            this.hoursWithoutWaterLabel.Size = new System.Drawing.Size(197, 25);
-            this.hoursWithoutWaterLabel.TabIndex = 49;
-            this.hoursWithoutWaterLabel.Text = "Ilość godzin bez picia:";
+            this.bleedingDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bleedingDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.bleedingDropDown.FormattingEnabled = true;
+            this.bleedingDropDown.Location = new System.Drawing.Point(175, 495);
+            this.bleedingDropDown.Name = "bleedingDropDown";
+            this.bleedingDropDown.Size = new System.Drawing.Size(205, 29);
+            this.bleedingDropDown.TabIndex = 64;
             // 
-            // hoursWithoutDrugsLabel
+            // woundsDropDown
             // 
-            this.hoursWithoutDrugsLabel.AutoSize = true;
-            this.hoursWithoutDrugsLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.hoursWithoutDrugsLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.hoursWithoutDrugsLabel.Location = new System.Drawing.Point(10, 647);
-            this.hoursWithoutDrugsLabel.Name = "hoursWithoutDrugsLabel";
-            this.hoursWithoutDrugsLabel.Size = new System.Drawing.Size(265, 25);
-            this.hoursWithoutDrugsLabel.TabIndex = 50;
-            this.hoursWithoutDrugsLabel.Text = "Ilość godzin bez brania leków:";
+            this.woundsDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.woundsDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.woundsDropDown.FormattingEnabled = true;
+            this.woundsDropDown.Location = new System.Drawing.Point(175, 378);
+            this.woundsDropDown.Name = "woundsDropDown";
+            this.woundsDropDown.Size = new System.Drawing.Size(205, 29);
+            this.woundsDropDown.TabIndex = 65;
             // 
-            // hoursWithoutFoodTextBox
+            // exhaustionDropDown
             // 
-            this.hoursWithoutFoodTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.hoursWithoutFoodTextBox.Location = new System.Drawing.Point(286, 580);
-            this.hoursWithoutFoodTextBox.Name = "hoursWithoutFoodTextBox";
-            this.hoursWithoutFoodTextBox.Size = new System.Drawing.Size(110, 33);
-            this.hoursWithoutFoodTextBox.TabIndex = 51;
-            this.hoursWithoutFoodTextBox.Text = "0";
-            // 
-            // hoursWithoutWaterTextBox
-            // 
-            this.hoursWithoutWaterTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.hoursWithoutWaterTextBox.Location = new System.Drawing.Point(286, 613);
-            this.hoursWithoutWaterTextBox.Name = "hoursWithoutWaterTextBox";
-            this.hoursWithoutWaterTextBox.Size = new System.Drawing.Size(110, 33);
-            this.hoursWithoutWaterTextBox.TabIndex = 52;
-            this.hoursWithoutWaterTextBox.Text = "0";
-            // 
-            // hoursWithoutDrugsTextBox
-            // 
-            this.hoursWithoutDrugsTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.hoursWithoutDrugsTextBox.Location = new System.Drawing.Point(286, 646);
-            this.hoursWithoutDrugsTextBox.Name = "hoursWithoutDrugsTextBox";
-            this.hoursWithoutDrugsTextBox.Size = new System.Drawing.Size(110, 33);
-            this.hoursWithoutDrugsTextBox.TabIndex = 53;
-            this.hoursWithoutDrugsTextBox.Text = "0";
+            this.exhaustionDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.exhaustionDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.exhaustionDropDown.FormattingEnabled = true;
+            this.exhaustionDropDown.Location = new System.Drawing.Point(175, 417);
+            this.exhaustionDropDown.Name = "exhaustionDropDown";
+            this.exhaustionDropDown.Size = new System.Drawing.Size(205, 29);
+            this.exhaustionDropDown.TabIndex = 66;
             // 
             // EditCharacterForm
             // 
@@ -1137,10 +1146,6 @@
         private System.Windows.Forms.GroupBox characterStatsGroupBox;
         private System.Windows.Forms.TextBox illnessProgressionTextbox;
         private System.Windows.Forms.Label illnessProgressionLabel;
-        private System.Windows.Forms.TextBox bleedingTextbox;
-        private System.Windows.Forms.TextBox shockTextbox;
-        private System.Windows.Forms.TextBox woundsTextbox;
-        private System.Windows.Forms.TextBox exhaustionTextbox;
         private System.Windows.Forms.TextBox luckTextbox;
         private System.Windows.Forms.TextBox charismaTextbox;
         private System.Windows.Forms.TextBox enduranceTextbox;
@@ -1219,5 +1224,9 @@
         private System.Windows.Forms.Label hoursWithoutDrugsLabel;
         private System.Windows.Forms.Label hoursWithoutWaterLabel;
         private System.Windows.Forms.Label hoursWithoutFoodLabel;
+        private System.Windows.Forms.ComboBox shockDropDown;
+        private System.Windows.Forms.ComboBox bleedingDropDown;
+        private System.Windows.Forms.ComboBox woundsDropDown;
+        private System.Windows.Forms.ComboBox exhaustionDropDown;
     }
 }

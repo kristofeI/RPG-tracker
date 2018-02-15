@@ -44,7 +44,7 @@
     <Compile Include="DataAccess\TextConnectorProcessor.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Models\CampaignModel.cs" />
-    <Compile Include="Models\BattleStatModel.cs" />
+    <Compile Include="Models\RoundModel.cs" />
     <Compile Include="Models\BodyNeedModel.cs" />
     <Compile Include="Models\CharacterModel.cs" />
     <Compile Include="Models\ConsumableModel.cs" />

@@ -7,8 +7,8 @@ using TrackerLibrary.Models;
 
 namespace TrackerUI.FormRequesters
 {
-    public interface IEventRequester
+    public interface ICampaignRequester
     {
-        void EventsEdited(CampaignModel model);
+        void CampaignEdited(CampaignModel model);
     }
 }

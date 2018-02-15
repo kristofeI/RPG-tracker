@@ -16,9 +16,9 @@ namespace TrackerUI
     public partial class HistoryForm : Form
     {
         CampaignModel currentCampaign = new CampaignModel();
-        IEventRequester callingForm;
+        ICampaignRequester callingForm;
 
-        public HistoryForm(IEventRequester caller, CampaignModel campaign)
+        public HistoryForm(ICampaignRequester caller, CampaignModel campaign)
         {
             InitializeComponent();
 
@@ -43,7 +43,7 @@ namespace TrackerUI
 
             currentCampaign.Events.Add(GlobalConfig.Connection.AddNewEvent(newEvent));
 
-            callingForm.EventsEdited(currentCampaign);
+            callingForm.CampaignEdited(currentCampaign);
 
             WireUpLists();
         }
@@ -56,7 +56,7 @@ namespace TrackerUI
 
                 currentCampaign.Events.Remove(ev);
 
-                callingForm.EventsEdited(currentCampaign);
+                callingForm.CampaignEdited(currentCampaign);
 
                 WireUpLists();
             }

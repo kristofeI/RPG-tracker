@@ -36,5 +36,5 @@ E:\PLIKI KOMOPUTER\Dropbox\Praca\Programowanie\Proste programy\RPGTracker\Tracke
 E:\PLIKI KOMOPUTER\Dropbox\Praca\Programowanie\Proste programy\RPGTracker\TrackerUI\obj\Debug\TrackerUI.HistoryForm.resources
 E:\PLIKI KOMOPUTER\Dropbox\Praca\Programowanie\Proste programy\RPGTracker\TrackerUI\obj\Debug\TrackerUI.MakeNewCharacterForm.resources
 E:\PLIKI KOMOPUTER\Dropbox\Praca\Programowanie\Proste programy\RPGTracker\TrackerUI\obj\Debug\TrackerUI.Properties.Resources.resources
-E:\PLIKI KOMOPUTER\Dropbox\Praca\Programowanie\Proste programy\RPGTracker\TrackerUI\obj\Debug\TrackerUI.SystemRPG.resources
 E:\PLIKI KOMOPUTER\Dropbox\Praca\Programowanie\Proste programy\RPGTracker\TrackerUI\obj\Debug\TrackerUI.csproj.GenerateResource.Cache
+E:\PLIKI KOMOPUTER\Dropbox\Praca\Programowanie\Proste programy\RPGTracker\TrackerUI\obj\Debug\TrackerUI.RPGSystem.resources
