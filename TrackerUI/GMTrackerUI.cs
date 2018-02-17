@@ -18,9 +18,6 @@ namespace TrackerUI
 
         //TODO!! wire up current session, its team and npcs
         CampaignModel currentCampaign = new CampaignModel();
-        List<PlayerModel> currentPlayers = new List<PlayerModel>();
-        List<CharacterModel> currentTeam = new List<CharacterModel>();
-        List<CharacterModel> currentsNpcs = new List<CharacterModel>();
         List<CharacterModel> fightingUnits = new List<CharacterModel>();
         ICampaignRequester callingForm;
 
@@ -30,9 +27,6 @@ namespace TrackerUI
 
             callingForm = caller;
             currentCampaign = campaign;
-            currentPlayers = currentCampaign.PlayersInCampaign;
-            currentTeam = currentCampaign.TeamCharacters;
-            currentsNpcs = currentCampaign.NpcCharacters;
 
             WireUpLists();
         }
@@ -41,11 +35,11 @@ namespace TrackerUI
         {
 
             teamListBox.DataSource = null;
-            teamListBox.DataSource = currentTeam;
+            teamListBox.DataSource = currentCampaign.TeamCharacters;
             teamListBox.DisplayMember = "Name";
 
             NpcListBox.DataSource = null;
-            NpcListBox.DataSource = currentsNpcs;
+            NpcListBox.DataSource = currentCampaign.NpcCharacters;
             NpcListBox.DisplayMember = "Name";
 
             fightingUnitsListBox.DataSource = null;
@@ -53,7 +47,7 @@ namespace TrackerUI
             fightingUnitsListBox.DisplayMember = "Name";
 
             playerListDropDown.DataSource = null;
-            playerListDropDown.DataSource = currentPlayers;
+            playerListDropDown.DataSource = currentCampaign.PlayersInCampaign;
             playerListDropDown.DisplayMember = "Name";
 
             if (playerListDropDown.Text != "")
@@ -61,8 +55,9 @@ namespace TrackerUI
                 characterListDropDown.DataSource = null;
                 characterListDropDown.DataSource = GlobalConfig.Connection.GetAllCharactersOfOnePlayer((PlayerModel)playerListDropDown.SelectedItem);
                 characterListDropDown.DisplayMember = "Name";
+                characterListDropDown.SelectedIndex = -1;
             }
-            
+
             yearValue.Text = currentCampaign.CurrentGameTime.ToString("yyyy");
             monthValue.Text = currentCampaign.CurrentGameTime.ToString("MM");
             dayValue.Text = currentCampaign.CurrentGameTime.ToString("dd");
@@ -72,8 +67,8 @@ namespace TrackerUI
 
         private void CreateSampleData()
         {
-            currentTeam.Add(new CharacterModel { Name = "Zbyszek" });
-            currentsNpcs.Add(new CharacterModel { Name = "Wiesława" });
+            currentCampaign.TeamCharacters.Add(new CharacterModel { Name = "Zbyszek" });
+            currentCampaign.NpcCharacters.Add(new CharacterModel { Name = "Wiesława" });
 
         }
 
@@ -83,14 +78,37 @@ namespace TrackerUI
 
             if (!teamRadioButton.Checked && !npcRadioButton.Checked)
             {
+                MessageBox.Show("Zaznacz z której listy pokazać/edytować postać - z drużyny czy NPC?");
                 output = false;
             }
-            
+
 
             return output;
         }
 
+        private bool ValidateListOfCharactersToEditButton()
+        {
+            bool output = true;
 
+            if (!teamRadioButton.Checked && !npcRadioButton.Checked)
+            {
+                MessageBox.Show("Zaznacz z której listy pokazać/edytować postać - z drużyny czy NPC?");
+                output = false;
+            }
+            if (teamRadioButton.Checked && teamListBox.Items.Count == 0)
+            {
+                MessageBox.Show("Na liście nie ma żadnej postaci do pokazania/edycji. ");
+                output = false;
+            }
+            if (npcRadioButton.Checked && NpcListBox.Items.Count == 0)
+            {
+                MessageBox.Show("Na liście nie ma żadnej postaci do pokazania/edycji. ");
+                output = false;
+            }
+
+
+            return output;
+        }
 
 
 
@@ -120,19 +138,23 @@ namespace TrackerUI
         {
             if (teamRadioButton.Checked)
             {
-                currentTeam.Add(model);
+                currentCampaign.TeamCharacters.Add(model);
+
+                callingForm.CampaignEdited(currentCampaign);
 
                 WireUpLists();
             }
             if (npcRadioButton.Checked)
             {
-                currentsNpcs.Add(model);
+                currentCampaign.NpcCharacters.Add(model);
+
+                callingForm.CampaignEdited(currentCampaign);
 
                 WireUpLists();
             }
-            else
+            if (!teamRadioButton.Checked && !npcRadioButton.Checked)
             {
-                MessageBox.Show("Zaznacz do której listy dodać postać - do drużyny czy NPC?");
+                MessageBox.Show("Zaznacz z której listy pokazać/edytować postać - z drużyny czy NPC?");
             }
         }
 
@@ -144,7 +166,7 @@ namespace TrackerUI
 
         private void showEditCharacterButton_Click(object sender, EventArgs e)
         {
-            if (ValidateListOfCharactersButton())
+            if (ValidateListOfCharactersToEditButton())
             {
                 if (teamRadioButton.Checked)
                 {
@@ -156,10 +178,6 @@ namespace TrackerUI
                     EditCharacterForm frm = new EditCharacterForm(this, (CharacterModel)NpcListBox.SelectedValue);
                     frm.Show();
                 }
-            }
-            else
-            {
-                MessageBox.Show("Zaznacz z której listy pokazać/edytować bohatera - z drużyny czy NPC?");
             }
         }
 
@@ -182,7 +200,7 @@ namespace TrackerUI
             }
             else
             {
-                MessageBox.Show("Zaznacz z której listy pokazać/edytować bohatera - z drużyny czy NPC?");
+                MessageBox.Show("Zaznacz z której listy dodać do walki - z drużyny czy NPC?");
             }
         }
 
@@ -194,7 +212,9 @@ namespace TrackerUI
                 {
                     CharacterModel c = (CharacterModel)teamListBox.SelectedValue;
 
-                    currentTeam.Remove(c);
+                    currentCampaign.TeamCharacters.Remove(c);
+
+                    callingForm.CampaignEdited(currentCampaign);
 
                     WireUpLists();
                 }
@@ -202,14 +222,16 @@ namespace TrackerUI
                 {
                     CharacterModel c = (CharacterModel)NpcListBox.SelectedValue;
 
-                    currentsNpcs.Remove(c);
+                    currentCampaign.NpcCharacters.Remove(c);
+
+                    callingForm.CampaignEdited(currentCampaign);
 
                     WireUpLists();
                 }
             }
             else
             {
-                MessageBox.Show("Zaznacz z której listy pokazać/edytować bohatera - z drużyny czy NPC?");
+                MessageBox.Show("Zaznacz z której listy usunąć bohatera - z drużyny czy NPC?");
             }
         }
 
@@ -217,7 +239,15 @@ namespace TrackerUI
         {
             CharacterModel model = (CharacterModel)characterListDropDown.SelectedItem;
 
-            CharacterComplete(model);
+            if (model != null)
+            {
+                if (CheckIfCharacterIsAlreadyOnTheList(model))
+                {
+                    CharacterComplete(model);
+                } 
+            }
+            else
+                MessageBox.Show("Nie została wybrana postać do dodania.");
         }
 
         private void playerListDropDown_SelectedIndexChanged(object sender, EventArgs e)
@@ -225,12 +255,30 @@ namespace TrackerUI
             WireUpLists();
         }
 
+        private bool CheckIfCharacterIsAlreadyOnTheList(CharacterModel characterToCheck)
+        {
+            bool output = true;
 
+            foreach (CharacterModel character in currentCampaign.NpcCharacters)
+            {
+                if (characterToCheck.Id == character.Id)
+                {
+                    output = false;
+                    MessageBox.Show("Postać już istnieje na liście drużyny.");
+                } 
+            }
 
+            foreach (CharacterModel character in currentCampaign.TeamCharacters)
+            {
+                if (characterToCheck.Id == character.Id)
+                {
+                    output = false;
+                    MessageBox.Show("Postać już istnieje na liście NPCów.");
+                }
+            }
 
-
-
-
+            return output;
+        }
 
 
 
@@ -242,7 +290,7 @@ namespace TrackerUI
 
                 currentCampaign.CurrentGameTime = newTime;
 
-                GlobalConfig.Connection.UpdateCampaign(currentCampaign);
+                callingForm.CampaignEdited(currentCampaign);
 
                 WireUpLists();
             }
@@ -282,9 +330,9 @@ namespace TrackerUI
 
             currentCampaign.CurrentGameTime = newTime;
 
-            GlobalConfig.Connection.UpdateCampaign(currentCampaign);
+            callingForm.CampaignEdited(currentCampaign);
 
-            foreach (CharacterModel character in currentTeam)
+            foreach (CharacterModel character in currentCampaign.TeamCharacters)
             {
                 character.HoursWithoutDrugs += 1;
                 character.HoursWithoutFood += 1;
@@ -302,9 +350,9 @@ namespace TrackerUI
 
             currentCampaign.CurrentGameTime = newTime;
 
-            GlobalConfig.Connection.UpdateCampaign(currentCampaign);
+            callingForm.CampaignEdited(currentCampaign);
 
-            foreach (CharacterModel character in currentTeam)
+            foreach (CharacterModel character in currentCampaign.TeamCharacters)
             {
                 character.HoursWithoutDrugs -= 1;
                 character.HoursWithoutFood -= 1;
@@ -331,7 +379,7 @@ namespace TrackerUI
 
         private void bodyNeedsButton_Click(object sender, EventArgs e)
         {
-            BodyNeedsForm frm = new BodyNeedsForm(this, currentTeam);
+            BodyNeedsForm frm = new BodyNeedsForm(this, currentCampaign.TeamCharacters);
             frm.Show();
         }
 
@@ -342,7 +390,14 @@ namespace TrackerUI
             WireUpLists();
         }
 
+        public void NewPlayerCreated(PlayerModel model)
+        {
+            currentCampaign.PlayersInCampaign.Add(model);
 
+            GlobalConfig.Connection.UpdateCampaign(currentCampaign);
+
+            WireUpLists();
+        }
 
 
 

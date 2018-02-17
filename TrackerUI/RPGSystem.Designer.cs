@@ -67,31 +67,32 @@
             this.campaignAddButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.campaignAddButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.campaignAddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.campaignAddButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.campaignAddButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.campaignAddButton.Location = new System.Drawing.Point(264, 325);
+            this.campaignAddButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.campaignAddButton.ForeColor = System.Drawing.Color.OliveDrab;
+            this.campaignAddButton.Location = new System.Drawing.Point(52, 231);
             this.campaignAddButton.Name = "campaignAddButton";
-            this.campaignAddButton.Size = new System.Drawing.Size(106, 54);
+            this.campaignAddButton.Size = new System.Drawing.Size(318, 35);
             this.campaignAddButton.TabIndex = 37;
-            this.campaignAddButton.Text = "Dodaj";
+            this.campaignAddButton.Text = "Dodaj do listy";
             this.campaignAddButton.UseVisualStyleBackColor = true;
             this.campaignAddButton.Click += new System.EventHandler(this.campaignAddButton_Click);
             // 
             // newCampaignTextBox
             // 
             this.newCampaignTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.newCampaignTextBox.Location = new System.Drawing.Point(52, 353);
+            this.newCampaignTextBox.Location = new System.Drawing.Point(52, 200);
             this.newCampaignTextBox.Name = "newCampaignTextBox";
-            this.newCampaignTextBox.Size = new System.Drawing.Size(206, 25);
+            this.newCampaignTextBox.Size = new System.Drawing.Size(318, 25);
             this.newCampaignTextBox.TabIndex = 36;
             this.newCampaignTextBox.Text = "Wpisz nazwę nowej kampanii";
+            this.newCampaignTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // newCampaignLabel
             // 
             this.newCampaignLabel.AutoSize = true;
             this.newCampaignLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.newCampaignLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.newCampaignLabel.Location = new System.Drawing.Point(47, 325);
+            this.newCampaignLabel.Location = new System.Drawing.Point(100, 172);
             this.newCampaignLabel.Name = "newCampaignLabel";
             this.newCampaignLabel.Size = new System.Drawing.Size(211, 25);
             this.newCampaignLabel.TabIndex = 35;
@@ -105,7 +106,7 @@
             this.campaignRemoveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.campaignRemoveButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.campaignRemoveButton.ForeColor = System.Drawing.Color.Red;
-            this.campaignRemoveButton.Location = new System.Drawing.Point(52, 408);
+            this.campaignRemoveButton.Location = new System.Drawing.Point(52, 544);
             this.campaignRemoveButton.Name = "campaignRemoveButton";
             this.campaignRemoveButton.Size = new System.Drawing.Size(318, 40);
             this.campaignRemoveButton.TabIndex = 34;
@@ -117,7 +118,7 @@
             // 
             this.campaignDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.campaignDropDown.FormattingEnabled = true;
-            this.campaignDropDown.Location = new System.Drawing.Point(52, 254);
+            this.campaignDropDown.Location = new System.Drawing.Point(52, 357);
             this.campaignDropDown.Name = "campaignDropDown";
             this.campaignDropDown.Size = new System.Drawing.Size(318, 38);
             this.campaignDropDown.TabIndex = 33;
@@ -127,7 +128,7 @@
             this.currentCampaignLabel.AutoSize = true;
             this.currentCampaignLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.currentCampaignLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.currentCampaignLabel.Location = new System.Drawing.Point(45, 204);
+            this.currentCampaignLabel.Location = new System.Drawing.Point(45, 307);
             this.currentCampaignLabel.Name = "currentCampaignLabel";
             this.currentCampaignLabel.Size = new System.Drawing.Size(350, 37);
             this.currentCampaignLabel.TabIndex = 32;
@@ -141,7 +142,7 @@
             this.loadCampaignButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.loadCampaignButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.loadCampaignButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.loadCampaignButton.Location = new System.Drawing.Point(52, 482);
+            this.loadCampaignButton.Location = new System.Drawing.Point(52, 413);
             this.loadCampaignButton.Name = "loadCampaignButton";
             this.loadCampaignButton.Size = new System.Drawing.Size(318, 73);
             this.loadCampaignButton.TabIndex = 38;
@@ -149,7 +150,7 @@
             this.loadCampaignButton.UseVisualStyleBackColor = true;
             this.loadCampaignButton.Click += new System.EventHandler(this.loadCampaignButton_Click);
             // 
-            // SystemRPG
+            // RPGSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -167,7 +168,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.Name = "SystemRPG";
+            this.Name = "RPGSystem";
             this.Text = "System RPG";
             this.ResumeLayout(false);
             this.PerformLayout();

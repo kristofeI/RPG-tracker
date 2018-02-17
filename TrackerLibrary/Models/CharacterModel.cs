@@ -24,6 +24,16 @@ namespace TrackerLibrary.Models
 
         public string Trick { get; set; }
 
+        public string Spirit { get; set; }
+
+        public string Strength { get; set; }
+
+        public string Cunning { get; set; }
+
+        public string Vigor { get; set; }
+
+        public string Agility { get; set; }
+
         public float Reputation { get; set; }
 
         public float Fame { get; set; }

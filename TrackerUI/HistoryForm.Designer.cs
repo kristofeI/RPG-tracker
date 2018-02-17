@@ -33,7 +33,6 @@
             this.timeDescriptionTextBox = new System.Windows.Forms.TextBox();
             this.historyListBox = new System.Windows.Forms.ListBox();
             this.fullDateLabel = new System.Windows.Forms.Label();
-            this.historyListLabel = new System.Windows.Forms.Label();
             this.NPCLabel = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
             this.addNewEventButton = new System.Windows.Forms.Button();
@@ -47,7 +46,7 @@
             this.eventHistoryLabel.AutoSize = true;
             this.eventHistoryLabel.Font = new System.Drawing.Font("Segoe UI Light", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.eventHistoryLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.eventHistoryLabel.Location = new System.Drawing.Point(53, 20);
+            this.eventHistoryLabel.Location = new System.Drawing.Point(480, 20);
             this.eventHistoryLabel.Name = "eventHistoryLabel";
             this.eventHistoryLabel.Size = new System.Drawing.Size(299, 50);
             this.eventHistoryLabel.TabIndex = 4;
@@ -66,9 +65,9 @@
             this.historyListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.historyListBox.FormattingEnabled = true;
             this.historyListBox.ItemHeight = 30;
-            this.historyListBox.Location = new System.Drawing.Point(17, 345);
+            this.historyListBox.Location = new System.Drawing.Point(420, 108);
             this.historyListBox.Name = "historyListBox";
-            this.historyListBox.Size = new System.Drawing.Size(359, 214);
+            this.historyListBox.Size = new System.Drawing.Size(792, 214);
             this.historyListBox.TabIndex = 35;
             // 
             // fullDateLabel
@@ -82,17 +81,6 @@
             this.fullDateLabel.TabIndex = 34;
             this.fullDateLabel.Text = "RRRR:MM:DD:HH";
             // 
-            // historyListLabel
-            // 
-            this.historyListLabel.AutoSize = true;
-            this.historyListLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.historyListLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.historyListLabel.Location = new System.Drawing.Point(12, 312);
-            this.historyListLabel.Name = "historyListLabel";
-            this.historyListLabel.Size = new System.Drawing.Size(89, 30);
-            this.historyListLabel.TabIndex = 33;
-            this.historyListLabel.Text = "Historia:";
-            // 
             // NPCLabel
             // 
             this.NPCLabel.AutoSize = true;
@@ -100,9 +88,9 @@
             this.NPCLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.NPCLabel.Location = new System.Drawing.Point(12, 155);
             this.NPCLabel.Name = "NPCLabel";
-            this.NPCLabel.Size = new System.Drawing.Size(227, 30);
+            this.NPCLabel.Size = new System.Drawing.Size(284, 30);
             this.NPCLabel.TabIndex = 32;
-            this.NPCLabel.Text = "Dodaj opis wydarzenia:";
+            this.NPCLabel.Text = "Dodaj krótki opis wydarzenia:";
             // 
             // timeLabel
             // 
@@ -122,7 +110,7 @@
             this.addNewEventButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.addNewEventButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addNewEventButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.addNewEventButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.addNewEventButton.ForeColor = System.Drawing.Color.OliveDrab;
             this.addNewEventButton.Location = new System.Drawing.Point(17, 227);
             this.addNewEventButton.Name = "addNewEventButton";
             this.addNewEventButton.Size = new System.Drawing.Size(359, 49);
@@ -139,11 +127,11 @@
             this.removeSelectedEventButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removeSelectedEventButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.removeSelectedEventButton.ForeColor = System.Drawing.Color.Red;
-            this.removeSelectedEventButton.Location = new System.Drawing.Point(17, 565);
+            this.removeSelectedEventButton.Location = new System.Drawing.Point(420, 342);
             this.removeSelectedEventButton.Name = "removeSelectedEventButton";
-            this.removeSelectedEventButton.Size = new System.Drawing.Size(359, 52);
+            this.removeSelectedEventButton.Size = new System.Drawing.Size(792, 52);
             this.removeSelectedEventButton.TabIndex = 49;
-            this.removeSelectedEventButton.Text = "Usuń zaznaczoną umiejętność";
+            this.removeSelectedEventButton.Text = "Usuń zaznaczone wydarzenie";
             this.removeSelectedEventButton.UseVisualStyleBackColor = true;
             this.removeSelectedEventButton.Click += new System.EventHandler(this.removeSelectedEventButton_Click);
             // 
@@ -154,8 +142,8 @@
             this.backToMenuButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.backToMenuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backToMenuButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.backToMenuButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.backToMenuButton.Location = new System.Drawing.Point(17, 623);
+            this.backToMenuButton.ForeColor = System.Drawing.Color.Goldenrod;
+            this.backToMenuButton.Location = new System.Drawing.Point(12, 345);
             this.backToMenuButton.Name = "backToMenuButton";
             this.backToMenuButton.Size = new System.Drawing.Size(359, 49);
             this.backToMenuButton.TabIndex = 51;
@@ -168,14 +156,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(398, 689);
+            this.ClientSize = new System.Drawing.Size(1252, 422);
             this.Controls.Add(this.backToMenuButton);
             this.Controls.Add(this.addNewEventButton);
             this.Controls.Add(this.removeSelectedEventButton);
             this.Controls.Add(this.timeDescriptionTextBox);
             this.Controls.Add(this.historyListBox);
             this.Controls.Add(this.fullDateLabel);
-            this.Controls.Add(this.historyListLabel);
             this.Controls.Add(this.NPCLabel);
             this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.eventHistoryLabel);
@@ -195,7 +182,6 @@
         private System.Windows.Forms.TextBox timeDescriptionTextBox;
         private System.Windows.Forms.ListBox historyListBox;
         private System.Windows.Forms.Label fullDateLabel;
-        private System.Windows.Forms.Label historyListLabel;
         private System.Windows.Forms.Label NPCLabel;
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Button addNewEventButton;

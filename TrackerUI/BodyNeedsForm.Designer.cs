@@ -147,7 +147,7 @@
             this.updateBodyNeedsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.updateBodyNeedsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.updateBodyNeedsButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.updateBodyNeedsButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.updateBodyNeedsButton.ForeColor = System.Drawing.Color.CadetBlue;
             this.updateBodyNeedsButton.Location = new System.Drawing.Point(615, 188);
             this.updateBodyNeedsButton.Name = "updateBodyNeedsButton";
             this.updateBodyNeedsButton.Size = new System.Drawing.Size(116, 112);
@@ -207,7 +207,7 @@
             this.backToMenuButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.backToMenuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backToMenuButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.backToMenuButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.backToMenuButton.ForeColor = System.Drawing.Color.Goldenrod;
             this.backToMenuButton.Location = new System.Drawing.Point(35, 313);
             this.backToMenuButton.Name = "backToMenuButton";
             this.backToMenuButton.Size = new System.Drawing.Size(696, 49);

@@ -41,6 +41,7 @@
             this.playerEmailLabel = new System.Windows.Forms.Label();
             this.playerNameValue = new System.Windows.Forms.TextBox();
             this.playerNameLabel = new System.Windows.Forms.Label();
+            this.BackButton = new System.Windows.Forms.Button();
             this.createNewPlayerGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,8 +64,8 @@
             this.makeCharacterAndBackButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.makeCharacterAndBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.makeCharacterAndBackButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.makeCharacterAndBackButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.makeCharacterAndBackButton.Location = new System.Drawing.Point(40, 441);
+            this.makeCharacterAndBackButton.ForeColor = System.Drawing.Color.CadetBlue;
+            this.makeCharacterAndBackButton.Location = new System.Drawing.Point(40, 468);
             this.makeCharacterAndBackButton.Name = "makeCharacterAndBackButton";
             this.makeCharacterAndBackButton.Size = new System.Drawing.Size(525, 63);
             this.makeCharacterAndBackButton.TabIndex = 48;
@@ -119,12 +120,12 @@
             this.makeCharacterAndEditButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.makeCharacterAndEditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.makeCharacterAndEditButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.makeCharacterAndEditButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.makeCharacterAndEditButton.Location = new System.Drawing.Point(40, 510);
+            this.makeCharacterAndEditButton.ForeColor = System.Drawing.Color.OliveDrab;
+            this.makeCharacterAndEditButton.Location = new System.Drawing.Point(40, 382);
             this.makeCharacterAndEditButton.Name = "makeCharacterAndEditButton";
-            this.makeCharacterAndEditButton.Size = new System.Drawing.Size(525, 63);
+            this.makeCharacterAndEditButton.Size = new System.Drawing.Size(525, 80);
             this.makeCharacterAndEditButton.TabIndex = 53;
-            this.makeCharacterAndEditButton.Text = "Stwórz postać i uzupełnij pozostałe statystyki";
+            this.makeCharacterAndEditButton.Text = "Stwórz postać i od razu uzupełnij pozostałe statystyki";
             this.makeCharacterAndEditButton.UseVisualStyleBackColor = true;
             this.makeCharacterAndEditButton.Click += new System.EventHandler(this.makeCharacterAndEditButton_Click);
             // 
@@ -181,12 +182,28 @@
             this.playerNameLabel.TabIndex = 52;
             this.playerNameLabel.Text = "Nazwa gracza:";
             // 
+            // BackButton
+            // 
+            this.BackButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.BackButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.BackButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BackButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.BackButton.ForeColor = System.Drawing.Color.Goldenrod;
+            this.BackButton.Location = new System.Drawing.Point(40, 537);
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(525, 63);
+            this.BackButton.TabIndex = 55;
+            this.BackButton.Text = "Wróć do menu głównego";
+            this.BackButton.UseVisualStyleBackColor = true;
+            // 
             // MakeNewCharacterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(594, 595);
+            this.ClientSize = new System.Drawing.Size(594, 616);
+            this.Controls.Add(this.BackButton);
             this.Controls.Add(this.createNewPlayerGroupBox);
             this.Controls.Add(this.makeCharacterAndEditButton);
             this.Controls.Add(this.playerDropDown);
@@ -221,5 +238,6 @@
         private System.Windows.Forms.Label playerEmailLabel;
         private System.Windows.Forms.TextBox playerNameValue;
         private System.Windows.Forms.Label playerNameLabel;
+        private System.Windows.Forms.Button BackButton;
     }
 }

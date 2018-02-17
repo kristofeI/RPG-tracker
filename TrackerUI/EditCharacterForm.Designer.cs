@@ -32,7 +32,11 @@
             this.showEditCharacterHeader = new System.Windows.Forms.Label();
             this.saveAndExitCharacterButton = new System.Windows.Forms.Button();
             this.characterStatsGroupBox = new System.Windows.Forms.GroupBox();
+            this.bleedingDropDown = new System.Windows.Forms.ComboBox();
+            this.exhaustionDropDown = new System.Windows.Forms.ComboBox();
+            this.shockDropDown = new System.Windows.Forms.ComboBox();
             this.hoursWithoutDrugsTextBox = new System.Windows.Forms.TextBox();
+            this.woundsDropDown = new System.Windows.Forms.ComboBox();
             this.hoursWithoutWaterTextBox = new System.Windows.Forms.TextBox();
             this.hoursWithoutFoodTextBox = new System.Windows.Forms.TextBox();
             this.hoursWithoutDrugsLabel = new System.Windows.Forms.Label();
@@ -59,18 +63,27 @@
             this.experienceLabel = new System.Windows.Forms.Label();
             this.levelLabel = new System.Windows.Forms.Label();
             this.characterSkillsGroupBox = new System.Windows.Forms.GroupBox();
+            this.removeWeaponButton = new System.Windows.Forms.Button();
             this.skillTraitDropDown = new System.Windows.Forms.ComboBox();
             this.skillDiceDropDown = new System.Windows.Forms.ComboBox();
             this.removeSkillButton = new System.Windows.Forms.Button();
             this.addNewSkillButton = new System.Windows.Forms.Button();
             this.skillNameLabel = new System.Windows.Forms.Label();
+            this.weaponListBox = new System.Windows.Forms.ListBox();
             this.skillTraitLabel = new System.Windows.Forms.Label();
             this.diceLabel = new System.Windows.Forms.Label();
+            this.weaponLabel = new System.Windows.Forms.Label();
+            this.weaponListLabel = new System.Windows.Forms.Label();
             this.skillNameValue = new System.Windows.Forms.TextBox();
             this.addNewAbilityLabel = new System.Windows.Forms.Label();
+            this.addNewWeaponButton = new System.Windows.Forms.Button();
             this.skillsListBox = new System.Windows.Forms.ListBox();
             this.characterInformationGroupBox = new System.Windows.Forms.GroupBox();
-            this.weaponListBox = new System.Windows.Forms.ListBox();
+            this.strengthDiceDropDown = new System.Windows.Forms.ComboBox();
+            this.cunningDiceDropDown = new System.Windows.Forms.ComboBox();
+            this.vigorDiceDropDown = new System.Windows.Forms.ComboBox();
+            this.agilityDiceDropDown = new System.Windows.Forms.ComboBox();
+            this.spiritDiceDropDown = new System.Windows.Forms.ComboBox();
             this.addNewItemButton = new System.Windows.Forms.Button();
             this.removeSelectedItemButton = new System.Windows.Forms.Button();
             this.addedItemsListBox = new System.Windows.Forms.ListBox();
@@ -80,20 +93,12 @@
             this.itemNameTextBox = new System.Windows.Forms.TextBox();
             this.itemNameLabel = new System.Windows.Forms.Label();
             this.equipmentLabel = new System.Windows.Forms.Label();
-            this.addNewWeaponButton = new System.Windows.Forms.Button();
-            this.weaponListLabel = new System.Windows.Forms.Label();
-            this.weaponLabel = new System.Windows.Forms.Label();
             this.traitLabel = new System.Windows.Forms.Label();
             this.characterTricksTextbox = new System.Windows.Forms.TextBox();
-            this.agilityDiceDropDown = new System.Windows.Forms.ComboBox();
             this.characterFameTextBox = new System.Windows.Forms.TextBox();
-            this.vigorDiceDropDown = new System.Windows.Forms.ComboBox();
             this.characterReputationTextBox = new System.Windows.Forms.TextBox();
-            this.cunningDiceDropDown = new System.Windows.Forms.ComboBox();
             this.characterCharacteristicsTextbox = new System.Windows.Forms.TextBox();
-            this.strengthDiceDropDown = new System.Windows.Forms.ComboBox();
             this.characterIllnessTextbox = new System.Windows.Forms.TextBox();
-            this.spiritDiceDropDown = new System.Windows.Forms.ComboBox();
             this.agilityLabel = new System.Windows.Forms.Label();
             this.characterProfessionTextBox = new System.Windows.Forms.TextBox();
             this.vigorLabel = new System.Windows.Forms.Label();
@@ -112,10 +117,7 @@
             this.characterIllnessLabel = new System.Windows.Forms.Label();
             this.characterReputationLabel = new System.Windows.Forms.Label();
             this.characterCharacteristicsLabel = new System.Windows.Forms.Label();
-            this.shockDropDown = new System.Windows.Forms.ComboBox();
-            this.bleedingDropDown = new System.Windows.Forms.ComboBox();
-            this.woundsDropDown = new System.Windows.Forms.ComboBox();
-            this.exhaustionDropDown = new System.Windows.Forms.ComboBox();
+            this.justBackButton = new System.Windows.Forms.Button();
             this.characterStatsGroupBox.SuspendLayout();
             this.characterSkillsGroupBox.SuspendLayout();
             this.characterInformationGroupBox.SuspendLayout();
@@ -127,7 +129,7 @@
             this.showEditCharacterHeader.AutoSize = true;
             this.showEditCharacterHeader.Font = new System.Drawing.Font("Segoe UI Light", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.showEditCharacterHeader.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.showEditCharacterHeader.Location = new System.Drawing.Point(486, 9);
+            this.showEditCharacterHeader.Location = new System.Drawing.Point(379, 9);
             this.showEditCharacterHeader.Name = "showEditCharacterHeader";
             this.showEditCharacterHeader.Size = new System.Drawing.Size(516, 50);
             this.showEditCharacterHeader.TabIndex = 58;
@@ -140,10 +142,10 @@
             this.saveAndExitCharacterButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.saveAndExitCharacterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveAndExitCharacterButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.saveAndExitCharacterButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.saveAndExitCharacterButton.Location = new System.Drawing.Point(693, 946);
+            this.saveAndExitCharacterButton.ForeColor = System.Drawing.Color.CadetBlue;
+            this.saveAndExitCharacterButton.Location = new System.Drawing.Point(879, 821);
             this.saveAndExitCharacterButton.Name = "saveAndExitCharacterButton";
-            this.saveAndExitCharacterButton.Size = new System.Drawing.Size(525, 95);
+            this.saveAndExitCharacterButton.Size = new System.Drawing.Size(387, 77);
             this.saveAndExitCharacterButton.TabIndex = 62;
             this.saveAndExitCharacterButton.Text = "Zapisz statystyki i wróć do panelu głównego";
             this.saveAndExitCharacterButton.UseVisualStyleBackColor = true;
@@ -189,6 +191,36 @@
             this.characterStatsGroupBox.TabStop = false;
             this.characterStatsGroupBox.Text = "Statystyki";
             // 
+            // bleedingDropDown
+            // 
+            this.bleedingDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bleedingDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.bleedingDropDown.FormattingEnabled = true;
+            this.bleedingDropDown.Location = new System.Drawing.Point(175, 495);
+            this.bleedingDropDown.Name = "bleedingDropDown";
+            this.bleedingDropDown.Size = new System.Drawing.Size(205, 29);
+            this.bleedingDropDown.TabIndex = 64;
+            // 
+            // exhaustionDropDown
+            // 
+            this.exhaustionDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.exhaustionDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.exhaustionDropDown.FormattingEnabled = true;
+            this.exhaustionDropDown.Location = new System.Drawing.Point(175, 417);
+            this.exhaustionDropDown.Name = "exhaustionDropDown";
+            this.exhaustionDropDown.Size = new System.Drawing.Size(205, 29);
+            this.exhaustionDropDown.TabIndex = 66;
+            // 
+            // shockDropDown
+            // 
+            this.shockDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.shockDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.shockDropDown.FormattingEnabled = true;
+            this.shockDropDown.Location = new System.Drawing.Point(175, 456);
+            this.shockDropDown.Name = "shockDropDown";
+            this.shockDropDown.Size = new System.Drawing.Size(205, 29);
+            this.shockDropDown.TabIndex = 63;
+            // 
             // hoursWithoutDrugsTextBox
             // 
             this.hoursWithoutDrugsTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -197,6 +229,16 @@
             this.hoursWithoutDrugsTextBox.Size = new System.Drawing.Size(110, 33);
             this.hoursWithoutDrugsTextBox.TabIndex = 53;
             this.hoursWithoutDrugsTextBox.Text = "0";
+            // 
+            // woundsDropDown
+            // 
+            this.woundsDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.woundsDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.woundsDropDown.FormattingEnabled = true;
+            this.woundsDropDown.Location = new System.Drawing.Point(175, 378);
+            this.woundsDropDown.Name = "woundsDropDown";
+            this.woundsDropDown.Size = new System.Drawing.Size(205, 29);
+            this.woundsDropDown.TabIndex = 65;
             // 
             // hoursWithoutWaterTextBox
             // 
@@ -447,23 +489,44 @@
             // 
             // characterSkillsGroupBox
             // 
+            this.characterSkillsGroupBox.Controls.Add(this.removeWeaponButton);
             this.characterSkillsGroupBox.Controls.Add(this.skillTraitDropDown);
             this.characterSkillsGroupBox.Controls.Add(this.skillDiceDropDown);
             this.characterSkillsGroupBox.Controls.Add(this.removeSkillButton);
             this.characterSkillsGroupBox.Controls.Add(this.addNewSkillButton);
             this.characterSkillsGroupBox.Controls.Add(this.skillNameLabel);
+            this.characterSkillsGroupBox.Controls.Add(this.weaponListBox);
             this.characterSkillsGroupBox.Controls.Add(this.skillTraitLabel);
             this.characterSkillsGroupBox.Controls.Add(this.diceLabel);
+            this.characterSkillsGroupBox.Controls.Add(this.weaponLabel);
+            this.characterSkillsGroupBox.Controls.Add(this.weaponListLabel);
             this.characterSkillsGroupBox.Controls.Add(this.skillNameValue);
             this.characterSkillsGroupBox.Controls.Add(this.addNewAbilityLabel);
+            this.characterSkillsGroupBox.Controls.Add(this.addNewWeaponButton);
             this.characterSkillsGroupBox.Controls.Add(this.skillsListBox);
             this.characterSkillsGroupBox.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.characterSkillsGroupBox.Location = new System.Drawing.Point(498, 84);
             this.characterSkillsGroupBox.Name = "characterSkillsGroupBox";
-            this.characterSkillsGroupBox.Size = new System.Drawing.Size(360, 643);
+            this.characterSkillsGroupBox.Size = new System.Drawing.Size(360, 957);
             this.characterSkillsGroupBox.TabIndex = 60;
             this.characterSkillsGroupBox.TabStop = false;
             this.characterSkillsGroupBox.Text = "Umiejętności";
+            // 
+            // removeWeaponButton
+            // 
+            this.removeWeaponButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.removeWeaponButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.removeWeaponButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.removeWeaponButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeWeaponButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.removeWeaponButton.ForeColor = System.Drawing.Color.Red;
+            this.removeWeaponButton.Location = new System.Drawing.Point(11, 914);
+            this.removeWeaponButton.Name = "removeWeaponButton";
+            this.removeWeaponButton.Size = new System.Drawing.Size(326, 38);
+            this.removeWeaponButton.TabIndex = 85;
+            this.removeWeaponButton.Text = "Usuń zaznaczoną broń";
+            this.removeWeaponButton.UseVisualStyleBackColor = true;
+            this.removeWeaponButton.Click += new System.EventHandler(this.removeWeaponButton_Click);
             // 
             // skillTraitDropDown
             // 
@@ -493,9 +556,9 @@
             this.removeSkillButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removeSkillButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.removeSkillButton.ForeColor = System.Drawing.Color.Red;
-            this.removeSkillButton.Location = new System.Drawing.Point(57, 540);
+            this.removeSkillButton.Location = new System.Drawing.Point(26, 540);
             this.removeSkillButton.Name = "removeSkillButton";
-            this.removeSkillButton.Size = new System.Drawing.Size(240, 73);
+            this.removeSkillButton.Size = new System.Drawing.Size(311, 50);
             this.removeSkillButton.TabIndex = 40;
             this.removeSkillButton.Text = "Usuń zaznaczoną umiejętność";
             this.removeSkillButton.UseVisualStyleBackColor = true;
@@ -508,7 +571,7 @@
             this.addNewSkillButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.addNewSkillButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addNewSkillButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.addNewSkillButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.addNewSkillButton.ForeColor = System.Drawing.Color.OliveDrab;
             this.addNewSkillButton.Location = new System.Drawing.Point(26, 212);
             this.addNewSkillButton.Name = "addNewSkillButton";
             this.addNewSkillButton.Size = new System.Drawing.Size(311, 45);
@@ -527,6 +590,18 @@
             this.skillNameLabel.Size = new System.Drawing.Size(73, 25);
             this.skillNameLabel.TabIndex = 34;
             this.skillNameLabel.Text = "Nazwa:";
+            // 
+            // weaponListBox
+            // 
+            this.weaponListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.weaponListBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.weaponListBox.FormattingEnabled = true;
+            this.weaponListBox.ItemHeight = 21;
+            this.weaponListBox.Location = new System.Drawing.Point(11, 705);
+            this.weaponListBox.Name = "weaponListBox";
+            this.weaponListBox.Size = new System.Drawing.Size(326, 151);
+            this.weaponListBox.TabIndex = 84;
+            this.weaponListBox.SelectedIndexChanged += new System.EventHandler(this.weaponListBox_SelectedIndexChanged);
             // 
             // skillTraitLabel
             // 
@@ -550,6 +625,28 @@
             this.diceLabel.TabIndex = 36;
             this.diceLabel.Text = "Kość:";
             // 
+            // weaponLabel
+            // 
+            this.weaponLabel.AutoSize = true;
+            this.weaponLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.weaponLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.weaponLabel.Location = new System.Drawing.Point(6, 649);
+            this.weaponLabel.Name = "weaponLabel";
+            this.weaponLabel.Size = new System.Drawing.Size(72, 30);
+            this.weaponLabel.TabIndex = 32;
+            this.weaponLabel.Text = "Bronie";
+            // 
+            // weaponListLabel
+            // 
+            this.weaponListLabel.AutoSize = true;
+            this.weaponListLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.weaponListLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.weaponListLabel.Location = new System.Drawing.Point(7, 679);
+            this.weaponListLabel.Name = "weaponListLabel";
+            this.weaponListLabel.Size = new System.Drawing.Size(217, 21);
+            this.weaponListLabel.TabIndex = 50;
+            this.weaponListLabel.Text = "Lista broni (wybierz aktualną):";
+            // 
             // skillNameValue
             // 
             this.skillNameValue.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -569,6 +666,22 @@
             this.addNewAbilityLabel.TabIndex = 32;
             this.addNewAbilityLabel.Text = "Dodaj nową umiejętność";
             // 
+            // addNewWeaponButton
+            // 
+            this.addNewWeaponButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.addNewWeaponButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.addNewWeaponButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.addNewWeaponButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addNewWeaponButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.addNewWeaponButton.ForeColor = System.Drawing.Color.OliveDrab;
+            this.addNewWeaponButton.Location = new System.Drawing.Point(11, 870);
+            this.addNewWeaponButton.Name = "addNewWeaponButton";
+            this.addNewWeaponButton.Size = new System.Drawing.Size(326, 38);
+            this.addNewWeaponButton.TabIndex = 70;
+            this.addNewWeaponButton.Text = "Dodaj nową broń";
+            this.addNewWeaponButton.UseVisualStyleBackColor = true;
+            this.addNewWeaponButton.Click += new System.EventHandler(this.addNewWeaponButton_Click);
+            // 
             // skillsListBox
             // 
             this.skillsListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -582,7 +695,11 @@
             // 
             // characterInformationGroupBox
             // 
-            this.characterInformationGroupBox.Controls.Add(this.weaponListBox);
+            this.characterInformationGroupBox.Controls.Add(this.strengthDiceDropDown);
+            this.characterInformationGroupBox.Controls.Add(this.cunningDiceDropDown);
+            this.characterInformationGroupBox.Controls.Add(this.vigorDiceDropDown);
+            this.characterInformationGroupBox.Controls.Add(this.agilityDiceDropDown);
+            this.characterInformationGroupBox.Controls.Add(this.spiritDiceDropDown);
             this.characterInformationGroupBox.Controls.Add(this.addNewItemButton);
             this.characterInformationGroupBox.Controls.Add(this.removeSelectedItemButton);
             this.characterInformationGroupBox.Controls.Add(this.addedItemsListBox);
@@ -592,20 +709,12 @@
             this.characterInformationGroupBox.Controls.Add(this.itemNameTextBox);
             this.characterInformationGroupBox.Controls.Add(this.itemNameLabel);
             this.characterInformationGroupBox.Controls.Add(this.equipmentLabel);
-            this.characterInformationGroupBox.Controls.Add(this.addNewWeaponButton);
-            this.characterInformationGroupBox.Controls.Add(this.weaponListLabel);
-            this.characterInformationGroupBox.Controls.Add(this.weaponLabel);
             this.characterInformationGroupBox.Controls.Add(this.traitLabel);
             this.characterInformationGroupBox.Controls.Add(this.characterTricksTextbox);
-            this.characterInformationGroupBox.Controls.Add(this.agilityDiceDropDown);
             this.characterInformationGroupBox.Controls.Add(this.characterFameTextBox);
-            this.characterInformationGroupBox.Controls.Add(this.vigorDiceDropDown);
             this.characterInformationGroupBox.Controls.Add(this.characterReputationTextBox);
-            this.characterInformationGroupBox.Controls.Add(this.cunningDiceDropDown);
             this.characterInformationGroupBox.Controls.Add(this.characterCharacteristicsTextbox);
-            this.characterInformationGroupBox.Controls.Add(this.strengthDiceDropDown);
             this.characterInformationGroupBox.Controls.Add(this.characterIllnessTextbox);
-            this.characterInformationGroupBox.Controls.Add(this.spiritDiceDropDown);
             this.characterInformationGroupBox.Controls.Add(this.agilityLabel);
             this.characterInformationGroupBox.Controls.Add(this.characterProfessionTextBox);
             this.characterInformationGroupBox.Controls.Add(this.vigorLabel);
@@ -632,17 +741,55 @@
             this.characterInformationGroupBox.TabStop = false;
             this.characterInformationGroupBox.Text = "Informacje o postaci";
             // 
-            // weaponListBox
+            // strengthDiceDropDown
             // 
-            this.weaponListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.weaponListBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.weaponListBox.FormattingEnabled = true;
-            this.weaponListBox.ItemHeight = 21;
-            this.weaponListBox.Location = new System.Drawing.Point(244, 466);
-            this.weaponListBox.Name = "weaponListBox";
-            this.weaponListBox.Size = new System.Drawing.Size(205, 130);
-            this.weaponListBox.TabIndex = 84;
-            this.weaponListBox.SelectedIndexChanged += new System.EventHandler(this.weaponListBox_SelectedIndexChanged);
+            this.strengthDiceDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.strengthDiceDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.strengthDiceDropDown.FormattingEnabled = true;
+            this.strengthDiceDropDown.Location = new System.Drawing.Point(109, 479);
+            this.strengthDiceDropDown.Name = "strengthDiceDropDown";
+            this.strengthDiceDropDown.Size = new System.Drawing.Size(105, 29);
+            this.strengthDiceDropDown.TabIndex = 95;
+            // 
+            // cunningDiceDropDown
+            // 
+            this.cunningDiceDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cunningDiceDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.cunningDiceDropDown.FormattingEnabled = true;
+            this.cunningDiceDropDown.Location = new System.Drawing.Point(109, 520);
+            this.cunningDiceDropDown.Name = "cunningDiceDropDown";
+            this.cunningDiceDropDown.Size = new System.Drawing.Size(105, 29);
+            this.cunningDiceDropDown.TabIndex = 94;
+            // 
+            // vigorDiceDropDown
+            // 
+            this.vigorDiceDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.vigorDiceDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.vigorDiceDropDown.FormattingEnabled = true;
+            this.vigorDiceDropDown.Location = new System.Drawing.Point(109, 561);
+            this.vigorDiceDropDown.Name = "vigorDiceDropDown";
+            this.vigorDiceDropDown.Size = new System.Drawing.Size(105, 29);
+            this.vigorDiceDropDown.TabIndex = 93;
+            // 
+            // agilityDiceDropDown
+            // 
+            this.agilityDiceDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.agilityDiceDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.agilityDiceDropDown.FormattingEnabled = true;
+            this.agilityDiceDropDown.Location = new System.Drawing.Point(109, 602);
+            this.agilityDiceDropDown.Name = "agilityDiceDropDown";
+            this.agilityDiceDropDown.Size = new System.Drawing.Size(105, 29);
+            this.agilityDiceDropDown.TabIndex = 92;
+            // 
+            // spiritDiceDropDown
+            // 
+            this.spiritDiceDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.spiritDiceDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.spiritDiceDropDown.FormattingEnabled = true;
+            this.spiritDiceDropDown.Location = new System.Drawing.Point(109, 438);
+            this.spiritDiceDropDown.Name = "spiritDiceDropDown";
+            this.spiritDiceDropDown.Size = new System.Drawing.Size(105, 29);
+            this.spiritDiceDropDown.TabIndex = 91;
             // 
             // addNewItemButton
             // 
@@ -747,44 +894,6 @@
             this.equipmentLabel.TabIndex = 55;
             this.equipmentLabel.Text = "Wyposażenie";
             // 
-            // addNewWeaponButton
-            // 
-            this.addNewWeaponButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.addNewWeaponButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.addNewWeaponButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.addNewWeaponButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addNewWeaponButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.addNewWeaponButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.addNewWeaponButton.Location = new System.Drawing.Point(247, 618);
-            this.addNewWeaponButton.Name = "addNewWeaponButton";
-            this.addNewWeaponButton.Size = new System.Drawing.Size(205, 38);
-            this.addNewWeaponButton.TabIndex = 70;
-            this.addNewWeaponButton.Text = "Dodaj nową broń";
-            this.addNewWeaponButton.UseVisualStyleBackColor = true;
-            this.addNewWeaponButton.Click += new System.EventHandler(this.addNewWeaponButton_Click);
-            // 
-            // weaponListLabel
-            // 
-            this.weaponListLabel.AutoSize = true;
-            this.weaponListLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.weaponListLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.weaponListLabel.Location = new System.Drawing.Point(242, 438);
-            this.weaponListLabel.Name = "weaponListLabel";
-            this.weaponListLabel.Size = new System.Drawing.Size(217, 21);
-            this.weaponListLabel.TabIndex = 50;
-            this.weaponListLabel.Text = "Lista broni (wybierz aktualną):";
-            // 
-            // weaponLabel
-            // 
-            this.weaponLabel.AutoSize = true;
-            this.weaponLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.weaponLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.weaponLabel.Location = new System.Drawing.Point(252, 393);
-            this.weaponLabel.Name = "weaponLabel";
-            this.weaponLabel.Size = new System.Drawing.Size(72, 30);
-            this.weaponLabel.TabIndex = 32;
-            this.weaponLabel.Text = "Bronie";
-            // 
             // traitLabel
             // 
             this.traitLabel.AutoSize = true;
@@ -804,16 +913,6 @@
             this.characterTricksTextbox.Size = new System.Drawing.Size(205, 33);
             this.characterTricksTextbox.TabIndex = 23;
             // 
-            // agilityDiceDropDown
-            // 
-            this.agilityDiceDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.agilityDiceDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.agilityDiceDropDown.FormattingEnabled = true;
-            this.agilityDiceDropDown.Location = new System.Drawing.Point(109, 602);
-            this.agilityDiceDropDown.Name = "agilityDiceDropDown";
-            this.agilityDiceDropDown.Size = new System.Drawing.Size(105, 29);
-            this.agilityDiceDropDown.TabIndex = 29;
-            // 
             // characterFameTextBox
             // 
             this.characterFameTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -821,16 +920,6 @@
             this.characterFameTextBox.Name = "characterFameTextBox";
             this.characterFameTextBox.Size = new System.Drawing.Size(205, 33);
             this.characterFameTextBox.TabIndex = 22;
-            // 
-            // vigorDiceDropDown
-            // 
-            this.vigorDiceDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.vigorDiceDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.vigorDiceDropDown.FormattingEnabled = true;
-            this.vigorDiceDropDown.Location = new System.Drawing.Point(109, 561);
-            this.vigorDiceDropDown.Name = "vigorDiceDropDown";
-            this.vigorDiceDropDown.Size = new System.Drawing.Size(105, 29);
-            this.vigorDiceDropDown.TabIndex = 28;
             // 
             // characterReputationTextBox
             // 
@@ -840,16 +929,6 @@
             this.characterReputationTextBox.Size = new System.Drawing.Size(205, 33);
             this.characterReputationTextBox.TabIndex = 21;
             // 
-            // cunningDiceDropDown
-            // 
-            this.cunningDiceDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cunningDiceDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.cunningDiceDropDown.FormattingEnabled = true;
-            this.cunningDiceDropDown.Location = new System.Drawing.Point(109, 520);
-            this.cunningDiceDropDown.Name = "cunningDiceDropDown";
-            this.cunningDiceDropDown.Size = new System.Drawing.Size(105, 29);
-            this.cunningDiceDropDown.TabIndex = 27;
-            // 
             // characterCharacteristicsTextbox
             // 
             this.characterCharacteristicsTextbox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -858,16 +937,6 @@
             this.characterCharacteristicsTextbox.Size = new System.Drawing.Size(205, 33);
             this.characterCharacteristicsTextbox.TabIndex = 20;
             // 
-            // strengthDiceDropDown
-            // 
-            this.strengthDiceDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.strengthDiceDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.strengthDiceDropDown.FormattingEnabled = true;
-            this.strengthDiceDropDown.Location = new System.Drawing.Point(109, 479);
-            this.strengthDiceDropDown.Name = "strengthDiceDropDown";
-            this.strengthDiceDropDown.Size = new System.Drawing.Size(105, 29);
-            this.strengthDiceDropDown.TabIndex = 26;
-            // 
             // characterIllnessTextbox
             // 
             this.characterIllnessTextbox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -875,16 +944,6 @@
             this.characterIllnessTextbox.Name = "characterIllnessTextbox";
             this.characterIllnessTextbox.Size = new System.Drawing.Size(205, 33);
             this.characterIllnessTextbox.TabIndex = 19;
-            // 
-            // spiritDiceDropDown
-            // 
-            this.spiritDiceDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.spiritDiceDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.spiritDiceDropDown.FormattingEnabled = true;
-            this.spiritDiceDropDown.Location = new System.Drawing.Point(109, 438);
-            this.spiritDiceDropDown.Name = "spiritDiceDropDown";
-            this.spiritDiceDropDown.Size = new System.Drawing.Size(105, 29);
-            this.spiritDiceDropDown.TabIndex = 25;
             // 
             // agilityLabel
             // 
@@ -1072,52 +1131,30 @@
             this.characterCharacteristicsLabel.TabIndex = 11;
             this.characterCharacteristicsLabel.Text = "Cechy charakterystyczne:";
             // 
-            // shockDropDown
+            // justBackButton
             // 
-            this.shockDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.shockDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.shockDropDown.FormattingEnabled = true;
-            this.shockDropDown.Location = new System.Drawing.Point(175, 456);
-            this.shockDropDown.Name = "shockDropDown";
-            this.shockDropDown.Size = new System.Drawing.Size(205, 29);
-            this.shockDropDown.TabIndex = 63;
-            // 
-            // bleedingDropDown
-            // 
-            this.bleedingDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.bleedingDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.bleedingDropDown.FormattingEnabled = true;
-            this.bleedingDropDown.Location = new System.Drawing.Point(175, 495);
-            this.bleedingDropDown.Name = "bleedingDropDown";
-            this.bleedingDropDown.Size = new System.Drawing.Size(205, 29);
-            this.bleedingDropDown.TabIndex = 64;
-            // 
-            // woundsDropDown
-            // 
-            this.woundsDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.woundsDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.woundsDropDown.FormattingEnabled = true;
-            this.woundsDropDown.Location = new System.Drawing.Point(175, 378);
-            this.woundsDropDown.Name = "woundsDropDown";
-            this.woundsDropDown.Size = new System.Drawing.Size(205, 29);
-            this.woundsDropDown.TabIndex = 65;
-            // 
-            // exhaustionDropDown
-            // 
-            this.exhaustionDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.exhaustionDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.exhaustionDropDown.FormattingEnabled = true;
-            this.exhaustionDropDown.Location = new System.Drawing.Point(175, 417);
-            this.exhaustionDropDown.Name = "exhaustionDropDown";
-            this.exhaustionDropDown.Size = new System.Drawing.Size(205, 29);
-            this.exhaustionDropDown.TabIndex = 66;
+            this.justBackButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.justBackButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.justBackButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.justBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.justBackButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.justBackButton.ForeColor = System.Drawing.Color.Goldenrod;
+            this.justBackButton.Location = new System.Drawing.Point(879, 915);
+            this.justBackButton.Name = "justBackButton";
+            this.justBackButton.Size = new System.Drawing.Size(387, 77);
+            this.justBackButton.TabIndex = 63;
+            this.justBackButton.Text = "Wróć do panelu głównego bez zapisywania";
+            this.justBackButton.UseVisualStyleBackColor = true;
+            this.justBackButton.Click += new System.EventHandler(this.justBackButton_Click);
             // 
             // EditCharacterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1429, 1053);
+            this.ClientSize = new System.Drawing.Size(1311, 915);
+            this.Controls.Add(this.justBackButton);
             this.Controls.Add(this.saveAndExitCharacterButton);
             this.Controls.Add(this.characterStatsGroupBox);
             this.Controls.Add(this.characterSkillsGroupBox);
@@ -1189,15 +1226,10 @@
         private System.Windows.Forms.Label weaponLabel;
         private System.Windows.Forms.Label traitLabel;
         private System.Windows.Forms.TextBox characterTricksTextbox;
-        private System.Windows.Forms.ComboBox agilityDiceDropDown;
         private System.Windows.Forms.TextBox characterFameTextBox;
-        private System.Windows.Forms.ComboBox vigorDiceDropDown;
         private System.Windows.Forms.TextBox characterReputationTextBox;
-        private System.Windows.Forms.ComboBox cunningDiceDropDown;
         private System.Windows.Forms.TextBox characterCharacteristicsTextbox;
-        private System.Windows.Forms.ComboBox strengthDiceDropDown;
         private System.Windows.Forms.TextBox characterIllnessTextbox;
-        private System.Windows.Forms.ComboBox spiritDiceDropDown;
         private System.Windows.Forms.Label agilityLabel;
         private System.Windows.Forms.TextBox characterProfessionTextBox;
         private System.Windows.Forms.Label vigorLabel;
@@ -1228,5 +1260,12 @@
         private System.Windows.Forms.ComboBox bleedingDropDown;
         private System.Windows.Forms.ComboBox woundsDropDown;
         private System.Windows.Forms.ComboBox exhaustionDropDown;
+        private System.Windows.Forms.ComboBox strengthDiceDropDown;
+        private System.Windows.Forms.ComboBox cunningDiceDropDown;
+        private System.Windows.Forms.ComboBox vigorDiceDropDown;
+        private System.Windows.Forms.ComboBox agilityDiceDropDown;
+        private System.Windows.Forms.ComboBox spiritDiceDropDown;
+        private System.Windows.Forms.Button removeWeaponButton;
+        private System.Windows.Forms.Button justBackButton;
     }
 }

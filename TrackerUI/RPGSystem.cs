@@ -15,38 +15,44 @@ namespace TrackerUI
 {
     public partial class RPGSystem : Form, ICampaignRequester
     {
-        List<string> rpgSystems = new List<string>() { "Neuroshima / Savage Worlds" };
-        List<CampaignModel> campaigns = new List<CampaignModel>();
+        List<RPGSystemModel> rpgSystems = new List<RPGSystemModel>() { new RPGSystemModel { Id = 1, SystemName = "Neuroshima / Savage Worlds" } };
         RPGSystemModel currentRPGSystem;
 
         public RPGSystem()
         {
             InitializeComponent();
 
+            CheckWhichRpgSystemsAreValid();
+
             WireUpLists();
         }
 
         private void WireUpLists()
         {
+            systemDropDown.DataSource = null;
             systemDropDown.DataSource = rpgSystems;
-            
+            systemDropDown.DisplayMember = "DisplayedRpgSystem";
+
+            currentRPGSystem = (RPGSystemModel)systemDropDown.SelectedItem;
+
             if (currentRPGSystem != null)
             {
-                campaigns = currentRPGSystem.Campaigns;
+                campaignDropDown.DataSource = null;
+                campaignDropDown.DataSource = currentRPGSystem.Campaigns;
+                campaignDropDown.DisplayMember = "CampaignName";
             }
+        }
 
-            campaignDropDown.DataSource = null;
-            campaignDropDown.DataSource = campaigns;
-            campaignDropDown.DisplayMember = "CampaignName";
+        private void CheckWhichRpgSystemsAreValid()
+        {
+            rpgSystems = GlobalConfig.Connection.MakeProperListOfRpgSystems(rpgSystems);
         }
 
         private void campaignAddButton_Click(object sender, EventArgs e)
         {
             CampaignModel newCampaign = new CampaignModel(newCampaignTextBox.Text);
 
-            GlobalConfig.Connection.AddNewCampaign(newCampaign);
-
-            currentRPGSystem.Campaigns.Add(newCampaign);
+            currentRPGSystem.Campaigns.Add(GlobalConfig.Connection.AddNewCampaign(newCampaign));
 
             GlobalConfig.Connection.UpdateRPGSystem(currentRPGSystem);
 
@@ -66,18 +72,9 @@ namespace TrackerUI
 
         private void systemDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RPGSystemModel rpgSystem = new RPGSystemModel(systemDropDown.Text);
+            //RPGSystemModel rpgSystem = (RPGSystemModel)systemDropDown.SelectedItem;
 
-            if (GlobalConfig.Connection.GetRPGSystem(rpgSystem) != null)
-            {
-                currentRPGSystem = GlobalConfig.Connection.GetRPGSystem(rpgSystem);
-            }
-            else
-            {
-                GlobalConfig.Connection.AddNewRPGSystem(rpgSystem);
-
-                currentRPGSystem = GlobalConfig.Connection.GetRPGSystem(rpgSystem);
-            }
+            //currentRPGSystem = rpgSystem;
 
             WireUpLists();
         }

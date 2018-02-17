@@ -38,6 +38,8 @@ namespace TrackerUI
             //CreateSampleData();
 
             WireUpLists();
+
+            WireUpSkillItemsAndWeaponList();
         }
 
         private void CreateSampleData()
@@ -50,70 +52,167 @@ namespace TrackerUI
         private void WireUpLists()
         {
 
-            currentCharacterSkills = currentCharacter.CharacterSkills;
-            currentCharacterWeapons = currentCharacter.CharacterWeapons;
-            currentCharacterItems = currentCharacter.Items;
-            
-            characterNameTextBox.Text = currentCharacter.Name;
-            characterOriginTextbox.Text = currentCharacter.Origin;
-            characterCurrentLocationTextbox.Text = currentCharacter.CurrentLocation;
-            characterProfessionTextBox.Text = currentCharacter.Profession;
-            characterIllnessTextbox.Text = currentCharacter.Illness;
-            characterCharacteristicsTextbox.Text = currentCharacter.Characteristics;
-            characterReputationTextBox.Text = Convert.ToString(currentCharacter.Reputation);
-            characterFameTextBox.Text = Convert.ToString(currentCharacter.Fame);
-            characterTricksTextbox.Text = currentCharacter.Trick;
+            if (currentCharacter != null)
+            {
+                currentCharacterSkills = currentCharacter.CharacterSkills;
+                currentCharacterWeapons = currentCharacter.CharacterWeapons;
+                currentCharacterItems = currentCharacter.Items;
 
-            levelTextBox.Text = Convert.ToString(currentCharacter.Level);
-            experienceTextbox.Text = Convert.ToString(currentCharacter.Experience);
-            tempoTextbox.Text = Convert.ToString(currentCharacter.Tempo);
-            defenseTextbox.Text = Convert.ToString(currentCharacter.Defence);
-            enduranceTextbox.Text = Convert.ToString(currentCharacter.Endurance);
-            charismaTextbox.Text = Convert.ToString(currentCharacter.Charisma);
-            luckTextbox.Text = Convert.ToString(currentCharacter.Luck);
-            illnessProgressionTextbox.Text = Convert.ToString(currentCharacter.IllnessProgression);
-            hoursWithoutFoodTextBox.Text = Convert.ToString(currentCharacter.HoursWithoutFood);
-            hoursWithoutWaterTextBox.Text = Convert.ToString(currentCharacter.HoursWithoutWater);
-            hoursWithoutDrugsTextBox.Text = Convert.ToString(currentCharacter.HoursWithoutDrugs);
+                characterNameTextBox.Text = currentCharacter.Name;
+                characterOriginTextbox.Text = currentCharacter.Origin;
+                characterCurrentLocationTextbox.Text = currentCharacter.CurrentLocation;
+                characterProfessionTextBox.Text = currentCharacter.Profession;
+                characterIllnessTextbox.Text = currentCharacter.Illness;
+                characterCharacteristicsTextbox.Text = currentCharacter.Characteristics;
+                characterReputationTextBox.Text = Convert.ToString(currentCharacter.Reputation);
+                characterFameTextBox.Text = Convert.ToString(currentCharacter.Fame);
+                characterTricksTextbox.Text = currentCharacter.Trick;
 
-            spiritDiceDropDown.DataSource = dices;
-            strengthDiceDropDown.DataSource = dices;
-            cunningDiceDropDown.DataSource = dices;
-            vigorDiceDropDown.DataSource = dices;
-            agilityDiceDropDown.DataSource = dices;
+                levelTextBox.Text = Convert.ToString(currentCharacter.Level);
+                experienceTextbox.Text = Convert.ToString(currentCharacter.Experience);
+                tempoTextbox.Text = Convert.ToString(currentCharacter.Tempo);
+                defenseTextbox.Text = Convert.ToString(currentCharacter.Defence);
+                enduranceTextbox.Text = Convert.ToString(currentCharacter.Endurance);
+                charismaTextbox.Text = Convert.ToString(currentCharacter.Charisma);
+                luckTextbox.Text = Convert.ToString(currentCharacter.Luck);
+                illnessProgressionTextbox.Text = Convert.ToString(currentCharacter.IllnessProgression);
+                hoursWithoutFoodTextBox.Text = Convert.ToString(currentCharacter.HoursWithoutFood);
+                hoursWithoutWaterTextBox.Text = Convert.ToString(currentCharacter.HoursWithoutWater);
+                hoursWithoutDrugsTextBox.Text = Convert.ToString(currentCharacter.HoursWithoutDrugs);
 
-            weaponListBox.DataSource = null;
-            weaponListBox.DataSource = currentCharacterWeapons;
-            weaponListBox.DisplayMember = "DisplayedWeaponName";
+                spiritDiceDropDown.DisplayMember = "Text";
+                spiritDiceDropDown.ValueMember = "Value";
+                var spiritArray = new[] {
+                    new { Text = "k4", Value = "k4" },
+                    new { Text = "k6", Value = "k6" },
+                    new { Text = "k8", Value = "k8" },
+                    new { Text = "k10", Value = "k10" },
+                    new { Text = "k12", Value = "k12" }
+                };
+                spiritDiceDropDown.DataSource = spiritArray;
+                if (currentCharacter.Spirit != null)
+                    spiritDiceDropDown.SelectedValue = currentCharacter.Spirit;
+                
+                strengthDiceDropDown.DisplayMember = "Text";
+                strengthDiceDropDown.ValueMember = "Value";
+                var strengthArray = new[] {
+                    new { Text = "k4", Value = "k4" },
+                    new { Text = "k6", Value = "k6" },
+                    new { Text = "k8", Value = "k8" },
+                    new { Text = "k10", Value = "k10" },
+                    new { Text = "k12", Value = "k12" }
+                };
+                strengthDiceDropDown.DataSource = strengthArray;
+                if (currentCharacter.Strength != null)
+                    strengthDiceDropDown.SelectedValue = currentCharacter.Strength;
 
-            addedItemsListBox.DataSource = null;
-            addedItemsListBox.DataSource = currentCharacterItems;
-            addedItemsListBox.DisplayMember = "DisplayedItemName";
+                cunningDiceDropDown.DisplayMember = "Text";
+                cunningDiceDropDown.ValueMember = "Value";
+                var cunningArray = new[] {
+                    new { Text = "k4", Value = "k4" },
+                    new { Text = "k6", Value = "k6" },
+                    new { Text = "k8", Value = "k8" },
+                    new { Text = "k10", Value = "k10" },
+                    new { Text = "k12", Value = "k12" }
+                };
+                cunningDiceDropDown.DataSource = cunningArray;
+                if (currentCharacter.Cunning != null)
+                    cunningDiceDropDown.SelectedValue = currentCharacter.Cunning;
 
-            skillsListBox.DataSource = null;
-            skillsListBox.DataSource = currentCharacterSkills;
-            skillsListBox.DisplayMember = "Name";
+                vigorDiceDropDown.DisplayMember = "Text";
+                vigorDiceDropDown.ValueMember = "Value";
+                var vigorArray = new[] {
+                    new { Text = "k4", Value = "k4" },
+                    new { Text = "k6", Value = "k6" },
+                    new { Text = "k8", Value = "k8" },
+                    new { Text = "k10", Value = "k10" },
+                    new { Text = "k12", Value = "k12" }
+                };
+                vigorDiceDropDown.DataSource = vigorArray;
+                if (currentCharacter.Vigor != null)
+                    vigorDiceDropDown.SelectedValue = currentCharacter.Vigor;
 
-            skillTraitDropDown.DataSource = traits;
-            skillDiceDropDown.DataSource = dices;
+                agilityDiceDropDown.DisplayMember = "Text";
+                agilityDiceDropDown.ValueMember = "Value";
+                var agilityArray = new[] {
+                    new { Text = "k4", Value = "k4" },
+                    new { Text = "k6", Value = "k6" },
+                    new { Text = "k8", Value = "k8" },
+                    new { Text = "k10", Value = "k10" },
+                    new { Text = "k12", Value = "k12" }
+                };
+                agilityDiceDropDown.DataSource = agilityArray;
+                if (currentCharacter.Agility != null)
+                    agilityDiceDropDown.SelectedValue = currentCharacter.Agility;
 
-            woundsDropDown.DataSource = null;
-            woundsDropDown.DataSource = woundValues;
-            woundsDropDown.SelectedText = Convert.ToString(currentCharacter.Wounds);
 
-            exhaustionDropDown.DataSource = null;
-            exhaustionDropDown.DataSource = exhaustionValues;
-            exhaustionDropDown.SelectedText = Convert.ToString(currentCharacter.Exhaution);
 
-            shockDropDown.DataSource = null;
-            shockDropDown.DataSource = choice;
-            shockDropDown.SelectedText = currentCharacter.Shock;
 
-            bleedingDropDown.DataSource = null;
-            bleedingDropDown.DataSource = choice;
-            bleedingDropDown.SelectedText = currentCharacter.Bleeding;
+                woundsDropDown.DisplayMember = "Text";
+                woundsDropDown.ValueMember = "Value";
+                var woundsArray = new[] {
+                    new { Text = "0", Value = "0" },
+                    new { Text = "-1", Value = "-1" },
+                    new { Text = "-2", Value = "-2" },
+                    new { Text = "-3", Value = "-3" }
+                };
+                woundsDropDown.DataSource = woundsArray;
+                woundsDropDown.SelectedValue = Convert.ToString(currentCharacter.Wounds);
+
+                exhaustionDropDown.DisplayMember = "Text";
+                exhaustionDropDown.ValueMember = "Value";
+                var exhaustionArray = new[] {
+                    new { Text = "0", Value = "0" },
+                    new { Text = "-1", Value = "-1" },
+                    new { Text = "-2", Value = "-2" }
+                };
+                exhaustionDropDown.DataSource = exhaustionArray;
+                exhaustionDropDown.SelectedValue = Convert.ToString(currentCharacter.Exhaution);
+
+                shockDropDown.DisplayMember = "Text";
+                shockDropDown.ValueMember = "Value";
+                var shockArray = new[] {
+                    new { Text = "Tak", Value = "Tak" },
+                    new { Text = "Nie", Value = "Nie" }
+                };
+                shockDropDown.DataSource = shockArray;
+                if (currentCharacter.Shock != null)
+                    shockDropDown.SelectedValue = currentCharacter.Shock;
+
+                bleedingDropDown.DisplayMember = "Text";
+                bleedingDropDown.ValueMember = "Value";
+                var bleedingArray = new[] {
+                    new { Text = "Tak", Value = "Tak" },
+                    new { Text = "Nie", Value = "Nie" }
+                };
+                bleedingDropDown.DataSource = bleedingArray;
+                if (currentCharacter.Bleeding != null)
+                    bleedingDropDown.SelectedValue = currentCharacter.Bleeding;
+            }
         }
-        
+
+        private void WireUpSkillItemsAndWeaponList()
+        {
+            if (currentCharacter != null)
+            {
+                weaponListBox.DataSource = null;
+                weaponListBox.DataSource = currentCharacterWeapons;
+                weaponListBox.DisplayMember = "DisplayedWeaponName";
+
+                addedItemsListBox.DataSource = null;
+                addedItemsListBox.DataSource = currentCharacterItems;
+                addedItemsListBox.DisplayMember = "DisplayedItemName";
+
+                skillsListBox.DataSource = null;
+                skillsListBox.DataSource = currentCharacterSkills;
+                skillsListBox.DisplayMember = "Name";
+
+                skillTraitDropDown.DataSource = traits;
+                skillDiceDropDown.DataSource = dices; 
+            }
+        }
+
+
 
         private void addNewSkillButton_Click(object sender, EventArgs e)
         {
@@ -132,7 +231,7 @@ namespace TrackerUI
                 skillTraitDropDown.Text = "";
                 skillDiceDropDown.Text = "";
 
-                WireUpLists();
+                WireUpSkillItemsAndWeaponList();
             }
             else
             {
@@ -162,13 +261,14 @@ namespace TrackerUI
             return true;
         }
 
+
         private void removeSkillButton_Click(object sender, EventArgs e)
         {
             SkillModel s = (SkillModel)skillsListBox.SelectedItem;
 
             currentCharacterSkills.Remove(s);
 
-            WireUpLists();
+            WireUpSkillItemsAndWeaponList();
         }
 
         private void addNewWeaponButton_Click(object sender, EventArgs e)
@@ -181,7 +281,7 @@ namespace TrackerUI
         {
             currentCharacter.CharacterWeapons.Add(model);
 
-            WireUpLists();
+            WireUpSkillItemsAndWeaponList();
         }
 
         private void addNewItemButton_Click(object sender, EventArgs e)
@@ -199,7 +299,7 @@ namespace TrackerUI
                 itemNameTextBox.Text = "";
                 itemQuantityTextBox.Text = "";
 
-                WireUpLists();
+                WireUpSkillItemsAndWeaponList();
             }
 
            
@@ -238,7 +338,7 @@ namespace TrackerUI
 
             currentCharacterItems.Remove(i);
 
-            WireUpLists();
+            WireUpSkillItemsAndWeaponList();
         }
 
         private void saveAndExitCharacterButton_Click(object sender, EventArgs e)
@@ -266,14 +366,20 @@ namespace TrackerUI
                 currentCharacter.Endurance = int.Parse(enduranceTextbox.Text);
                 currentCharacter.Charisma = int.Parse(charismaTextbox.Text);
                 currentCharacter.Luck = int.Parse(luckTextbox.Text);
-                currentCharacter.Wounds = int.Parse(woundsDropDown.SelectedText);
-                currentCharacter.Exhaution = int.Parse(exhaustionDropDown.SelectedText);
-                currentCharacter.Shock = shockDropDown.SelectedText;
-                currentCharacter.Bleeding = bleedingDropDown.SelectedText;
+                currentCharacter.Wounds = int.Parse(woundsDropDown.Text);
+                currentCharacter.Exhaution = int.Parse(exhaustionDropDown.Text);
+                currentCharacter.Shock = shockDropDown.Text;
+                currentCharacter.Bleeding = bleedingDropDown.Text;
                 currentCharacter.IllnessProgression = int.Parse(illnessProgressionTextbox.Text);
                 currentCharacter.HoursWithoutFood = int.Parse(hoursWithoutFoodTextBox.Text);
                 currentCharacter.HoursWithoutWater = int.Parse(hoursWithoutWaterTextBox.Text);
                 currentCharacter.HoursWithoutDrugs = int.Parse(hoursWithoutDrugsTextBox.Text);
+
+                currentCharacter.Spirit = spiritDiceDropDown.Text;
+                currentCharacter.Strength = strengthDiceDropDown.Text;
+                currentCharacter.Cunning = cunningDiceDropDown.Text;
+                currentCharacter.Vigor = vigorDiceDropDown.Text;
+                currentCharacter.Agility = agilityDiceDropDown.Text;
 
                 callingForm.CharacterUpdate(currentCharacter);
 
@@ -332,7 +438,21 @@ namespace TrackerUI
         {
             currentCharacter.CurrentWeapon = (WeaponModel)weaponListBox.SelectedItem;
 
-            WireUpLists();
+            WireUpSkillItemsAndWeaponList();
+        }
+
+        private void removeWeaponButton_Click(object sender, EventArgs e)
+        {
+            WeaponModel w = (WeaponModel)weaponListBox.SelectedItem;
+
+            currentCharacterWeapons.Remove(w);
+
+            WireUpSkillItemsAndWeaponList();
+        }
+
+        private void justBackButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -96,7 +96,7 @@
             // 
             this.fightLabel.AutoSize = true;
             this.fightLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.fightLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.fightLabel.ForeColor = System.Drawing.Color.MediumPurple;
             this.fightLabel.Location = new System.Drawing.Point(824, 455);
             this.fightLabel.Name = "fightLabel";
             this.fightLabel.Size = new System.Drawing.Size(90, 37);
@@ -208,7 +208,7 @@
             // 
             this.pickUnitsLabel.AutoSize = true;
             this.pickUnitsLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.pickUnitsLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.pickUnitsLabel.ForeColor = System.Drawing.Color.MediumPurple;
             this.pickUnitsLabel.Location = new System.Drawing.Point(822, 492);
             this.pickUnitsLabel.Name = "pickUnitsLabel";
             this.pickUnitsLabel.Size = new System.Drawing.Size(310, 30);
@@ -232,7 +232,7 @@
             this.startFightButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.startFightButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.startFightButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.startFightButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.startFightButton.ForeColor = System.Drawing.Color.MediumPurple;
             this.startFightButton.Location = new System.Drawing.Point(827, 727);
             this.startFightButton.Name = "startFightButton";
             this.startFightButton.Size = new System.Drawing.Size(318, 54);

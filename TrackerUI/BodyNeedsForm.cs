@@ -33,13 +33,17 @@ namespace TrackerUI
             pickCharacterDropDown.DataSource = currentTeam;
             pickCharacterDropDown.DisplayMember = "DisplayedCharacter";
 
-            if (pickCharacterDropDown.SelectedText != "")
-            {
-                hoursWithoutDrugsLabel.Text = Convert.ToString(((CharacterModel)pickCharacterDropDown.SelectedItem).HoursWithoutDrugs);
-                hoursWithoutFoodLabel.Text = Convert.ToString(((CharacterModel)pickCharacterDropDown.SelectedItem).HoursWithoutFood);
-                hoursWithoutWaterLabel.Text = Convert.ToString(((CharacterModel)pickCharacterDropDown.SelectedItem).HoursWithoutWater);
-            }
+            hoursWithoutDrugsValueLabel.Text = Convert.ToString(((CharacterModel)pickCharacterDropDown.SelectedItem).HoursWithoutDrugs);
+            hoursWithoutFoodValueLabel.Text = Convert.ToString(((CharacterModel)pickCharacterDropDown.SelectedItem).HoursWithoutFood);
+            hoursWithoutWaterValueLabel.Text = Convert.ToString(((CharacterModel)pickCharacterDropDown.SelectedItem).HoursWithoutWater);
 
+        }
+
+        private void RefreshValues()
+        {
+            hoursWithoutDrugsValueLabel.Text = Convert.ToString(((CharacterModel)pickCharacterDropDown.SelectedItem).HoursWithoutDrugs);
+            hoursWithoutFoodValueLabel.Text = Convert.ToString(((CharacterModel)pickCharacterDropDown.SelectedItem).HoursWithoutFood);
+            hoursWithoutWaterValueLabel.Text = Convert.ToString(((CharacterModel)pickCharacterDropDown.SelectedItem).HoursWithoutWater);
         }
 
         private void backToMenuButton_Click(object sender, EventArgs e)
@@ -56,14 +60,17 @@ namespace TrackerUI
         {
             int value = 0;
 
-            if (int.TryParse(hoursWithoutDrugsNewValueTextBox.Text, out value))
+            if (int.TryParse(hoursWithoutDrugsNewValueTextBox.Text, out value) && int.TryParse(hoursWithoutFoodNewValueTextBox.Text, out value) && int.TryParse(hoursWithoutWaterNewValueTextBox.Text, out value))
             {
                 ((CharacterModel)pickCharacterDropDown.SelectedItem).HoursWithoutDrugs = int.Parse(hoursWithoutDrugsNewValueTextBox.Text);
                 ((CharacterModel)pickCharacterDropDown.SelectedItem).HoursWithoutFood = int.Parse(hoursWithoutFoodNewValueTextBox.Text);
                 ((CharacterModel)pickCharacterDropDown.SelectedItem).HoursWithoutWater = int.Parse(hoursWithoutWaterNewValueTextBox.Text);
 
                 callingForm.CharacterUpdate((CharacterModel)pickCharacterDropDown.SelectedItem);
+
+                RefreshValues();
             }
+
             else
             {
                 MessageBox.Show("Wpisz poprawne liczby");

@@ -45,6 +45,19 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             return File.ReadAllLines(file).ToList();
         }
 
+        public static bool DeleteFile(this string file)
+        {
+            try
+            {
+                File.Delete(file);
+                return true;
+            }
+            catch (IOException)
+            {
+               return false;
+            }
+        }
+
 
 
 
@@ -99,7 +112,7 @@ namespace TrackerLibrary.DataAccess.TextHelpers
                 string[] cols = line.Split('#');
 
                 CharacterModel c = new CharacterModel();
-
+                
                 c.Id = int.Parse(cols[0]);
                 c.Name = cols[1];
                 c.Origin = cols[2];
@@ -178,6 +191,12 @@ namespace TrackerLibrary.DataAccess.TextHelpers
 
                     } 
                 }
+
+                c.Spirit = cols[31];
+                c.Strength = cols[32];
+                c.Cunning = cols[33];
+                c.Vigor = cols[34];
+                c.Agility = cols[35];
 
 
                 output.Add(c);
@@ -429,7 +448,7 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             foreach (CharacterModel c in models)
             {
                 lines.Add(
-                    $"{ c.Id }#{ c.Name }#{ c.Origin }#{ c.CurrentLocation }#{ c.Profession }#{ c.Illness }#{ c.Characteristics }#{ c.Trick }#{ c.Reputation }#{ c.Fame }#{ c.Luck }#{ c.Level }#{ c.Experience }#{ c.ExpReward }#{ c.Tempo }#{ c.Defence }#{ c.Endurance }#{ c.Charisma }#{ c.Wounds }#{ c.Exhaution }#{ c.Shock }#{ c.Bleeding }#{ c.IllnessProgression }#{ c.HoursWithoutFood }#{ c.HoursWithoutWater }#{ c.HoursWithoutDrugs }#{ c.IsCharacterInTeam }#{ ConvertIdFromCurrentWeaponToString(c.CurrentWeapon) }#{ ConvertIdsFromWeaponListToString(c.CharacterWeapons) }#{ ConvertIdsFromSkillListToString(c.CharacterSkills) }#{ ConvertIdsFromItemListToString(c.Items) }");
+                    $"{ c.Id }#{ c.Name }#{ c.Origin }#{ c.CurrentLocation }#{ c.Profession }#{ c.Illness }#{ c.Characteristics }#{ c.Trick }#{ c.Reputation }#{ c.Fame }#{ c.Luck }#{ c.Level }#{ c.Experience }#{ c.ExpReward }#{ c.Tempo }#{ c.Defence }#{ c.Endurance }#{ c.Charisma }#{ c.Wounds }#{ c.Exhaution }#{ c.Shock }#{ c.Bleeding }#{ c.IllnessProgression }#{ c.HoursWithoutFood }#{ c.HoursWithoutWater }#{ c.HoursWithoutDrugs }#{ c.IsCharacterInTeam }#{ ConvertIdFromCurrentWeaponToString(c.CurrentWeapon) }#{ ConvertIdsFromWeaponListToString(c.CharacterWeapons) }#{ ConvertIdsFromSkillListToString(c.CharacterSkills) }#{ ConvertIdsFromItemListToString(c.Items)  }#{ c.Spirit }#{ c.Strength }#{ c.Cunning }#{ c.Vigor }#{ c.Agility }");
             }
 
             File.WriteAllLines(fileName.FullFilePath(), lines);

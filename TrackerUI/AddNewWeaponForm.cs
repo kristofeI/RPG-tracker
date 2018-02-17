@@ -42,11 +42,6 @@ namespace TrackerUI
                 this.Close();
 
             }
-
-            else
-            {
-                MessageBox.Show("Formularz zawiera nieprawidłowe informacje");
-            }
         }
 
         private bool ValidateForm()
@@ -57,16 +52,25 @@ namespace TrackerUI
 
             if (!ammoValidNumber)
             {
+                MessageBox.Show("Wpisz liczbę w prawidłowym formacie w polu Amunicja.");
                 output = false;
             }
 
             if (ammoSupply < 0)
             {
+                MessageBox.Show("Wpisz liczbę w prawidłowym formacie w polu Amunicja.");
                 output = false;
             }
 
             if (weaponNameValue.Text.Length == 0)
             {
+                MessageBox.Show("Wpisz nazwę broni.");
+                output = false;
+            }
+
+            if (weaponDamageValue.Text.Length == 0)
+            {
+                MessageBox.Show("Wpisz obrażenia broni");
                 output = false;
             }
 

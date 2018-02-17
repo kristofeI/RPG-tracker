@@ -43,85 +43,229 @@ namespace TrackerUI
             charactersInBattleListBox.DataSource = null;
             charactersInBattleListBox.DataSource = fightingCharacters;
             charactersInBattleListBox.DisplayMember = "DisplayedFightingCharacter";
+            charactersInBattleListBox.SelectedIndex = -1;
 
-            cardDropDown.DataSource = null;
-            cardDropDown.DataSource = cards;
+            selectedCharacter = (CharacterModel)charactersInBattleListBox.SelectedItem;
 
-            colorDropDown.DataSource = null;
-            colorDropDown.DataSource = colors;
+            cardDropDown.DisplayMember = "Text";
+            cardDropDown.ValueMember = "Value";
+            var cardsArray = new[] {
+                    new { Text = "1", Value = "1" },
+                    new { Text = "2", Value = "2" },
+                    new { Text = "3", Value = "3" },
+                    new { Text = "4", Value = "4" },
+                    new { Text = "5", Value = "5" },
+                    new { Text = "7", Value = "6" },
+                    new { Text = "8", Value = "8" },
+                    new { Text = "9", Value = "9" },
+                    new { Text = "10", Value = "10" },
+                    new { Text = "Walet", Value = "Walet" },
+                    new { Text = "Dama", Value = "Dama" },
+                    new { Text = "Król", Value = "Król" },
+                    new { Text = "As", Value = "As" },
+                    new { Text = "Joker", Value = "Joker" }
+                };
+            cardDropDown.DataSource = cardsArray;
+            cardDropDown.SelectedIndex = -1;
+
+            colorDropDown.DisplayMember = "Text";
+            colorDropDown.ValueMember = "Value";
+            var colorsArray = new[] {
+                    new { Text = "pik", Value = "pik" },
+                    new { Text = "kier", Value = "kier" },
+                    new { Text = "karo", Value = "karo" },
+                    new { Text = "trefl", Value = "trefl" }
+                };
+            colorDropDown.DataSource = colorsArray;
+            colorDropDown.SelectedIndex = -1;
+
+            woundsValueDropDown.DisplayMember = "Text";
+            woundsValueDropDown.ValueMember = "Value";
+            var woundsArray = new[] {
+                    new { Text = "0", Value = "0" },
+                    new { Text = "-1", Value = "-1" },
+                    new { Text = "-2", Value = "-2" },
+                    new { Text = "-3", Value = "-3" }
+                };
+            woundsValueDropDown.DataSource = woundsArray;
+            woundsValueDropDown.SelectedIndex = -1;
+
+            exhaustionValueDropDown.DisplayMember = "Text";
+            exhaustionValueDropDown.ValueMember = "Value";
+            var exhaustionArray = new[] {
+                    new { Text = "0", Value = "0" },
+                    new { Text = "-1", Value = "-1" },
+                    new { Text = "-2", Value = "-2" }
+                };
+            exhaustionValueDropDown.DataSource = exhaustionArray;
+            exhaustionValueDropDown.SelectedIndex = -1;
+
+            shockValueDropDown.DisplayMember = "Text";
+            shockValueDropDown.ValueMember = "Value";
+            var shockArray = new[] {
+                    new { Text = "Tak", Value = "Tak" },
+                    new { Text = "Nie", Value = "Nie" }
+                };
+            shockValueDropDown.DataSource = shockArray;
+            shockValueDropDown.SelectedIndex = -1;
+
+            bleedingValueDropDown.DisplayMember = "Text";
+            bleedingValueDropDown.ValueMember = "Value";
+            var bleedingArray = new[] {
+                    new { Text = "Tak", Value = "Tak" },
+                    new { Text = "Nie", Value = "Nie" }
+                };
+            bleedingValueDropDown.DataSource = bleedingArray;
+            bleedingValueDropDown.SelectedIndex = -1;
+
+            actionThisRoundDropDown.DisplayMember = "Text";
+            actionThisRoundDropDown.ValueMember = "Value";
+            var actionArray = new[] {
+                    new { Text = "Wstrzymanie akcji", Value = "Wstrzymanie akcji" },
+                    new { Text = "Przerwanie czyjejś akcji", Value = "Przerwanie czyjejś akcji" },
+                    new { Text = "Walka wręcz", Value = "Walka wręcz" },
+                    new { Text = "Walka na dystans", Value = "Walka na dystans" }
+                };
+            actionThisRoundDropDown.DataSource = actionArray;
+            actionThisRoundDropDown.SelectedIndex = -1;
         }
 
-        private void CharacterIsSelected()
+        private void RefreshLists()
         {
-            if (charactersInBattleListBox.SelectedItem != null)
+            selectedCharacter = (CharacterModel)charactersInBattleListBox.SelectedItem;
+
+            charactersInBattleListBox.DataSource = null;
+            charactersInBattleListBox.DataSource = fightingCharacters;
+            charactersInBattleListBox.DisplayMember = "DisplayedFightingCharacter";
+            charactersInBattleListBox.SelectedItem = selectedCharacter;
+
+            if (selectedCharacter != null && charactersInBattleListBox.SelectedIndex != -1)
             {
-                selectedCharacter = (CharacterModel)charactersInBattleListBox.SelectedItem;
-                skills = selectedCharacter.CharacterSkills;
-                weapons = selectedCharacter.CharacterWeapons;
-                selectedWeapon = selectedCharacter.CurrentWeapon;
+                weaponDropDown.DataSource = null;
+                if (selectedCharacter.CharacterWeapons != null)
+                {
+                    weaponDropDown.DataSource = selectedCharacter.CharacterWeapons;
+                    weaponDropDown.DisplayMember = "DisplayedWeaponName";
+                    if (selectedCharacter.CurrentWeapon != null)
+                        weaponDropDown.SelectedItem = selectedCharacter.CurrentWeapon;
+                }
+
+                skillsListBox.DataSource = null;
+                if (selectedCharacter.CharacterSkills != null)
+                    skillsListBox.DataSource = selectedCharacter.CharacterSkills;
+                skillsListBox.DisplayMember = "DisplayedSkillName";
+
+                //cardDropDown.DisplayMember = "Text";
+                //cardDropDown.ValueMember = "Value";
+                //var cardsArray = new[] {
+                //    new { Text = "1", Value = "1" },
+                //    new { Text = "2", Value = "2" },
+                //    new { Text = "3", Value = "3" },
+                //    new { Text = "4", Value = "4" },
+                //    new { Text = "5", Value = "5" },
+                //    new { Text = "7", Value = "6" },
+                //    new { Text = "8", Value = "8" },
+                //    new { Text = "9", Value = "9" },
+                //    new { Text = "10", Value = "10" },
+                //    new { Text = "Walet", Value = "Walet" },
+                //    new { Text = "Dama", Value = "Dama" },
+                //    new { Text = "Król", Value = "Król" },
+                //    new { Text = "As", Value = "As" },
+                //    new { Text = "Joker", Value = "Joker" }
+                //};
+                //cardDropDown.DataSource = cardsArray;
+                if (selectedCharacter.Card != null)
+                    cardDropDown.SelectedValue = selectedCharacter.Card;
+
+                //colorDropDown.DisplayMember = "Text";
+                //colorDropDown.ValueMember = "Value";
+                //var colorsArray = new[] {
+                //    new { Text = "pik", Value = "pik" },
+                //    new { Text = "kier", Value = "kier" },
+                //    new { Text = "karo", Value = "karo" },
+                //    new { Text = "trefl", Value = "trefl" }
+                //};
+                //colorDropDown.DataSource = colorsArray;
+                if (selectedCharacter.Color != null)
+                    colorDropDown.SelectedValue = selectedCharacter.Color;
+
+                //woundsValueDropDown.DisplayMember = "Text";
+                //woundsValueDropDown.ValueMember = "Value";
+                //var woundsArray = new[] {
+                //    new { Text = "0", Value = "0" },
+                //    new { Text = "-1", Value = "-1" },
+                //    new { Text = "-2", Value = "-2" },
+                //    new { Text = "-3", Value = "-3" }
+                //};
+                //woundsValueDropDown.DataSource = woundsArray;
+                woundsValueDropDown.SelectedValue = Convert.ToString(selectedCharacter.Wounds);
+
+                //exhaustionValueDropDown.DisplayMember = "Text";
+                //exhaustionValueDropDown.ValueMember = "Value";
+                //var exhaustionArray = new[] {
+                //    new { Text = "0", Value = "0" },
+                //    new { Text = "-1", Value = "-1" },
+                //    new { Text = "-2", Value = "-2" }
+                //};
+                //exhaustionValueDropDown.DataSource = exhaustionArray;
+                exhaustionValueDropDown.SelectedValue = Convert.ToString(selectedCharacter.Exhaution);
+
+                //shockValueDropDown.DisplayMember = "Text";
+                //shockValueDropDown.ValueMember = "Value";
+                //var shockArray = new[] {
+                //    new { Text = "Tak", Value = "Tak" },
+                //    new { Text = "Nie", Value = "Nie" }
+                //};
+                //shockValueDropDown.DataSource = shockArray;
+                if (selectedCharacter.Shock != null)
+                    shockValueDropDown.SelectedValue = selectedCharacter.Shock;
+
+                //bleedingValueDropDown.DisplayMember = "Text";
+                //bleedingValueDropDown.ValueMember = "Value";
+                //var bleedingArray = new[] {
+                //    new { Text = "Tak", Value = "Tak" },
+                //    new { Text = "Nie", Value = "Nie" }
+                //};
+                //bleedingValueDropDown.DataSource = bleedingArray;
+                if (selectedCharacter.Bleeding != null)
+                    bleedingValueDropDown.SelectedValue = selectedCharacter.Bleeding;
+
+                //actionThisRoundDropDown.DisplayMember = "Text";
+                //actionThisRoundDropDown.ValueMember = "Value";
+                //var actionArray = new[] {
+                //    new { Text = "Wstrzymanie akcji", Value = "Wstrzymanie akcji" },
+                //    new { Text = "Przerwanie czyjejś akcji", Value = "Przerwanie czyjejś akcji" },
+                //    new { Text = "Walka wręcz", Value = "Walka wręcz" },
+                //    new { Text = "Walka na dystans", Value = "Walka na dystans" }
+                //};
+                //actionThisRoundDropDown.DataSource = actionArray;
+                if (selectedCharacter.Action != null)
+                    actionThisRoundDropDown.SelectedValue = selectedCharacter.Action;
+                
+                tempoValueLabel.Text = Convert.ToString(selectedCharacter.Tempo);
+                defenseValueLabel.Text = Convert.ToString(selectedCharacter.Defence);
+                enduranceValueLabel.Text = Convert.ToString(selectedCharacter.Endurance);
+                charismaValueLabel.Text = Convert.ToString(selectedCharacter.Charisma);
             }
-
-            weaponDropDown.DataSource = null;
-            weaponDropDown.DataSource = weapons;
-            weaponDropDown.DisplayMember = "DisplayedWeaponName";
-            weaponDropDown.SelectedItem = selectedWeapon;
-
-            skillsListBox.DataSource = null;
-            skillsListBox.DataSource = skills;
-            skillsListBox.DisplayMember = "DisplayedSkillName";
-
-            woundsValueDropDown.DataSource = null;
-            woundsValueDropDown.DataSource = woundValues;
-
-            exhaustionValueDropDown.DataSource = null;
-            exhaustionValueDropDown.DataSource = exhaustionValues;
-
-            shockValueDropDown.DataSource = null;
-            shockValueDropDown.DataSource = choice;
-
-            bleedingValueDropDown.DataSource = null;
-            bleedingValueDropDown.DataSource = choice;
-            
-            cardDropDown.Text = selectedCharacter.Card;
-            if (cardDropDown.Text == "")
-                cardDropDown.SelectedIndex = -1;
-
-            colorDropDown.Text = selectedCharacter.Color;
-            if (colorDropDown.Text == "")
-                colorDropDown.SelectedIndex = -1;
-
-            actionThisRoundDropDown.Text = selectedCharacter.Action;
-            if (actionThisRoundDropDown.Text == "")
-                actionThisRoundDropDown.SelectedIndex = -1;
-
-            woundsValueDropDown.Text = Convert.ToString(selectedCharacter.Wounds);
-            exhaustionValueDropDown.Text = Convert.ToString(selectedCharacter.Exhaution);
-            shockValueDropDown.Text = Convert.ToString(selectedCharacter.Shock);
-            bleedingValueDropDown.Text = Convert.ToString(selectedCharacter.Bleeding);
-            tempoValueLabel.Text = Convert.ToString(selectedCharacter.Tempo);
-            defenseValueLabel.Text = Convert.ToString(selectedCharacter.Defence);
-            enduranceValueLabel.Text = Convert.ToString(selectedCharacter.Endurance);
-            charismaValueLabel.Text = Convert.ToString(selectedCharacter.Charisma);
-
-            //if (selectedWeapon != null)
-            //    damageValueLabel.Text = Convert.ToString(selectedWeapon.Damage);
-            //if (selectedWeapon != null)
-            //    ammoValueLabel.Text = Convert.ToString(selectedWeapon.AmmoSupply);
 
         }
 
         private void charactersInBattleListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CharacterIsSelected();
+            if (charactersInBattleListBox.SelectedIndex != -1)
+            {
+                RefreshLists(); 
+            }
         }
 
         private void addRoundButton_Click(object sender, EventArgs e)
         {
-            foreach (CharacterModel character in fightingCharacters)
+            foreach (CharacterModel character in charactersInBattleListBox.Items)
             {
-                character.Card = "";
-                character.Color = "";
-                character.Action = "";
+                character.Card = null;
+                character.Color = null;
+                character.Action = null;
+                callingForm.CharacterUpdate(character);
             }
 
             int roundNumber = int.Parse(actualRoundValueLabel.Text);
@@ -130,78 +274,149 @@ namespace TrackerUI
 
             actualRoundValueLabel.Text = Convert.ToString(roundNumber);
 
-            CharacterIsSelected();
+            WireUpLists();
         }
 
         private void cardDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CharacterModel selectedCharacter = (CharacterModel)charactersInBattleListBox.SelectedItem;
-            if (cardDropDown.SelectedText != "")
-                selectedCharacter.Card = cardDropDown.SelectedText;
-            callingForm.CharacterUpdate(selectedCharacter);
-            CharacterIsSelected();
+            if (charactersInBattleListBox.SelectedIndex != -1)
+            {
+                CharacterModel selectedCharacter = (CharacterModel)charactersInBattleListBox.SelectedItem;
+                if (cardDropDown.SelectedIndex != -1)
+                {
+                    selectedCharacter.Card = cardDropDown.Text;
+                    RefreshLists();
+                }
+
+                
+            }
         }
 
         private void colorDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CharacterModel selectedCharacter = (CharacterModel)charactersInBattleListBox.SelectedItem;
-            if (colorDropDown.SelectedText != "")
-                selectedCharacter.Color = colorDropDown.SelectedText;
-            callingForm.CharacterUpdate(selectedCharacter);
-            CharacterIsSelected();
+            if (charactersInBattleListBox.SelectedIndex != -1)
+            {
+                CharacterModel selectedCharacter = (CharacterModel)charactersInBattleListBox.SelectedItem;
+                if (colorDropDown.SelectedIndex != -1)
+                {
+                    selectedCharacter.Color = colorDropDown.Text;
+                    RefreshLists();
+                }
+
+                
+            }
         }
 
         private void actionThisRoundDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CharacterModel selectedCharacter = (CharacterModel)charactersInBattleListBox.SelectedItem;
-            selectedCharacter.Action = actionThisRoundDropDown.SelectedText;
-            callingForm.CharacterUpdate(selectedCharacter);
-            CharacterIsSelected();
+            if (charactersInBattleListBox.SelectedIndex != -1)
+            {
+                CharacterModel selectedCharacter = (CharacterModel)charactersInBattleListBox.SelectedItem;
+
+                if (actionThisRoundDropDown.SelectedIndex != -1)
+                {
+                    selectedCharacter.Action = actionThisRoundDropDown.Text;
+                    RefreshLists();
+                }
+
+                
+            }
         }
 
         private void woundsValueDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CharacterModel selectedCharacter = (CharacterModel)charactersInBattleListBox.SelectedItem;
-            if (woundsValueDropDown.SelectedText != "")
-                selectedCharacter.Wounds = float.Parse(woundsValueDropDown.SelectedText);
-            callingForm.CharacterUpdate(selectedCharacter);
-            CharacterIsSelected();
+            if (charactersInBattleListBox.SelectedIndex != -1)
+            {
+                CharacterModel selectedCharacter = (CharacterModel)charactersInBattleListBox.SelectedItem;
+                if (woundsValueDropDown.SelectedIndex != -1)
+                {
+                    selectedCharacter.Wounds = float.Parse(woundsValueDropDown.Text);
+                    RefreshLists();
+                }
+
+                
+            }
         }
 
         private void exhaustionValueDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CharacterModel selectedCharacter = (CharacterModel)charactersInBattleListBox.SelectedItem;
-            if (exhaustionValueDropDown.SelectedText != "")
-                selectedCharacter.Exhaution = float.Parse(exhaustionValueDropDown.SelectedText);
-            callingForm.CharacterUpdate(selectedCharacter);
-            CharacterIsSelected();
+            if (charactersInBattleListBox.SelectedIndex != -1)
+            {
+                CharacterModel selectedCharacter = (CharacterModel)charactersInBattleListBox.SelectedItem;
+                if (exhaustionValueDropDown.SelectedIndex != -1)
+                {
+                    selectedCharacter.Exhaution = float.Parse(exhaustionValueDropDown.Text);
+                    RefreshLists();
+                }
+
+                
+            }
         }
 
         private void shockValueDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CharacterModel selectedCharacter = (CharacterModel)charactersInBattleListBox.SelectedItem;
-            if (shockValueDropDown.SelectedText != "")
-                selectedCharacter.Shock = shockValueDropDown.SelectedText;
-            callingForm.CharacterUpdate(selectedCharacter);
-            CharacterIsSelected();
+            if (charactersInBattleListBox.SelectedIndex != -1)
+            {
+                CharacterModel selectedCharacter = (CharacterModel)charactersInBattleListBox.SelectedItem;
+                if (shockValueDropDown.SelectedIndex != -1)
+                {
+                    selectedCharacter.Shock = shockValueDropDown.Text;
+                    RefreshLists();
+                }
+
+                
+            }
         }
 
         private void bleedingValueDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CharacterModel selectedCharacter = (CharacterModel)charactersInBattleListBox.SelectedItem;
-            if (bleedingValueDropDown.SelectedText != "")
-                selectedCharacter.Bleeding = bleedingValueDropDown.SelectedText;
-            callingForm.CharacterUpdate(selectedCharacter);
-            CharacterIsSelected();
+            if (charactersInBattleListBox.SelectedIndex != -1)
+            {
+                CharacterModel selectedCharacter = (CharacterModel)charactersInBattleListBox.SelectedItem;
+                if (bleedingValueDropDown.SelectedIndex != -1)
+                {
+                    selectedCharacter.Bleeding = bleedingValueDropDown.Text;
+                    RefreshLists();
+                }
+
+                
+            }
         }
 
         private void weaponDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CharacterModel selectedCharacter = (CharacterModel)charactersInBattleListBox.SelectedItem;
-            if (weaponDropDown.SelectedItem != null)
-                selectedCharacter.CurrentWeapon = (WeaponModel)weaponDropDown.SelectedItem;
-            callingForm.CharacterUpdate(selectedCharacter);
-            CharacterIsSelected();
+            if (charactersInBattleListBox.SelectedIndex != -1)
+            {
+                CharacterModel selectedCharacter = (CharacterModel)charactersInBattleListBox.SelectedItem;
+                if (weaponDropDown.SelectedIndex != -1)
+                {
+                    selectedCharacter.CurrentWeapon = (WeaponModel)weaponDropDown.SelectedItem;
+                    RefreshLists();
+                }
+            }
+        }
+
+        private void changeStatsAndBackButton_Click(object sender, EventArgs e)
+        {
+            foreach (CharacterModel character in charactersInBattleListBox.Items)
+            {
+                character.Card = null;
+                character.Color = null;
+                character.Action = null;
+                callingForm.CharacterUpdate(character);
+            }
+
+            this.Close();
+        }
+
+        private void BattleForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

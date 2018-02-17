@@ -202,6 +202,11 @@ namespace TrackerLibrary.DataAccess
                 events[index] = model;
             }
 
+            if (EventsFile.FullFilePath().DeleteFile())
+            {
+                events.SaveToEventsFile(EventsFile);
+            }
+
             return model;
         }
 
@@ -214,6 +219,11 @@ namespace TrackerLibrary.DataAccess
             if (index != -1)
             {
                 players[index] = model;
+            }
+
+            if (PlayersFile.FullFilePath().DeleteFile())
+            {
+                players.SaveToPlayersFile(PlayersFile);
             }
 
             return model;
@@ -230,6 +240,11 @@ namespace TrackerLibrary.DataAccess
                 characters[index] = model;
             }
 
+            if (CharactersFile.FullFilePath().DeleteFile())
+            {
+                characters.SaveToCharactersFile(CharactersFile);
+            }
+
             return model;
         }
 
@@ -242,6 +257,11 @@ namespace TrackerLibrary.DataAccess
             if (index != -1)
             {
                 campaigns[index] = model;
+            }
+
+            if (CampaignsFile.FullFilePath().DeleteFile())
+            {
+                campaigns.SaveToCampaignFile(CampaignsFile);
             }
 
             return model;
@@ -258,6 +278,11 @@ namespace TrackerLibrary.DataAccess
                 rpgSystems[index] = model;
             }
 
+            if (RPGSystemsFile.FullFilePath().DeleteFile())
+            {
+                rpgSystems.SaveToRPGSystemFile(RPGSystemsFile);
+            }
+            
             return model;
         }
 
@@ -355,23 +380,48 @@ namespace TrackerLibrary.DataAccess
 
         public RPGSystemModel GetRPGSystem(RPGSystemModel rpgSystem)
         {
-
-
             List<RPGSystemModel> rpgSystems = RPGSystemsFile.FullFilePath().LoadFile().ConvertToRPGSystemModels(CampaignsFile, PlayersFile, CharactersFile, WeaponsFile, SkillsFile, ItemsFile, EventsFile);
+
+            RPGSystemModel searchedRpgSystem = new RPGSystemModel();
 
             if (rpgSystems.Count == 0)
             {
-                return null;
+                searchedRpgSystem = null;
+
+                return searchedRpgSystem;
             }
             else
             {
-                RPGSystemModel searchedRpgSystem = rpgSystems.First(x => x.Id == rpgSystem.Id);
+                searchedRpgSystem = rpgSystems.First(x => x.SystemName == rpgSystem.SystemName);
 
                 return searchedRpgSystem;
             }
         }
 
+        public List<RPGSystemModel> GetAllRPGSystems()
+        {
+            List<RPGSystemModel> rpgSystems = RPGSystemsFile.FullFilePath().LoadFile().ConvertToRPGSystemModels(CampaignsFile, PlayersFile, CharactersFile, WeaponsFile, SkillsFile, ItemsFile, EventsFile);
 
+            return rpgSystems;
+        }
 
+        public List<RPGSystemModel> MakeProperListOfRpgSystems(List<RPGSystemModel> defaultRpgSystems)
+        {
+            List<RPGSystemModel> rpgSystems = RPGSystemsFile.FullFilePath().LoadFile().ConvertToRPGSystemModels(CampaignsFile, PlayersFile, CharactersFile, WeaponsFile, SkillsFile, ItemsFile, EventsFile);
+
+            if (rpgSystems.Count == 0)
+            {
+                foreach (RPGSystemModel system in defaultRpgSystems)
+                {
+                    GlobalConfig.Connection.AddNewRPGSystem(system);
+                }
+
+                return defaultRpgSystems;
+            }
+            else
+            {
+                return rpgSystems;
+            }
+        }
     }
 }

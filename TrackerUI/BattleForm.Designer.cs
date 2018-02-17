@@ -62,6 +62,7 @@
             this.exhaustionValueDropDown = new System.Windows.Forms.ComboBox();
             this.shockValueDropDown = new System.Windows.Forms.ComboBox();
             this.bleedingValueDropDown = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // fightHeader
@@ -82,9 +83,9 @@
             this.charactersInBattleListBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.charactersInBattleListBox.FormattingEnabled = true;
             this.charactersInBattleListBox.ItemHeight = 25;
-            this.charactersInBattleListBox.Location = new System.Drawing.Point(12, 217);
+            this.charactersInBattleListBox.Location = new System.Drawing.Point(20, 168);
             this.charactersInBattleListBox.Name = "charactersInBattleListBox";
-            this.charactersInBattleListBox.Size = new System.Drawing.Size(565, 204);
+            this.charactersInBattleListBox.Size = new System.Drawing.Size(382, 429);
             this.charactersInBattleListBox.TabIndex = 36;
             this.charactersInBattleListBox.SelectedIndexChanged += new System.EventHandler(this.charactersInBattleListBox_SelectedIndexChanged);
             // 
@@ -93,31 +94,31 @@
             this.charactersInFightLabel.AutoSize = true;
             this.charactersInFightLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.charactersInFightLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.charactersInFightLabel.Location = new System.Drawing.Point(12, 161);
+            this.charactersInFightLabel.Location = new System.Drawing.Point(15, 135);
             this.charactersInFightLabel.Name = "charactersInFightLabel";
-            this.charactersInFightLabel.Size = new System.Drawing.Size(151, 30);
+            this.charactersInFightLabel.Size = new System.Drawing.Size(387, 30);
             this.charactersInFightLabel.TabIndex = 37;
-            this.charactersInFightLabel.Text = "Tabela postaci:";
+            this.charactersInFightLabel.Text = "Tabela postaci biorących udział w walce:";
             // 
             // actualRoundLabel
             // 
             this.actualRoundLabel.AutoSize = true;
-            this.actualRoundLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.actualRoundLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.actualRoundLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.actualRoundLabel.Location = new System.Drawing.Point(12, 93);
+            this.actualRoundLabel.Location = new System.Drawing.Point(78, 63);
             this.actualRoundLabel.Name = "actualRoundLabel";
-            this.actualRoundLabel.Size = new System.Drawing.Size(124, 30);
+            this.actualRoundLabel.Size = new System.Drawing.Size(157, 37);
             this.actualRoundLabel.TabIndex = 39;
             this.actualRoundLabel.Text = "Numer tury:";
             // 
             // actualRoundValueLabel
             // 
             this.actualRoundValueLabel.AutoSize = true;
-            this.actualRoundValueLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.actualRoundValueLabel.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.actualRoundValueLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.actualRoundValueLabel.Location = new System.Drawing.Point(142, 93);
+            this.actualRoundValueLabel.Location = new System.Drawing.Point(241, 63);
             this.actualRoundValueLabel.Name = "actualRoundValueLabel";
-            this.actualRoundValueLabel.Size = new System.Drawing.Size(24, 30);
+            this.actualRoundValueLabel.Size = new System.Drawing.Size(37, 45);
             this.actualRoundValueLabel.TabIndex = 40;
             this.actualRoundValueLabel.Text = "1";
             // 
@@ -129,11 +130,11 @@
             this.addRoundButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addRoundButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.addRoundButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.addRoundButton.Location = new System.Drawing.Point(187, 89);
+            this.addRoundButton.Location = new System.Drawing.Point(20, 622);
             this.addRoundButton.Name = "addRoundButton";
-            this.addRoundButton.Size = new System.Drawing.Size(52, 38);
+            this.addRoundButton.Size = new System.Drawing.Size(446, 73);
             this.addRoundButton.TabIndex = 41;
-            this.addRoundButton.Text = "+1";
+            this.addRoundButton.Text = "Zapisz zmiany i rozpocznij kolejną turę";
             this.addRoundButton.UseVisualStyleBackColor = true;
             this.addRoundButton.Click += new System.EventHandler(this.addRoundButton_Click);
             // 
@@ -142,18 +143,18 @@
             this.selectedCharacterStatsLabel.AutoSize = true;
             this.selectedCharacterStatsLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.selectedCharacterStatsLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.selectedCharacterStatsLabel.Location = new System.Drawing.Point(15, 436);
+            this.selectedCharacterStatsLabel.Location = new System.Drawing.Point(659, 93);
             this.selectedCharacterStatsLabel.Name = "selectedCharacterStatsLabel";
-            this.selectedCharacterStatsLabel.Size = new System.Drawing.Size(298, 30);
+            this.selectedCharacterStatsLabel.Size = new System.Drawing.Size(303, 30);
             this.selectedCharacterStatsLabel.TabIndex = 43;
-            this.selectedCharacterStatsLabel.Text = "Statystyki zaznaczonej postaci ";
+            this.selectedCharacterStatsLabel.Text = "Statystyki zaznaczonej postaci :";
             // 
             // initiativeLabel
             // 
             this.initiativeLabel.AutoSize = true;
             this.initiativeLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.initiativeLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.initiativeLabel.Location = new System.Drawing.Point(6, 478);
+            this.initiativeLabel.Location = new System.Drawing.Point(802, 409);
             this.initiativeLabel.Name = "initiativeLabel";
             this.initiativeLabel.Size = new System.Drawing.Size(110, 30);
             this.initiativeLabel.TabIndex = 44;
@@ -164,7 +165,7 @@
             this.actionThisRoundLabel.AutoSize = true;
             this.actionThisRoundLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.actionThisRoundLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.actionThisRoundLabel.Location = new System.Drawing.Point(406, 477);
+            this.actionThisRoundLabel.Location = new System.Drawing.Point(802, 456);
             this.actionThisRoundLabel.Name = "actionThisRoundLabel";
             this.actionThisRoundLabel.Size = new System.Drawing.Size(171, 30);
             this.actionThisRoundLabel.TabIndex = 45;
@@ -175,7 +176,7 @@
             this.tempoLabel.AutoSize = true;
             this.tempoLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tempoLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.tempoLabel.Location = new System.Drawing.Point(900, 342);
+            this.tempoLabel.Location = new System.Drawing.Point(509, 143);
             this.tempoLabel.Name = "tempoLabel";
             this.tempoLabel.Size = new System.Drawing.Size(82, 30);
             this.tempoLabel.TabIndex = 47;
@@ -186,7 +187,7 @@
             this.defenseLabel.AutoSize = true;
             this.defenseLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.defenseLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.defenseLabel.Location = new System.Drawing.Point(900, 392);
+            this.defenseLabel.Location = new System.Drawing.Point(509, 189);
             this.defenseLabel.Name = "defenseLabel";
             this.defenseLabel.Size = new System.Drawing.Size(88, 30);
             this.defenseLabel.TabIndex = 48;
@@ -197,7 +198,7 @@
             this.enduranceLabel.AutoSize = true;
             this.enduranceLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.enduranceLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.enduranceLabel.Location = new System.Drawing.Point(900, 437);
+            this.enduranceLabel.Location = new System.Drawing.Point(509, 235);
             this.enduranceLabel.Name = "enduranceLabel";
             this.enduranceLabel.Size = new System.Drawing.Size(148, 30);
             this.enduranceLabel.TabIndex = 49;
@@ -208,7 +209,7 @@
             this.charismaLabel.AutoSize = true;
             this.charismaLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.charismaLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.charismaLabel.Location = new System.Drawing.Point(900, 481);
+            this.charismaLabel.Location = new System.Drawing.Point(509, 281);
             this.charismaLabel.Name = "charismaLabel";
             this.charismaLabel.Size = new System.Drawing.Size(110, 30);
             this.charismaLabel.TabIndex = 50;
@@ -219,7 +220,7 @@
             this.woundsLabel.AutoSize = true;
             this.woundsLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.woundsLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.woundsLabel.Location = new System.Drawing.Point(6, 518);
+            this.woundsLabel.Location = new System.Drawing.Point(509, 336);
             this.woundsLabel.Name = "woundsLabel";
             this.woundsLabel.Size = new System.Drawing.Size(64, 30);
             this.woundsLabel.TabIndex = 51;
@@ -230,7 +231,7 @@
             this.exhaustionLabel.AutoSize = true;
             this.exhaustionLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.exhaustionLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.exhaustionLabel.Location = new System.Drawing.Point(164, 518);
+            this.exhaustionLabel.Location = new System.Drawing.Point(509, 381);
             this.exhaustionLabel.Name = "exhaustionLabel";
             this.exhaustionLabel.Size = new System.Drawing.Size(137, 30);
             this.exhaustionLabel.TabIndex = 52;
@@ -241,7 +242,7 @@
             this.shockLabel.AutoSize = true;
             this.shockLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.shockLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.shockLabel.Location = new System.Drawing.Point(418, 537);
+            this.shockLabel.Location = new System.Drawing.Point(512, 426);
             this.shockLabel.Name = "shockLabel";
             this.shockLabel.Size = new System.Drawing.Size(61, 30);
             this.shockLabel.TabIndex = 53;
@@ -252,7 +253,7 @@
             this.bleedingLabel.AutoSize = true;
             this.bleedingLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.bleedingLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.bleedingLabel.Location = new System.Drawing.Point(583, 535);
+            this.bleedingLabel.Location = new System.Drawing.Point(512, 471);
             this.bleedingLabel.Name = "bleedingLabel";
             this.bleedingLabel.Size = new System.Drawing.Size(122, 30);
             this.bleedingLabel.TabIndex = 54;
@@ -263,7 +264,7 @@
             this.actionThisRoundDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.actionThisRoundDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.actionThisRoundDropDown.FormattingEnabled = true;
-            this.actionThisRoundDropDown.Location = new System.Drawing.Point(583, 479);
+            this.actionThisRoundDropDown.Location = new System.Drawing.Point(979, 456);
             this.actionThisRoundDropDown.Name = "actionThisRoundDropDown";
             this.actionThisRoundDropDown.Size = new System.Drawing.Size(144, 29);
             this.actionThisRoundDropDown.TabIndex = 66;
@@ -274,7 +275,7 @@
             this.cardDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cardDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.cardDropDown.FormattingEnabled = true;
-            this.cardDropDown.Location = new System.Drawing.Point(122, 478);
+            this.cardDropDown.Location = new System.Drawing.Point(918, 409);
             this.cardDropDown.Name = "cardDropDown";
             this.cardDropDown.Size = new System.Drawing.Size(128, 29);
             this.cardDropDown.TabIndex = 67;
@@ -287,20 +288,21 @@
             this.changeStatsAndBackButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.changeStatsAndBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.changeStatsAndBackButton.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.changeStatsAndBackButton.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.changeStatsAndBackButton.Location = new System.Drawing.Point(694, 648);
+            this.changeStatsAndBackButton.ForeColor = System.Drawing.Color.CadetBlue;
+            this.changeStatsAndBackButton.Location = new System.Drawing.Point(518, 597);
             this.changeStatsAndBackButton.Name = "changeStatsAndBackButton";
-            this.changeStatsAndBackButton.Size = new System.Drawing.Size(480, 47);
+            this.changeStatsAndBackButton.Size = new System.Drawing.Size(656, 47);
             this.changeStatsAndBackButton.TabIndex = 68;
-            this.changeStatsAndBackButton.Text = "Zatwierdź zmiany i wróć do panelu głównego";
+            this.changeStatsAndBackButton.Text = "Zapisz zmiany i wróć do panelu głównego";
             this.changeStatsAndBackButton.UseVisualStyleBackColor = true;
+            this.changeStatsAndBackButton.Click += new System.EventHandler(this.changeStatsAndBackButton_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label2.Location = new System.Drawing.Point(15, 648);
+            this.label2.Location = new System.Drawing.Point(509, 523);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 30);
             this.label2.TabIndex = 69;
@@ -311,7 +313,7 @@
             this.tempoValueLabel.AutoSize = true;
             this.tempoValueLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tempoValueLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.tempoValueLabel.Location = new System.Drawing.Point(988, 342);
+            this.tempoValueLabel.Location = new System.Drawing.Point(659, 143);
             this.tempoValueLabel.Name = "tempoValueLabel";
             this.tempoValueLabel.Size = new System.Drawing.Size(41, 30);
             this.tempoValueLabel.TabIndex = 73;
@@ -322,7 +324,7 @@
             this.defenseValueLabel.AutoSize = true;
             this.defenseValueLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.defenseValueLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.defenseValueLabel.Location = new System.Drawing.Point(988, 392);
+            this.defenseValueLabel.Location = new System.Drawing.Point(659, 189);
             this.defenseValueLabel.Name = "defenseValueLabel";
             this.defenseValueLabel.Size = new System.Drawing.Size(41, 30);
             this.defenseValueLabel.TabIndex = 74;
@@ -333,7 +335,7 @@
             this.enduranceValueLabel.AutoSize = true;
             this.enduranceValueLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.enduranceValueLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.enduranceValueLabel.Location = new System.Drawing.Point(1054, 437);
+            this.enduranceValueLabel.Location = new System.Drawing.Point(659, 235);
             this.enduranceValueLabel.Name = "enduranceValueLabel";
             this.enduranceValueLabel.Size = new System.Drawing.Size(41, 30);
             this.enduranceValueLabel.TabIndex = 75;
@@ -344,7 +346,7 @@
             this.charismaValueLabel.AutoSize = true;
             this.charismaValueLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.charismaValueLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.charismaValueLabel.Location = new System.Drawing.Point(1016, 482);
+            this.charismaValueLabel.Location = new System.Drawing.Point(659, 281);
             this.charismaValueLabel.Name = "charismaValueLabel";
             this.charismaValueLabel.Size = new System.Drawing.Size(41, 30);
             this.charismaValueLabel.TabIndex = 76;
@@ -356,7 +358,7 @@
             this.skillsListBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.skillsListBox.FormattingEnabled = true;
             this.skillsListBox.ItemHeight = 25;
-            this.skillsListBox.Location = new System.Drawing.Point(805, 122);
+            this.skillsListBox.Location = new System.Drawing.Point(815, 176);
             this.skillsListBox.Name = "skillsListBox";
             this.skillsListBox.Size = new System.Drawing.Size(358, 204);
             this.skillsListBox.TabIndex = 77;
@@ -366,7 +368,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label3.Location = new System.Drawing.Point(800, 89);
+            this.label3.Location = new System.Drawing.Point(810, 143);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(363, 30);
             this.label3.TabIndex = 78;
@@ -377,7 +379,7 @@
             this.colorDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.colorDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.colorDropDown.FormattingEnabled = true;
-            this.colorDropDown.Location = new System.Drawing.Point(256, 478);
+            this.colorDropDown.Location = new System.Drawing.Point(1052, 409);
             this.colorDropDown.Name = "colorDropDown";
             this.colorDropDown.Size = new System.Drawing.Size(128, 29);
             this.colorDropDown.TabIndex = 79;
@@ -388,9 +390,9 @@
             this.weaponDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.weaponDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.weaponDropDown.FormattingEnabled = true;
-            this.weaponDropDown.Location = new System.Drawing.Point(85, 647);
+            this.weaponDropDown.Location = new System.Drawing.Point(664, 523);
             this.weaponDropDown.Name = "weaponDropDown";
-            this.weaponDropDown.Size = new System.Drawing.Size(264, 29);
+            this.weaponDropDown.Size = new System.Drawing.Size(423, 29);
             this.weaponDropDown.TabIndex = 80;
             this.weaponDropDown.SelectedIndexChanged += new System.EventHandler(this.weaponDropDown_SelectedIndexChanged);
             // 
@@ -399,9 +401,9 @@
             this.woundsValueDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.woundsValueDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.woundsValueDropDown.FormattingEnabled = true;
-            this.woundsValueDropDown.Location = new System.Drawing.Point(73, 519);
+            this.woundsValueDropDown.Location = new System.Drawing.Point(664, 336);
             this.woundsValueDropDown.Name = "woundsValueDropDown";
-            this.woundsValueDropDown.Size = new System.Drawing.Size(63, 29);
+            this.woundsValueDropDown.Size = new System.Drawing.Size(75, 29);
             this.woundsValueDropDown.TabIndex = 86;
             this.woundsValueDropDown.SelectedIndexChanged += new System.EventHandler(this.woundsValueDropDown_SelectedIndexChanged);
             // 
@@ -410,9 +412,9 @@
             this.exhaustionValueDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.exhaustionValueDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.exhaustionValueDropDown.FormattingEnabled = true;
-            this.exhaustionValueDropDown.Location = new System.Drawing.Point(298, 519);
+            this.exhaustionValueDropDown.Location = new System.Drawing.Point(664, 381);
             this.exhaustionValueDropDown.Name = "exhaustionValueDropDown";
-            this.exhaustionValueDropDown.Size = new System.Drawing.Size(63, 29);
+            this.exhaustionValueDropDown.Size = new System.Drawing.Size(75, 29);
             this.exhaustionValueDropDown.TabIndex = 87;
             this.exhaustionValueDropDown.SelectedIndexChanged += new System.EventHandler(this.exhaustionValueDropDown_SelectedIndexChanged);
             // 
@@ -421,9 +423,9 @@
             this.shockValueDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.shockValueDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.shockValueDropDown.FormattingEnabled = true;
-            this.shockValueDropDown.Location = new System.Drawing.Point(485, 536);
+            this.shockValueDropDown.Location = new System.Drawing.Point(664, 426);
             this.shockValueDropDown.Name = "shockValueDropDown";
-            this.shockValueDropDown.Size = new System.Drawing.Size(63, 29);
+            this.shockValueDropDown.Size = new System.Drawing.Size(75, 29);
             this.shockValueDropDown.TabIndex = 88;
             this.shockValueDropDown.SelectedIndexChanged += new System.EventHandler(this.shockValueDropDown_SelectedIndexChanged);
             // 
@@ -432,11 +434,27 @@
             this.bleedingValueDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.bleedingValueDropDown.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.bleedingValueDropDown.FormattingEnabled = true;
-            this.bleedingValueDropDown.Location = new System.Drawing.Point(707, 536);
+            this.bleedingValueDropDown.Location = new System.Drawing.Point(664, 471);
             this.bleedingValueDropDown.Name = "bleedingValueDropDown";
-            this.bleedingValueDropDown.Size = new System.Drawing.Size(63, 29);
+            this.bleedingValueDropDown.Size = new System.Drawing.Size(75, 29);
             this.bleedingValueDropDown.TabIndex = 89;
             this.bleedingValueDropDown.SelectedIndexChanged += new System.EventHandler(this.bleedingValueDropDown_SelectedIndexChanged);
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button1.ForeColor = System.Drawing.Color.Goldenrod;
+            this.button1.Location = new System.Drawing.Point(518, 650);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(656, 47);
+            this.button1.TabIndex = 90;
+            this.button1.Text = "Wróć do panelu głównego bez zapisywania";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // BattleForm
             // 
@@ -444,6 +462,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1204, 706);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.bleedingValueDropDown);
             this.Controls.Add(this.shockValueDropDown);
             this.Controls.Add(this.exhaustionValueDropDown);
@@ -482,6 +501,7 @@
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.Name = "BattleForm";
             this.Text = "Walka";
+            this.Load += new System.EventHandler(this.BattleForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -522,5 +542,6 @@
         private System.Windows.Forms.ComboBox exhaustionValueDropDown;
         private System.Windows.Forms.ComboBox shockValueDropDown;
         private System.Windows.Forms.ComboBox bleedingValueDropDown;
+        private System.Windows.Forms.Button button1;
     }
 }

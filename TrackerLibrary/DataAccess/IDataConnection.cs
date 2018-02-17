@@ -63,6 +63,10 @@ namespace TrackerLibrary.DataAccess
 
         RPGSystemModel GetRPGSystem(RPGSystemModel rpgSystem);
 
+        List<RPGSystemModel> MakeProperListOfRpgSystems(List<RPGSystemModel> defaultRpgSystems);
+
+        List<RPGSystemModel> GetAllRPGSystems();
+
         bool IsPlayerNameUnique(string playerName);
     }
 }

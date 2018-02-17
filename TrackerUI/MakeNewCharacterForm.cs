@@ -149,7 +149,7 @@ namespace TrackerUI
                     PlayerModel selectedPlayer = (PlayerModel)playerDropDown.SelectedValue;
                     selectedPlayer.PlayerCharacters.Add(characterModel);
                     GlobalConfig.Connection.UpdatePlayer(selectedPlayer);
-
+                    
                     callingForm.EditCharacter(characterModel);
 
                     this.Close();
@@ -163,9 +163,7 @@ namespace TrackerUI
 
 
                     GlobalConfig.Connection.AddNewCharacter(characterModel);
-
-                    callingForm.EditCharacter(characterModel);
-
+                    callingForm.CharacterComplete(characterModel);
 
 
                     PlayerModel playerModel = new PlayerModel(
@@ -173,6 +171,7 @@ namespace TrackerUI
                     playerEmailValue.Text,
                     characterModel);
                     GlobalConfig.Connection.AddNewPlayer(playerModel);
+                    callingForm.NewPlayerCreated(playerModel);
 
                     callingForm.EditCharacter(characterModel);
 

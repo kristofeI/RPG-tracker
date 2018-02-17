@@ -23,5 +23,13 @@ namespace TrackerLibrary.Models
         {
             SystemName = systemName;
         }
+
+        public string DisplayedRpgSystem
+        {
+            get
+            {
+                return $"{ SystemName }";
+            }
+        }
     }
 }

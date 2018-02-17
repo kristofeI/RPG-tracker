@@ -14,6 +14,8 @@ namespace TrackerUI.FormRequesters
         void EditCharacter(CharacterModel model);
 
         void CharacterUpdate(CharacterModel model);
+
+        void NewPlayerCreated(PlayerModel model);
     }
 
 
