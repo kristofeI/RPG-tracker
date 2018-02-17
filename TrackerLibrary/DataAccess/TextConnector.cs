@@ -10,18 +10,9 @@ namespace TrackerLibrary.DataAccess
 {
     public class TextConnector : IDataConnection
     {
-        private const string WeaponsFile = "WeaponModels.csv";
-        private const string SkillsFile = "SkillModels.csv";
-        private const string ItemsFile = "ItemModels.csv";
-        private const string PlayersFile = "PlayerModels.csv";
-        private const string CharactersFile = "CharacterModels.csv";
-        private const string CampaignsFile = "CampaignModels.csv";
-        private const string EventsFile = "EventModels.csv";
-        private const string RPGSystemsFile = "RPGSystemModels.csv";
-
-        public SkillModel AddNewSkill(SkillModel model)
+        public void AddNewSkill(SkillModel model)
         {
-            List<SkillModel> skills = SkillsFile.FullFilePath().LoadFile().ConvertToSkillModels();
+            List<SkillModel> skills = GlobalConfig.SkillsFile.FullFilePath().LoadFile().ConvertToSkillModels();
 
             int currentId = 1;
 
@@ -35,14 +26,12 @@ namespace TrackerLibrary.DataAccess
 
             skills.Add(model);
 
-            skills.SaveToSkillsFile(SkillsFile);
-
-            return model;
+            skills.SaveToSkillsFile();
         }
 
-        public ItemModel AddNewItem(ItemModel model)
+        public void AddNewItem(ItemModel model)
         {
-            List<ItemModel> items = ItemsFile.FullFilePath().LoadFile().ConvertToItemModels();
+            List<ItemModel> items = GlobalConfig.ItemsFile.FullFilePath().LoadFile().ConvertToItemModels();
 
             int currentId = 1;
 
@@ -56,15 +45,13 @@ namespace TrackerLibrary.DataAccess
 
             items.Add(model);
 
-            items.SaveToItemsFile(ItemsFile);
-
-            return model;
+            items.SaveToItemsFile();
         }
 
 
-        public WeaponModel AddNewWeapon(WeaponModel model)
+        public void AddNewWeapon(WeaponModel model)
         {
-            List<WeaponModel> weapons = WeaponsFile.FullFilePath().LoadFile().ConvertToWeaponModels();
+            List<WeaponModel> weapons = GlobalConfig.WeaponsFile.FullFilePath().LoadFile().ConvertToWeaponModels();
             
             int currentId = 1;
 
@@ -77,14 +64,12 @@ namespace TrackerLibrary.DataAccess
             
             weapons.Add(model);
             
-            weapons.SaveToWeaponsFile(WeaponsFile);
-
-            return model;
+            weapons.SaveToWeaponsFile();
         }
 
-        public PlayerModel AddNewPlayer(PlayerModel model)
+        public void AddNewPlayer(PlayerModel model)
         {
-            List<PlayerModel> players = PlayersFile.FullFilePath().LoadFile().ConvertToPlayerModels(CharactersFile, WeaponsFile, SkillsFile, ItemsFile);
+            List<PlayerModel> players = GlobalConfig.PlayersFile.FullFilePath().LoadFile().ConvertToPlayerModels();
 
             int currentId = 1;
 
@@ -97,14 +82,12 @@ namespace TrackerLibrary.DataAccess
 
             players.Add(model);
 
-            players.SaveToPlayersFile(PlayersFile);
-
-            return model;
+            players.SaveToPlayersFile();
         }
 
-        public CharacterModel AddNewCharacter(CharacterModel model)
+        public void AddNewCharacter(CharacterModel model)
         {
-            List<CharacterModel> characters = CharactersFile.FullFilePath().LoadFile().ConvertToCharacterModels(WeaponsFile, SkillsFile, ItemsFile);
+            List<CharacterModel> characters = GlobalConfig.CharactersFile.FullFilePath().LoadFile().ConvertToCharacterModels();
 
             int currentId = 1;
 
@@ -117,15 +100,13 @@ namespace TrackerLibrary.DataAccess
 
             characters.Add(model);
 
-            characters.SaveToCharactersFile(CharactersFile);
-
-            return model;
+            characters.SaveToCharactersFile();
         }
 
 
-        public RPGSystemModel AddNewRPGSystem(RPGSystemModel model)
+        public void AddNewRPGSystem(RPGSystemModel model)
         {
-            List<RPGSystemModel> rpgSystems = RPGSystemsFile.FullFilePath().LoadFile().ConvertToRPGSystemModels(CampaignsFile, PlayersFile, CharactersFile, WeaponsFile, SkillsFile, ItemsFile, EventsFile);
+            List<RPGSystemModel> rpgSystems = GlobalConfig.RPGSystemsFile.FullFilePath().LoadFile().ConvertToRPGSystemModels();
 
             int currentId = 1;
 
@@ -138,14 +119,12 @@ namespace TrackerLibrary.DataAccess
 
             rpgSystems.Add(model);
 
-            rpgSystems.SaveToRPGSystemFile(RPGSystemsFile);
-
-            return model;
+            rpgSystems.SaveToRPGSystemFile();
         }
 
-        public CampaignModel AddNewCampaign(CampaignModel model)
+        public void AddNewCampaign(CampaignModel model)
         {
-            List<CampaignModel> campaigns = CampaignsFile.FullFilePath().LoadFile().ConvertToCampaignModels(PlayersFile, CharactersFile, WeaponsFile, SkillsFile, ItemsFile, EventsFile);
+            List<CampaignModel> campaigns = GlobalConfig.CampaignsFile.FullFilePath().LoadFile().ConvertToCampaignModels();
 
 
             int currentId = 1;
@@ -159,15 +138,13 @@ namespace TrackerLibrary.DataAccess
 
             campaigns.Add(model);
 
-            campaigns.SaveToCampaignFile(CampaignsFile);
-
-            return model;
+            campaigns.SaveToCampaignFile();
 
         }
 
-        public EventModel AddNewEvent(EventModel model)
+        public void AddNewEvent(EventModel model)
         {
-            List<EventModel> events = EventsFile.FullFilePath().LoadFile().ConvertToEventModels();
+            List<EventModel> events = GlobalConfig.EventsFile.FullFilePath().LoadFile().ConvertToEventModels();
 
             int currentId = 1;
 
@@ -181,9 +158,7 @@ namespace TrackerLibrary.DataAccess
 
             events.Add(model);
 
-            events.SaveToEventsFile(EventsFile);
-
-            return model;
+            events.SaveToEventsFile();
         }
 
 
@@ -191,9 +166,9 @@ namespace TrackerLibrary.DataAccess
 
 
 
-        public EventModel UpdateEvent(EventModel model)
+        public void UpdateEvent(EventModel model)
         {
-            List<EventModel> events = EventsFile.FullFilePath().LoadFile().ConvertToEventModels();
+            List<EventModel> events = GlobalConfig.EventsFile.FullFilePath().LoadFile().ConvertToEventModels();
 
             EventModel eventToReplace = events.First(x => x.Id == model.Id);
             var index = events.IndexOf(eventToReplace);
@@ -202,17 +177,15 @@ namespace TrackerLibrary.DataAccess
                 events[index] = model;
             }
 
-            if (EventsFile.FullFilePath().DeleteFile())
+            if (GlobalConfig.EventsFile.FullFilePath().DeleteFile())
             {
-                events.SaveToEventsFile(EventsFile);
+                events.SaveToEventsFile();
             }
-
-            return model;
         }
 
-        public PlayerModel UpdatePlayer(PlayerModel model)
+        public void UpdatePlayer(PlayerModel model)
         {
-            List<PlayerModel> players = PlayersFile.FullFilePath().LoadFile().ConvertToPlayerModels(CharactersFile, WeaponsFile, SkillsFile, ItemsFile);
+            List<PlayerModel> players = GlobalConfig.PlayersFile.FullFilePath().LoadFile().ConvertToPlayerModels();
 
             PlayerModel playerToReplace = players.First(x => x.Id == model.Id);
             var index = players.IndexOf(playerToReplace);
@@ -221,17 +194,15 @@ namespace TrackerLibrary.DataAccess
                 players[index] = model;
             }
 
-            if (PlayersFile.FullFilePath().DeleteFile())
+            if (GlobalConfig.PlayersFile.FullFilePath().DeleteFile())
             {
-                players.SaveToPlayersFile(PlayersFile);
+                players.SaveToPlayersFile();
             }
-
-            return model;
         }
 
-        public CharacterModel UpdateCharacter(CharacterModel model)
+        public void UpdateCharacter(CharacterModel model)
         {
-            List<CharacterModel> characters = CharactersFile.FullFilePath().LoadFile().ConvertToCharacterModels(WeaponsFile, SkillsFile, ItemsFile);
+            List<CharacterModel> characters = GlobalConfig.CharactersFile.FullFilePath().LoadFile().ConvertToCharacterModels();
 
             CharacterModel characterToReplace = characters.First(x => x.Id == model.Id);
             var index = characters.IndexOf(characterToReplace);
@@ -240,17 +211,15 @@ namespace TrackerLibrary.DataAccess
                 characters[index] = model;
             }
 
-            if (CharactersFile.FullFilePath().DeleteFile())
+            if (GlobalConfig.CharactersFile.FullFilePath().DeleteFile())
             {
-                characters.SaveToCharactersFile(CharactersFile);
+                characters.SaveToCharactersFile();
             }
-
-            return model;
         }
 
-        public CampaignModel UpdateCampaign(CampaignModel model)
+        public void UpdateCampaign(CampaignModel model)
         {
-            List<CampaignModel> campaigns = CampaignsFile.FullFilePath().LoadFile().ConvertToCampaignModels(PlayersFile, CharactersFile, WeaponsFile, SkillsFile, ItemsFile, EventsFile);
+            List<CampaignModel> campaigns = GlobalConfig.CampaignsFile.FullFilePath().LoadFile().ConvertToCampaignModels();
 
             CampaignModel campaignToReplace = campaigns.First(x => x.Id == model.Id);
             var index = campaigns.IndexOf(campaignToReplace);
@@ -259,17 +228,15 @@ namespace TrackerLibrary.DataAccess
                 campaigns[index] = model;
             }
 
-            if (CampaignsFile.FullFilePath().DeleteFile())
+            if (GlobalConfig.CampaignsFile.FullFilePath().DeleteFile())
             {
-                campaigns.SaveToCampaignFile(CampaignsFile);
+                campaigns.SaveToCampaignFile();
             }
-
-            return model;
         }
 
-        public RPGSystemModel UpdateRPGSystem(RPGSystemModel model)
+        public void UpdateRPGSystem(RPGSystemModel model)
         {
-            List<RPGSystemModel> rpgSystems = RPGSystemsFile.FullFilePath().LoadFile().ConvertToRPGSystemModels(CampaignsFile, PlayersFile, CharactersFile, WeaponsFile, SkillsFile, ItemsFile, EventsFile);
+            List<RPGSystemModel> rpgSystems = GlobalConfig.RPGSystemsFile.FullFilePath().LoadFile().ConvertToRPGSystemModels();
 
             RPGSystemModel rpgSystemToReplace = rpgSystems.First(x => x.Id == model.Id);
             var index = rpgSystems.IndexOf(rpgSystemToReplace);
@@ -278,12 +245,10 @@ namespace TrackerLibrary.DataAccess
                 rpgSystems[index] = model;
             }
 
-            if (RPGSystemsFile.FullFilePath().DeleteFile())
+            if (GlobalConfig.RPGSystemsFile.FullFilePath().DeleteFile())
             {
-                rpgSystems.SaveToRPGSystemFile(RPGSystemsFile);
+                rpgSystems.SaveToRPGSystemFile();
             }
-            
-            return model;
         }
 
 
@@ -292,41 +257,7 @@ namespace TrackerLibrary.DataAccess
 
 
 
-        public void AddCharacterToPlayer(CharacterModel character, PlayerModel player)
-        {
-            List<PlayerModel> players = PlayersFile.FullFilePath().LoadFile().ConvertToPlayerModels(CharactersFile, WeaponsFile, SkillsFile, ItemsFile);
-
-            players.Where(x => x.Id == player.Id).First().PlayerCharacters.Add(character);
-
-            players.SaveToPlayersFile(PlayersFile);
-        }
-
-        public void AddWeaponToCharacter(WeaponModel weapon, CharacterModel character)
-        {
-            List<CharacterModel> characters = CharactersFile.FullFilePath().LoadFile().ConvertToCharacterModels(WeaponsFile, SkillsFile, ItemsFile);
-
-            characters.Where(x => x.Id == character.Id).First().CharacterWeapons.Add(weapon);
-
-            characters.SaveToCharactersFile(CharactersFile);
-        }
-
-        public void AddSkillToCharacter(SkillModel skill, CharacterModel character)
-        {
-            List<CharacterModel> characters = CharactersFile.FullFilePath().LoadFile().ConvertToCharacterModels(WeaponsFile, SkillsFile, ItemsFile);
-
-            characters.Where(x => x.Id == character.Id).First().CharacterSkills.Add(skill);
-
-            characters.SaveToCharactersFile(CharactersFile);
-        }
-
-        public void AddItemToCharacter(ItemModel item, CharacterModel character)
-        {
-            List<CharacterModel> characters = CharactersFile.FullFilePath().LoadFile().ConvertToCharacterModels(WeaponsFile, SkillsFile, ItemsFile);
-
-            characters.Where(x => x.Id == character.Id).First().Items.Add(item);
-
-            characters.SaveToCharactersFile(CharactersFile);
-        }
+        
 
 
 
@@ -340,7 +271,7 @@ namespace TrackerLibrary.DataAccess
 
         public List<PlayerModel> GetAllPlayers()
         {
-            List<PlayerModel> players = PlayersFile.FullFilePath().LoadFile().ConvertToPlayerModels(CharactersFile, WeaponsFile, SkillsFile, ItemsFile);
+            List<PlayerModel> players = GlobalConfig.PlayersFile.FullFilePath().LoadFile().ConvertToPlayerModels();
 
             return players;
         }
@@ -350,7 +281,7 @@ namespace TrackerLibrary.DataAccess
             bool output = true;
 
             List<PlayerModel> names = new List<PlayerModel>();
-            List<PlayerModel> players = PlayersFile.FullFilePath().LoadFile().ConvertToPlayerModels(CharactersFile, WeaponsFile, SkillsFile, ItemsFile);
+            List<PlayerModel> players = GlobalConfig.PlayersFile.FullFilePath().LoadFile().ConvertToPlayerModels();
 
             names.AddRange(players.Where(x => x.Name == playerName));
 
@@ -372,7 +303,7 @@ namespace TrackerLibrary.DataAccess
 
         public List<CampaignModel> GetAllCampaigns()
         {
-            List<CampaignModel> campaigns = CampaignsFile.FullFilePath().LoadFile().ConvertToCampaignModels(PlayersFile, CharactersFile, WeaponsFile, SkillsFile, ItemsFile, EventsFile);
+            List<CampaignModel> campaigns = GlobalConfig.CampaignsFile.FullFilePath().LoadFile().ConvertToCampaignModels();
 
             return campaigns;
         }
@@ -380,7 +311,7 @@ namespace TrackerLibrary.DataAccess
 
         public RPGSystemModel GetRPGSystem(RPGSystemModel rpgSystem)
         {
-            List<RPGSystemModel> rpgSystems = RPGSystemsFile.FullFilePath().LoadFile().ConvertToRPGSystemModels(CampaignsFile, PlayersFile, CharactersFile, WeaponsFile, SkillsFile, ItemsFile, EventsFile);
+            List<RPGSystemModel> rpgSystems = GlobalConfig.RPGSystemsFile.FullFilePath().LoadFile().ConvertToRPGSystemModels();
 
             RPGSystemModel searchedRpgSystem = new RPGSystemModel();
 
@@ -400,14 +331,14 @@ namespace TrackerLibrary.DataAccess
 
         public List<RPGSystemModel> GetAllRPGSystems()
         {
-            List<RPGSystemModel> rpgSystems = RPGSystemsFile.FullFilePath().LoadFile().ConvertToRPGSystemModels(CampaignsFile, PlayersFile, CharactersFile, WeaponsFile, SkillsFile, ItemsFile, EventsFile);
+            List<RPGSystemModel> rpgSystems = GlobalConfig.RPGSystemsFile.FullFilePath().LoadFile().ConvertToRPGSystemModels();
 
             return rpgSystems;
         }
 
         public List<RPGSystemModel> MakeProperListOfRpgSystems(List<RPGSystemModel> defaultRpgSystems)
         {
-            List<RPGSystemModel> rpgSystems = RPGSystemsFile.FullFilePath().LoadFile().ConvertToRPGSystemModels(CampaignsFile, PlayersFile, CharactersFile, WeaponsFile, SkillsFile, ItemsFile, EventsFile);
+            List<RPGSystemModel> rpgSystems = GlobalConfig.RPGSystemsFile.FullFilePath().LoadFile().ConvertToRPGSystemModels();
 
             if (rpgSystems.Count == 0)
             {

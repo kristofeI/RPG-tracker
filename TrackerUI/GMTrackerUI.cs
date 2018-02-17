@@ -264,7 +264,7 @@ namespace TrackerUI
                 if (characterToCheck.Id == character.Id)
                 {
                     output = false;
-                    MessageBox.Show("Postać już istnieje na liście drużyny.");
+                    MessageBox.Show("Postać już istnieje na liście NPCów.");
                 } 
             }
 
@@ -273,7 +273,7 @@ namespace TrackerUI
                 if (characterToCheck.Id == character.Id)
                 {
                     output = false;
-                    MessageBox.Show("Postać już istnieje na liście NPCów.");
+                    MessageBox.Show("Postać już istnieje na liście drużyny.");
                 }
             }
 

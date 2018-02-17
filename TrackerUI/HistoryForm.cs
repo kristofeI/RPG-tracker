@@ -41,7 +41,9 @@ namespace TrackerUI
         {
             EventModel newEvent = new EventModel(currentCampaign.CurrentGameTime, timeDescriptionTextBox.Text);
 
-            currentCampaign.Events.Add(GlobalConfig.Connection.AddNewEvent(newEvent));
+            GlobalConfig.Connection.AddNewEvent(newEvent);
+
+            currentCampaign.Events.Add(newEvent);
 
             callingForm.CampaignEdited(currentCampaign);
 

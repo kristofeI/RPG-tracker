@@ -20,13 +20,6 @@ namespace TrackerUI
         CharacterModel selectedCharacter;
         List<SkillModel> skills = new List<SkillModel>();
         List<WeaponModel> weapons = new List<WeaponModel>();
-        WeaponModel selectedWeapon;
-        List<string> cards = new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Walet", "Dama", "Król", "As", "Joker" };
-        List<string> colors = new List<string>() { "pik", "kier", "karo", "trefl"};
-        List<string> actions = new List<string>() { "Wstrzymanie akcji", "Przerwanie czyjejś akcji", "Walka wręcz", "Walka na dystans" };
-        List<string> choice = new List<string>() { "Tak", "Nie" };
-        List<string> woundValues = new List<string>() { "0", "-1", "-2", "-3" };
-        List<string> exhaustionValues = new List<string>() { "0", "-1", "-2" };
 
         public BattleForm(ICharacterRequester caller, List<CharacterModel> characters)
         {
@@ -154,91 +147,23 @@ namespace TrackerUI
                 if (selectedCharacter.CharacterSkills != null)
                     skillsListBox.DataSource = selectedCharacter.CharacterSkills;
                 skillsListBox.DisplayMember = "DisplayedSkillName";
-
-                //cardDropDown.DisplayMember = "Text";
-                //cardDropDown.ValueMember = "Value";
-                //var cardsArray = new[] {
-                //    new { Text = "1", Value = "1" },
-                //    new { Text = "2", Value = "2" },
-                //    new { Text = "3", Value = "3" },
-                //    new { Text = "4", Value = "4" },
-                //    new { Text = "5", Value = "5" },
-                //    new { Text = "7", Value = "6" },
-                //    new { Text = "8", Value = "8" },
-                //    new { Text = "9", Value = "9" },
-                //    new { Text = "10", Value = "10" },
-                //    new { Text = "Walet", Value = "Walet" },
-                //    new { Text = "Dama", Value = "Dama" },
-                //    new { Text = "Król", Value = "Król" },
-                //    new { Text = "As", Value = "As" },
-                //    new { Text = "Joker", Value = "Joker" }
-                //};
-                //cardDropDown.DataSource = cardsArray;
+                
                 if (selectedCharacter.Card != null)
                     cardDropDown.SelectedValue = selectedCharacter.Card;
-
-                //colorDropDown.DisplayMember = "Text";
-                //colorDropDown.ValueMember = "Value";
-                //var colorsArray = new[] {
-                //    new { Text = "pik", Value = "pik" },
-                //    new { Text = "kier", Value = "kier" },
-                //    new { Text = "karo", Value = "karo" },
-                //    new { Text = "trefl", Value = "trefl" }
-                //};
-                //colorDropDown.DataSource = colorsArray;
+                
                 if (selectedCharacter.Color != null)
                     colorDropDown.SelectedValue = selectedCharacter.Color;
-
-                //woundsValueDropDown.DisplayMember = "Text";
-                //woundsValueDropDown.ValueMember = "Value";
-                //var woundsArray = new[] {
-                //    new { Text = "0", Value = "0" },
-                //    new { Text = "-1", Value = "-1" },
-                //    new { Text = "-2", Value = "-2" },
-                //    new { Text = "-3", Value = "-3" }
-                //};
-                //woundsValueDropDown.DataSource = woundsArray;
+                
                 woundsValueDropDown.SelectedValue = Convert.ToString(selectedCharacter.Wounds);
-
-                //exhaustionValueDropDown.DisplayMember = "Text";
-                //exhaustionValueDropDown.ValueMember = "Value";
-                //var exhaustionArray = new[] {
-                //    new { Text = "0", Value = "0" },
-                //    new { Text = "-1", Value = "-1" },
-                //    new { Text = "-2", Value = "-2" }
-                //};
-                //exhaustionValueDropDown.DataSource = exhaustionArray;
+                
                 exhaustionValueDropDown.SelectedValue = Convert.ToString(selectedCharacter.Exhaution);
-
-                //shockValueDropDown.DisplayMember = "Text";
-                //shockValueDropDown.ValueMember = "Value";
-                //var shockArray = new[] {
-                //    new { Text = "Tak", Value = "Tak" },
-                //    new { Text = "Nie", Value = "Nie" }
-                //};
-                //shockValueDropDown.DataSource = shockArray;
+                
                 if (selectedCharacter.Shock != null)
                     shockValueDropDown.SelectedValue = selectedCharacter.Shock;
-
-                //bleedingValueDropDown.DisplayMember = "Text";
-                //bleedingValueDropDown.ValueMember = "Value";
-                //var bleedingArray = new[] {
-                //    new { Text = "Tak", Value = "Tak" },
-                //    new { Text = "Nie", Value = "Nie" }
-                //};
-                //bleedingValueDropDown.DataSource = bleedingArray;
+                
                 if (selectedCharacter.Bleeding != null)
                     bleedingValueDropDown.SelectedValue = selectedCharacter.Bleeding;
-
-                //actionThisRoundDropDown.DisplayMember = "Text";
-                //actionThisRoundDropDown.ValueMember = "Value";
-                //var actionArray = new[] {
-                //    new { Text = "Wstrzymanie akcji", Value = "Wstrzymanie akcji" },
-                //    new { Text = "Przerwanie czyjejś akcji", Value = "Przerwanie czyjejś akcji" },
-                //    new { Text = "Walka wręcz", Value = "Walka wręcz" },
-                //    new { Text = "Walka na dystans", Value = "Walka na dystans" }
-                //};
-                //actionThisRoundDropDown.DataSource = actionArray;
+                
                 if (selectedCharacter.Action != null)
                     actionThisRoundDropDown.SelectedValue = selectedCharacter.Action;
                 

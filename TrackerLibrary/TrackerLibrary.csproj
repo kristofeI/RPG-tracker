@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="DataAccess\TextConnectorProcessor.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="GameLogic.cs" />
     <Compile Include="Models\CampaignModel.cs" />
     <Compile Include="Models\RoundModel.cs" />
     <Compile Include="Models\BodyNeedModel.cs" />

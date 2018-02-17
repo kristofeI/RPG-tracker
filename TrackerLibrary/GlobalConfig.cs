@@ -9,20 +9,21 @@ namespace TrackerLibrary
 {
     public static class GlobalConfig
     {
+        public const string WeaponsFile = "WeaponModels.csv";
+        public const string SkillsFile = "SkillModels.csv";
+        public const string ItemsFile = "ItemModels.csv";
+        public const string PlayersFile = "PlayerModels.csv";
+        public const string CharactersFile = "CharacterModels.csv";
+        public const string CampaignsFile = "CampaignModels.csv";
+        public const string EventsFile = "EventModels.csv";
+        public const string RPGSystemsFile = "RPGSystemModels.csv";
+
         public static IDataConnection Connection { get; private set; }
-
-        //public static int SelectedRPGSystemId { get; set; }
-        //public static int SelectedActiveSessionId { get; set; }
-        //public static int SelectedPlayerId { get; set; }
-        //public static int SelectedCharacterId { get; set; }
-
-        ////Make a proper id's values
 
         public static void InitializeConnections(DatabaseType db)
         {
             if (db == DatabaseType.TextFile)
             {
-                //TODO - Create the Text Connection properly
                 TextConnector text = new TextConnector();
                 Connection = text;
 

@@ -129,7 +129,7 @@
             this.showEditCharacterHeader.AutoSize = true;
             this.showEditCharacterHeader.Font = new System.Drawing.Font("Segoe UI Light", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.showEditCharacterHeader.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.showEditCharacterHeader.Location = new System.Drawing.Point(379, 9);
+            this.showEditCharacterHeader.Location = new System.Drawing.Point(363, 9);
             this.showEditCharacterHeader.Name = "showEditCharacterHeader";
             this.showEditCharacterHeader.Size = new System.Drawing.Size(516, 50);
             this.showEditCharacterHeader.TabIndex = 58;

@@ -52,9 +52,20 @@ namespace TrackerUI
         {
             CampaignModel newCampaign = new CampaignModel(newCampaignTextBox.Text);
 
-            currentRPGSystem.Campaigns.Add(GlobalConfig.Connection.AddNewCampaign(newCampaign));
+            GlobalConfig.Connection.AddNewCampaign(newCampaign);
 
-            GlobalConfig.Connection.UpdateRPGSystem(currentRPGSystem);
+            currentRPGSystem.Campaigns.Add(newCampaign);
+
+            try
+            {
+                GlobalConfig.Connection.UpdateRPGSystem(currentRPGSystem);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aplikacja napotkała następujący błąd: { ex.Message }");
+            }
+
+            
 
             WireUpLists();
         }
@@ -65,7 +76,15 @@ namespace TrackerUI
 
             currentRPGSystem.Campaigns.Remove(selectedCampaign);
 
-            GlobalConfig.Connection.UpdateRPGSystem(currentRPGSystem);
+            try
+            {
+                GlobalConfig.Connection.UpdateRPGSystem(currentRPGSystem);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Aplikacja napotkała następujący błąd: { ex.Message }");
+            }
+            
 
             WireUpLists();
         }

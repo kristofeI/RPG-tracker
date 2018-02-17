@@ -22,9 +22,6 @@ namespace TrackerUI
         List<ItemModel> currentCharacterItems = new List<ItemModel>();
         List<string> dices = new List<string>() { "k4", "k6", "k8", "k10", "k12" };
         List<string> traits = new List<string>() { "Duch", "Siła", "Spryt", "Wigor", "Zręczność"};
-        List<string> choice = new List<string>() { "Tak", "Nie" };
-        List<string> woundValues = new List<string>() { "0", "-1", "-2", "-3" };
-        List<string> exhaustionValues = new List<string>() { "0", "-1", "-2" };
 
 
         public EditCharacterForm(ICharacterRequester caller, CharacterModel character)

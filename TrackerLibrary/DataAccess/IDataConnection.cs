@@ -11,45 +11,35 @@ namespace TrackerLibrary.DataAccess
     {
 
 
-        WeaponModel AddNewWeapon(WeaponModel model);
+        void AddNewWeapon(WeaponModel model);
 
-        SkillModel AddNewSkill(SkillModel model);
+        void AddNewSkill(SkillModel model);
 
-        ItemModel AddNewItem(ItemModel model);
+        void AddNewItem(ItemModel model);
 
-        EventModel AddNewEvent(EventModel model);
+        void AddNewEvent(EventModel model);
 
-        PlayerModel AddNewPlayer(PlayerModel model);
+        void AddNewPlayer(PlayerModel model);
 
-        CharacterModel AddNewCharacter(CharacterModel model);
+        void AddNewCharacter(CharacterModel model);
 
-        CampaignModel AddNewCampaign(CampaignModel model);
+        void AddNewCampaign(CampaignModel model);
 
-        RPGSystemModel AddNewRPGSystem(RPGSystemModel model);
-
-
-
-        EventModel UpdateEvent(EventModel model);
-
-        PlayerModel UpdatePlayer(PlayerModel model);
-
-        CharacterModel UpdateCharacter(CharacterModel model);
-
-        CampaignModel UpdateCampaign(CampaignModel model);
-
-        RPGSystemModel UpdateRPGSystem(RPGSystemModel model);
+        void AddNewRPGSystem(RPGSystemModel model);
 
 
 
+        void UpdateEvent(EventModel model);
 
+        void UpdatePlayer(PlayerModel model);
 
-        void AddCharacterToPlayer(CharacterModel character, PlayerModel player);
+        void UpdateCharacter(CharacterModel model);
 
-        void AddWeaponToCharacter(WeaponModel weapon, CharacterModel character);
+        void UpdateCampaign(CampaignModel model);
 
-        void AddSkillToCharacter(SkillModel skill, CharacterModel character);
+        void UpdateRPGSystem(RPGSystemModel model);
 
-        void AddItemToCharacter(ItemModel item, CharacterModel character);
+        
 
 
 

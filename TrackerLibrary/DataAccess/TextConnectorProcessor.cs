@@ -8,21 +8,14 @@ using System.Threading.Tasks;
 using TrackerLibrary.DataAccess.TextHelpers;
 using TrackerLibrary.Models;
 
-//Load the text file
-//Convert the text to List<WeaponModel>
-//Find the max ID
-//Add the new record with the new ID (max + 1)
-//Convert weapons to List<string>
-//Save List<string> to the text file
+
 
 namespace TrackerLibrary.DataAccess.TextHelpers
 {
     public static class TextConnectorProcessor
     {
 
-
-
-
+        
 
 
         public static string FullFilePath(this string FileName)
@@ -67,10 +60,10 @@ namespace TrackerLibrary.DataAccess.TextHelpers
 
         #region ConvertToModels
 
-        public static List<PlayerModel> ConvertToPlayerModels(this List<string> lines, string charactersFileName, string weaponsFileName, string skillsFileName, string itemsFileName)
+        public static List<PlayerModel> ConvertToPlayerModels(this List<string> lines)
         {
             List<PlayerModel> output = new List<PlayerModel>();
-            List<CharacterModel> characters = charactersFileName.FullFilePath().LoadFile().ConvertToCharacterModels(weaponsFileName, skillsFileName, itemsFileName);
+            List<CharacterModel> characters = GlobalConfig.CharactersFile.FullFilePath().LoadFile().ConvertToCharacterModels();
 
             foreach (string line in lines)
             {
@@ -100,12 +93,12 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             return output;
         }
 
-        public static List<CharacterModel> ConvertToCharacterModels(this List<string> lines, string weaponsFileName, string skillsFileName, string itemsFileName)
+        public static List<CharacterModel> ConvertToCharacterModels(this List<string> lines)
         {
             List<CharacterModel> output = new List<CharacterModel>();
-            List<WeaponModel> weapons = weaponsFileName.FullFilePath().LoadFile().ConvertToWeaponModels();
-            List<SkillModel> skills = skillsFileName.FullFilePath().LoadFile().ConvertToSkillModels();
-            List<ItemModel> items = itemsFileName.FullFilePath().LoadFile().ConvertToItemModels();
+            List<WeaponModel> weapons = GlobalConfig.WeaponsFile.FullFilePath().LoadFile().ConvertToWeaponModels();
+            List<SkillModel> skills = GlobalConfig.SkillsFile.FullFilePath().LoadFile().ConvertToSkillModels();
+            List<ItemModel> items = GlobalConfig.ItemsFile.FullFilePath().LoadFile().ConvertToItemModels();
 
             foreach (string line in lines)
             {
@@ -281,15 +274,15 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             return output;
         }
 
-        public static List<RPGSystemModel> ConvertToRPGSystemModels(this List<string> lines, string campaignsFileName, string playersFileName, string charactersFileName, string weaponsFileName, string skillsFileName, string itemsFileName, string eventsFileName)
+        public static List<RPGSystemModel> ConvertToRPGSystemModels(this List<string> lines)
         {
             List<RPGSystemModel> output = new List<RPGSystemModel>();
-            List<CampaignModel> campaigns = campaignsFileName.FullFilePath().LoadFile().ConvertToCampaignModels(playersFileName, charactersFileName, weaponsFileName, skillsFileName, itemsFileName, eventsFileName);
-            List<PlayerModel> players = playersFileName.FullFilePath().LoadFile().ConvertToPlayerModels(charactersFileName, weaponsFileName, skillsFileName, itemsFileName);
-            List<CharacterModel> teamCharacters = charactersFileName.FullFilePath().LoadFile().ConvertToCharacterModels(weaponsFileName, skillsFileName, itemsFileName);
-            List<CharacterModel> npcCharacters = charactersFileName.FullFilePath().LoadFile().ConvertToCharacterModels(weaponsFileName, skillsFileName, itemsFileName);
-            List<CharacterModel> fightingCharacters = charactersFileName.FullFilePath().LoadFile().ConvertToCharacterModels(weaponsFileName, skillsFileName, itemsFileName);
-            List<EventModel> events = eventsFileName.FullFilePath().LoadFile().ConvertToEventModels();
+            List<CampaignModel> campaigns = GlobalConfig.CampaignsFile.FullFilePath().LoadFile().ConvertToCampaignModels();
+            List<PlayerModel> players = GlobalConfig.PlayersFile.FullFilePath().LoadFile().ConvertToPlayerModels();
+            List<CharacterModel> teamCharacters = GlobalConfig.CharactersFile.FullFilePath().LoadFile().ConvertToCharacterModels();
+            List<CharacterModel> npcCharacters = GlobalConfig.CharactersFile.FullFilePath().LoadFile().ConvertToCharacterModels();
+            List<CharacterModel> fightingCharacters = GlobalConfig.CharactersFile.FullFilePath().LoadFile().ConvertToCharacterModels();
+            List<EventModel> events = GlobalConfig.EventsFile.FullFilePath().LoadFile().ConvertToEventModels();
 
             foreach (string line in lines)
             {
@@ -319,14 +312,14 @@ namespace TrackerLibrary.DataAccess.TextHelpers
             return output;
         }
 
-        public static List<CampaignModel> ConvertToCampaignModels(this List<string> lines, string playersFileName, string charactersFileName, string weaponsFileName, string skillsFileName, string itemsFileName, string eventsFileName)
+        public static List<CampaignModel> ConvertToCampaignModels(this List<string> lines)
         {
             List<CampaignModel> output = new List<CampaignModel>();
-            List<PlayerModel> players = playersFileName.FullFilePath().LoadFile().ConvertToPlayerModels(charactersFileName, weaponsFileName, skillsFileName, itemsFileName);
-            List<CharacterModel> teamCharacters = charactersFileName.FullFilePath().LoadFile().ConvertToCharacterModels(weaponsFileName, skillsFileName, itemsFileName);
-            List<CharacterModel> npcCharacters = charactersFileName.FullFilePath().LoadFile().ConvertToCharacterModels(weaponsFileName, skillsFileName, itemsFileName);
-            List<CharacterModel> fightingCharacters = charactersFileName.FullFilePath().LoadFile().ConvertToCharacterModels(weaponsFileName, skillsFileName, itemsFileName);
-            List<EventModel> events = eventsFileName.FullFilePath().LoadFile().ConvertToEventModels();
+            List<PlayerModel> players = GlobalConfig.PlayersFile.FullFilePath().LoadFile().ConvertToPlayerModels();
+            List<CharacterModel> teamCharacters = GlobalConfig.CharactersFile.FullFilePath().LoadFile().ConvertToCharacterModels();
+            List<CharacterModel> npcCharacters = GlobalConfig.CharactersFile.FullFilePath().LoadFile().ConvertToCharacterModels();
+            List<CharacterModel> fightingCharacters = GlobalConfig.CharactersFile.FullFilePath().LoadFile().ConvertToCharacterModels();
+            List<EventModel> events = GlobalConfig.EventsFile.FullFilePath().LoadFile().ConvertToEventModels();
 
             foreach (string line in lines)
             {
@@ -428,7 +421,7 @@ namespace TrackerLibrary.DataAccess.TextHelpers
         #region SaveToFile
 
 
-        public static void SaveToPlayersFile(this List<PlayerModel> models, string fileName)
+        public static void SaveToPlayersFile(this List<PlayerModel> models)
         {
             List<string> lines = new List<string>();
 
@@ -437,10 +430,10 @@ namespace TrackerLibrary.DataAccess.TextHelpers
                 lines.Add($"{ p.Id }#{ p.Name }#{ p.EmailAddress }#{ ConvertIdsFromCharacterListToString(p.PlayerCharacters) }");
             }
 
-            File.WriteAllLines(fileName.FullFilePath(), lines);
+            File.WriteAllLines(GlobalConfig.PlayersFile.FullFilePath(), lines);
         }
 
-        public static void SaveToCharactersFile(this List<CharacterModel> models, string fileName)
+        public static void SaveToCharactersFile(this List<CharacterModel> models)
         {
             List<string> lines = new List<string>();
             
@@ -451,10 +444,10 @@ namespace TrackerLibrary.DataAccess.TextHelpers
                     $"{ c.Id }#{ c.Name }#{ c.Origin }#{ c.CurrentLocation }#{ c.Profession }#{ c.Illness }#{ c.Characteristics }#{ c.Trick }#{ c.Reputation }#{ c.Fame }#{ c.Luck }#{ c.Level }#{ c.Experience }#{ c.ExpReward }#{ c.Tempo }#{ c.Defence }#{ c.Endurance }#{ c.Charisma }#{ c.Wounds }#{ c.Exhaution }#{ c.Shock }#{ c.Bleeding }#{ c.IllnessProgression }#{ c.HoursWithoutFood }#{ c.HoursWithoutWater }#{ c.HoursWithoutDrugs }#{ c.IsCharacterInTeam }#{ ConvertIdFromCurrentWeaponToString(c.CurrentWeapon) }#{ ConvertIdsFromWeaponListToString(c.CharacterWeapons) }#{ ConvertIdsFromSkillListToString(c.CharacterSkills) }#{ ConvertIdsFromItemListToString(c.Items)  }#{ c.Spirit }#{ c.Strength }#{ c.Cunning }#{ c.Vigor }#{ c.Agility }");
             }
 
-            File.WriteAllLines(fileName.FullFilePath(), lines);
+            File.WriteAllLines(GlobalConfig.CharactersFile.FullFilePath(), lines);
         }
 
-        public static void SaveToWeaponsFile(this List<WeaponModel> models, string fileName)
+        public static void SaveToWeaponsFile(this List<WeaponModel> models)
         {
             List<string> lines = new List<string>();
 
@@ -463,10 +456,10 @@ namespace TrackerLibrary.DataAccess.TextHelpers
                 lines.Add($"{ w.Id }#{ w.WeaponName }#{ w.AmmoSupply }#{ w.Damage }");
             }
 
-            File.WriteAllLines(fileName.FullFilePath(), lines);
+            File.WriteAllLines(GlobalConfig.WeaponsFile.FullFilePath(), lines);
         }
 
-        public static void SaveToSkillsFile(this List<SkillModel> models, string fileName)
+        public static void SaveToSkillsFile(this List<SkillModel> models)
         {
             List<string> lines = new List<string>();
 
@@ -475,11 +468,11 @@ namespace TrackerLibrary.DataAccess.TextHelpers
                 lines.Add($"{ s.Id }#{ s.Name }#{ s.Dice }#{ s.Trait }");
             }
 
-            File.WriteAllLines(fileName.FullFilePath(), lines);
+            File.WriteAllLines(GlobalConfig.SkillsFile.FullFilePath(), lines);
         }
 
 
-        public static void SaveToItemsFile(this List<ItemModel> models, string fileName)
+        public static void SaveToItemsFile(this List<ItemModel> models)
         {
             List<string> lines = new List<string>();
 
@@ -488,10 +481,10 @@ namespace TrackerLibrary.DataAccess.TextHelpers
                 lines.Add($"{ i.Id }#{ i.Name }#{ i.Quantity }");
             }
 
-            File.WriteAllLines(fileName.FullFilePath(), lines);
+            File.WriteAllLines(GlobalConfig.ItemsFile.FullFilePath(), lines);
         }
 
-        public static void SaveToEventsFile(this List<EventModel> models, string fileName)
+        public static void SaveToEventsFile(this List<EventModel> models)
         {
             List<string> lines = new List<string>();
 
@@ -500,10 +493,10 @@ namespace TrackerLibrary.DataAccess.TextHelpers
                 lines.Add($"{ e.Id }#{ e.EventTime }#{ e.EventDescription }");
             }
 
-            File.WriteAllLines(fileName.FullFilePath(), lines);
+            File.WriteAllLines(GlobalConfig.EventsFile.FullFilePath(), lines);
         }
 
-        public static void SaveToCampaignFile(this List<CampaignModel> models, string fileName)
+        public static void SaveToCampaignFile(this List<CampaignModel> models)
         {
             List<string> lines = new List<string>();
 
@@ -512,11 +505,11 @@ namespace TrackerLibrary.DataAccess.TextHelpers
                 lines.Add($"{ c.Id }#{ c.CampaignName }#{ c.CurrentGameTime }#{ ConvertIdsFromPlayerListToString(c.PlayersInCampaign) }#{ ConvertIdsFromCharacterListToString(c.TeamCharacters) }#{ ConvertIdsFromCharacterListToString(c.NpcCharacters) }#{ ConvertIdsFromCharacterListToString(c.FightingUnits) }#{ ConvertIdsFromEventListToString(c.Events) }");
             }
 
-            File.WriteAllLines(fileName.FullFilePath(), lines);
+            File.WriteAllLines(GlobalConfig.CampaignsFile.FullFilePath(), lines);
 
         }
 
-        public static void  SaveToRPGSystemFile(this List<RPGSystemModel> models, string fileName)
+        public static void  SaveToRPGSystemFile(this List<RPGSystemModel> models)
         {
             List<string> lines = new List<string>();
 
@@ -525,7 +518,7 @@ namespace TrackerLibrary.DataAccess.TextHelpers
                 lines.Add($"{ r.Id }#{ r.SystemName }#{ ConvertIdsFromCampaignListToString(r.Campaigns) }");
             }
 
-            File.WriteAllLines(fileName.FullFilePath(), lines);
+            File.WriteAllLines(GlobalConfig.RPGSystemsFile.FullFilePath(), lines);
         }
 
         #endregion
