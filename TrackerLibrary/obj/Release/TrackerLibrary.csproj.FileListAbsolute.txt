@@ -1,0 +1,4 @@
+E:\PLIKI KOMOPUTER\Dropbox\Praca\Programowanie\Proste programy\RPGTracker\TrackerLibrary\bin\Release\TrackerLibrary.dll
+E:\PLIKI KOMOPUTER\Dropbox\Praca\Programowanie\Proste programy\RPGTracker\TrackerLibrary\bin\Release\TrackerLibrary.pdb
+E:\PLIKI KOMOPUTER\Dropbox\Praca\Programowanie\Proste programy\RPGTracker\TrackerLibrary\obj\Release\TrackerLibrary.dll
+E:\PLIKI KOMOPUTER\Dropbox\Praca\Programowanie\Proste programy\RPGTracker\TrackerLibrary\obj\Release\TrackerLibrary.pdb
