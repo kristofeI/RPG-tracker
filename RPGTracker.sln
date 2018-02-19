@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackerLibrary", "TrackerLi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackerUI", "TrackerUI\TrackerUI.csproj", "{8E2CCF6C-8060-4BA9-B9A2-559C7EF07921}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RPGTrackerSetup", "RPGTrackerSetup\RPGTrackerSetup.vdproj", "{403C8967-7C0B-464C-B9F0-8D9C0B8299A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,8 @@ Global
 		{8E2CCF6C-8060-4BA9-B9A2-559C7EF07921}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E2CCF6C-8060-4BA9-B9A2-559C7EF07921}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E2CCF6C-8060-4BA9-B9A2-559C7EF07921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{403C8967-7C0B-464C-B9F0-8D9C0B8299A2}.Debug|Any CPU.ActiveCfg = Debug
+		{403C8967-7C0B-464C-B9F0-8D9C0B8299A2}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
