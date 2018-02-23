@@ -5,6 +5,5 @@ D:\PLIKI KOMOPUTER\Dropbox\Praca\Programowanie\Proste programy\RPGTracker\Tracke
 D:\PLIKI KOMOPUTER\Dropbox\Praca\Programowanie\Proste programy\RPGTracker\TrackerLibrary\obj\Debug\TrackerLibrary.pdb
 E:\PLIKI KOMOPUTER\Dropbox\Praca\Programowanie\Proste programy\RPGTracker\TrackerLibrary\bin\Debug\TrackerLibrary.dll
 E:\PLIKI KOMOPUTER\Dropbox\Praca\Programowanie\Proste programy\RPGTracker\TrackerLibrary\bin\Debug\TrackerLibrary.pdb
-E:\PLIKI KOMOPUTER\Dropbox\Praca\Programowanie\Proste programy\RPGTracker\TrackerLibrary\obj\Debug\TrackerLibrary.csprojResolveAssemblyReference.cache
 E:\PLIKI KOMOPUTER\Dropbox\Praca\Programowanie\Proste programy\RPGTracker\TrackerLibrary\obj\Debug\TrackerLibrary.dll
 E:\PLIKI KOMOPUTER\Dropbox\Praca\Programowanie\Proste programy\RPGTracker\TrackerLibrary\obj\Debug\TrackerLibrary.pdb

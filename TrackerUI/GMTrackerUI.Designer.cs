@@ -532,8 +532,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1184, 914);
+            this.ClientSize = new System.Drawing.Size(1202, 658);
             this.Controls.Add(this.actualTimeOfDayLabel);
             this.Controls.Add(this.timeIntervalsLabel);
             this.Controls.Add(this.changeDateButton);
