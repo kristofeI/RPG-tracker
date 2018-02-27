@@ -15,7 +15,6 @@ namespace TrackerUI
     public partial class BattleForm : Form
     {
         ICharacterRequester callingForm;
-        List<RoundModel> rounds = new List<RoundModel>();
         List<CharacterModel> fightingCharacters = new List<CharacterModel>();
         CharacterModel selectedCharacter;
         List<SkillModel> skills = new List<SkillModel>();

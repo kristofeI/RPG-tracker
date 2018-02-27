@@ -49,12 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActiveSessionForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ActiveSessionForm.Designer.cs">
-      <DependentUpon>ActiveSessionForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="AddNewWeaponForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,12 +72,6 @@
     </Compile>
     <Compile Include="EditCharacterForm.Designer.cs">
       <DependentUpon>EditCharacterForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EditTeamForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditTeamForm.Designer.cs">
-      <DependentUpon>EditTeamForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FormRequesters\ICampaignRequester.cs" />
     <Compile Include="FormRequesters\IWeaponRequester.cs" />
@@ -114,9 +102,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ActiveSessionForm.resx">
-      <DependentUpon>ActiveSessionForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AddNewWeaponForm.resx">
       <DependentUpon>AddNewWeaponForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,9 +113,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditCharacterForm.resx">
       <DependentUpon>EditCharacterForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditTeamForm.resx">
-      <DependentUpon>EditTeamForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GMTrackerUI.resx">
       <DependentUpon>GMTrackerUI.cs</DependentUpon>
