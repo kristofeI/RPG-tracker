@@ -15,8 +15,6 @@ namespace TrackerUI
 {
     public partial class GMTrackerUI : Form, ICharacterRequester, ICampaignRequester
     {
-
-        //TODO!! wire up current session, its team and npcs
         CampaignModel currentCampaign = new CampaignModel();
         List<CharacterModel> fightingUnits = new List<CharacterModel>();
         ICampaignRequester callingForm;
